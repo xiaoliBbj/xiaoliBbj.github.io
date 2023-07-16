@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>Hello World</title>
+    <url>/2023/07/14/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>什么是数学建模</title>
+    <url>/2023/07/16/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/</url>
+    <content><![CDATA[<h1 id="数学模型"><a href="#数学模型" class="headerlink" title="数学模型"></a>数学模型</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>对一个现实世界的特定对象，为了某个目的，根据内在规律，作出必要的简化假设，运用数学工具，得到数学结构</p>
+<h2 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h2><p>自由落体运动，高度和时间的函数关系式<br>$$<br>h&#x3D;\frac{1}{2}gt^2<br>$$</p>
+<h2 id="常用的分类标准数学模型"><a href="#常用的分类标准数学模型" class="headerlink" title="常用的分类标准数学模型"></a>常用的分类标准数学模型</h2><h3 id="按变量性质"><a href="#按变量性质" class="headerlink" title="按变量性质"></a>按变量性质</h3><p>确定性模型和随机性模型</p>
+<p>连续模型和离散模型</p>
+<h3 id="按时间关系"><a href="#按时间关系" class="headerlink" title="按时间关系"></a>按时间关系</h3><p>静态模型和动态模型</p>
+<h3 id="按研究工具"><a href="#按研究工具" class="headerlink" title="按研究工具"></a>按研究工具</h3><p>初等模型、几何模型、微分方程模型、运筹学模型、概率模型、统计模型、图论与网络模型、层次分析模型、系统动力学模型、灰色系统模型</p>
+<h3 id="按研究对象"><a href="#按研究对象" class="headerlink" title="按研究对象"></a>按研究对象</h3><p>经济模型、生态模型、人口模型、交通模型、战争模型、资源模型、环境模型</p>
+<h3 id="按建模目的"><a href="#按建模目的" class="headerlink" title="按建模目的"></a>按建模目的</h3><p>分析模型、预测模型、优化模型、决策模型、控制模型</p>
+<h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><p>逼真性、可行性、渐进性（建模的反复迭代）、强健性（抗干扰能力，适应能力）、转移性、逻辑性</p>
+<h1 id="数学建模"><a href="#数学建模" class="headerlink" title="数学建模"></a>数学建模</h1><h2 id="概念-1"><a href="#概念-1" class="headerlink" title="概念"></a>概念</h2><p>应用知识从实际课题中抽象、提炼出数学模型的过程</p>
+<h2 id="一般步骤"><a href="#一般步骤" class="headerlink" title="一般步骤"></a>一般步骤</h2><p>对现实问题的调查研究——假设+简化+抽象——简历初步数学模型——对模型检验和评价——改进模型——迭代</p>
+<p>ps：</p>
+<p>在检验和评价阶段可以采用75%的数据建模，25%的数据评价和检验</p>
+<h3 id="调查研究"><a href="#调查研究" class="headerlink" title="调查研究"></a>调查研究</h3><p>需要大量查看参考文献，了解实际问题的历史背景和内在规律，对问题进行全面的、深入的、细致的调查和研究，收集相关的数据</p>
+<h3 id="模型假设"><a href="#模型假设" class="headerlink" title="模型假设"></a>模型假设</h3><p>抓住主要因素，暂不考虑或忽略次要因素，对模型大胆假设，理清变量之间的关系，建立相应模型</p>
+<h3 id="模型建立"><a href="#模型建立" class="headerlink" title="模型建立"></a>模型建立</h3><p>实体或对象之间的内在关系用数学语言加以描述，建立问题的数学结构，得到数学模型</p>
+<h4 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h4><h5 id="分清变量类型，恰当使用数学工具"><a href="#分清变量类型，恰当使用数学工具" class="headerlink" title="分清变量类型，恰当使用数学工具"></a>分清变量类型，恰当使用数学工具</h5><p>如果是<strong>确定型变量</strong>，建模多用微积分、微分方程、线性规划、非线性规划、图论与网络、投入产出、插值与拟合</p>
+<p>如果是<strong>随机变量</strong>，建模多用概率、统计、随机性存储论、排队论、对策论、决策论、随机微分方程</p>
+<h5 id="抓住问题本质，简化变量之间的关系"><a href="#抓住问题本质，简化变量之间的关系" class="headerlink" title="抓住问题本质，简化变量之间的关系"></a>抓住问题本质，简化变量之间的关系</h5><p>建模原则：模型简单明了，思路清晰，侧重于实际应用</p>
+<h5 id="建模要有严密推理"><a href="#建模要有严密推理" class="headerlink" title="建模要有严密推理"></a>建模要有严密推理</h5><h5 id="建模要有足够的精确度"><a href="#建模要有足够的精确度" class="headerlink" title="建模要有足够的精确度"></a>建模要有足够的精确度</h5><h3 id="模型求解"><a href="#模型求解" class="headerlink" title="模型求解"></a>模型求解</h3><h3 id="模型检验"><a href="#模型检验" class="headerlink" title="模型检验"></a>模型检验</h3><p><strong>对模型进行分析和检验</strong></p>
+<p>分析：误差分析，模型对数据的稳定性分析和灵敏度分析</p>
+<p>检验：得到结果的理论值与实际值相比较</p>
+<h3 id="模型应用"><a href="#模型应用" class="headerlink" title="模型应用"></a>模型应用</h3><h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><blockquote>
+<h3 id="中国未来五十年的人口预测"><a href="#中国未来五十年的人口预测" class="headerlink" title="中国未来五十年的人口预测"></a>中国未来五十年的人口预测</h3><p>当今，人类生存面临五大问题：人口问题、工业化的资金问题、粮食问题、资源问题和环境污染问题。其中人口问题为首要问题，主要是人口增长过快，尤其是20世纪70年代到80年代，增加10亿人口只用了12年。有人预计到21世纪中叶，人类将超过100亿。地球上人类可利用的资源是有限的，世界人口的迅速膨胀，尤其是发展中国家过高的人口增长率成为十分严峻的问题。</p>
+<p>面临这样的形式问题，我们国家作为发展中国家的必须进行自我控制，即采取必要的措施来抑制过快的人口增长率。而影响人口增长的因素有哪些？其中人口的基数、出生率和死亡率的高低、人口男女比例大小、人口年龄组成情况、工农业生产水平的高低、营养条件、医疗水平、人口素质和环境污染等诸因素都影响人口增长、另外各民族的风俗习惯、传统观念、自然灾难、战争和人口迁移等也与人口增长密切相关。</p>
+<p>试建立一个数学模型，对我国人口作出增长预测和控制，为正确的人口政策提供科学的依据。</p>
+</blockquote>
+<p>思考：首先确定主要因素是人口基数，出生率和死亡率，其他因素作为次要因素，接下来提出假设，假设我国人口基数此时为x，出生率今年为b，死亡率今年为d，由此得出下一年的人口数量为：（1+b-d）x，出生率和死亡率可以参考往年的数值。</p>
+<blockquote>
+<h2 id="老师的思路"><a href="#老师的思路" class="headerlink" title="老师的思路"></a>老师的思路</h2><p>假设人口增长只与人口的基数和增长率有关，这两个为主要因素。N0表示当年人口基数，r表示年增长率，Nk表示k年后人口数量，建立数学模型<br>$$<br>Nk&#x3D;N0（1+r）^k<br>$$<br>对模型检验需要搜集获得足够的数据。</p>
+<p>检验后发现模型不好，采用马尔萨斯模型，之后又发现不够好，于是改进为逻辑斯蒂模型</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>数学建模</category>
+      </categories>
+      <tags>
+        <tag>数学建模</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>一些常用的数学模型</title>
+    <url>/2023/07/16/%E6%95%B0%E5%AD%A6%E6%A8%A1%E5%9E%8B/</url>
+    <content><![CDATA[<h1 id="人口模型"><a href="#人口模型" class="headerlink" title="人口模型"></a>人口模型</h1><h2 id="马尔萨斯模型"><a href="#马尔萨斯模型" class="headerlink" title="马尔萨斯模型"></a>马尔萨斯模型</h2><h3 id="模型过程"><a href="#模型过程" class="headerlink" title="模型过程"></a>模型过程</h3><p>人口增长与人口基数和增长率有关，这两项为主要因素。假设人口的增长过程可用微分方程来描述。初看起来，人口增长不能用微分方程来描述，因为人口总数是按整数变化的而不是时间的可微函数。然而人口总数很大时，可以近似认为它是时间的连续函数，甚至是可微函数。</p>
+<blockquote>
+<p>N（t）表示t时刻人口总数</p>
+<p>r（t，N（t））表示t时刻的人口增长率，它与时间t和t时刻的人口总数N（t）有关。</p>
+</blockquote>
+<p>模型建立：</p>
+<p>根据假设只考虑人口的基数和增长率，则在t到t+△t这段时间内人口总数增长为<br>$$<br>N（t+△t）-N（t）&#x3D;r（t，N（t））<em>N（t）</em>△t<br>$$<br>两端同除△t，并令△t-&gt;0，则<br>$$<br>\frac{dN（t）}{dt}&#x3D;r[t，N（t）]<em>N（t）<br>$$<br>令r[t，N（t）]&#x3D;r（一个常数）就是马尔萨斯模型（Malthus模型）<br>$$<br>\frac{dN（t）}{dt}&#x3D;r</em>N（t）<br>$$</p>
+<p>$$<br>N（t）|（ t&#x3D;t0） &#x3D;N0<br>$$</p>
+<p>求解得到<br>$$<br>N（t）&#x3D;N0<em>e^{r</em>(t-t0)}<br>$$</p>
+<h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><p>只符合过去的人口总数而不能用来预测未来人口总数</p>
+<p>原因人口总数不太大时，人口总数增长的线性数学模型是正确的，但当人口总数非常大时，地球上的资源，环境等因素对人口增长的限制作用越来越显著</p>
+<h2 id="逻辑斯蒂模型"><a href="#逻辑斯蒂模型" class="headerlink" title="逻辑斯蒂模型"></a>逻辑斯蒂模型</h2><p>当人口总数较小时，人口增长率可看作常数，当人口增长到一定数量后，这个增长率就要随人口的增加而减小。该模型考虑到自然资源、环境条件等因素对人口增长起着阻滞作用，并随人口增加，阻滞作用越来越大，该模型又称为阻滞增长模型，它是一种伯努利方程。</p>
+<blockquote>
+<p>k为生命系数</p>
+<p>N为单位时间内两个成员相遇次数的统计平均值</p>
+</blockquote>
+<p>$$<br>\frac{dN（t）}{dt}&#x3D;r<em>N（t）-K</em>N^2<br>$$</p>
+<p>$$<br>N（t）| （t&#x3D;t0） &#x3D;N0<br>$$</p>
+<p>可以查到：r&#x3D;0.029，K&#x3D;2.941*10^(-12)</p>
+]]></content>
+      <categories>
+        <category>数学建模</category>
+      </categories>
+      <tags>
+        <tag>数学建模</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>脉诊笔记-基于分类器集成融合心电图时间和形态信息的心跳分类</title>
+    <url>/2023/07/15/%E8%84%89%E8%AF%8A/</url>
+    <content><![CDATA[<p>资料：</p>
+<p>（英文） <a href="C:\Users\86137\Desktop\脉诊\脉诊论文\1_Heartbeat_Classification_Fusing_Temporal_and_Morphological_Information_of_ECGs_via_Ensemble_of_Classifiers2.pdf">1_Heartbeat_Classification_Fusing_Temporal_and_Morphological_Information_of_ECGs_via_Ensemble_of_Classifiers2.pdf</a> </p>
+<p>（中文） <a href="C:\Users\86137\Desktop\脉诊\脉诊论文\1基于分类器集成融合心电图时间和形态信息的心跳分类.pdf">1基于分类器集成融合心电图时间和形态信息的心跳分类.pdf</a> </p>
+<h1 id="基本资料"><a href="#基本资料" class="headerlink" title="基本资料"></a>基本资料</h1><p>心率紊乱，通常被称为心律失常，心律失常通常与其他形式的心脏病有关。心电图(ECG)是一种无创和廉价的技术，它们经常被用来检测心律异常，测量一段时间内心脏的电活动。对于心脏电活动的常规分析，通常使用由 12 个独立导联记录的ECG。12导联ECG包括3 条双极肢体 导联 (I、II 和 III)，单极肢体导 联 (AVR、 AVL 和 AVF)和 6 条 单极胸导联，也称为心前导联或 V 导 联 (V1、V2、 V3、 V4、V5 和 V6)。每根导联都是从一 个特定的角度观察全身的心脏电活动。记录中每条导联的持续时间约为 2.5 秒。此外，为了准确地评估心律，一段引线的长时间记录被用来提供 10 秒的节奏条。II 型导联是最常用的节奏条 [3]，因为它通常可以很好地看到最重要的波:P、Q、R、S 和 T。</p>
+<p>p 波是心房去极化引起的小缺陷， Q、R 和 S 波通常被认为是一个单一的事件，称为 qrs 复合体，它是 ECG 中振幅最大的部分， 由腹侧去极化 引起。 T 波是 由腹侧再极 化引起的。 最后，在某些情况下，在 T波之后可能会出现一个额外的 U 波。</p>
+<p>用于心律失常分类的通用自动系统：</p>
+<p>1、对信号进行预处理：基线去除和高频噪声的清洗</p>
+<p>2、用心跳分割算法在拍频水平上对信号进行分割（检测qrs复合体</p>
+]]></content>
+      <categories>
+        <category>脉诊</category>
+      </categories>
+      <tags>
+        <tag>脉诊</tag>
+      </tags>
+  </entry>
+</search>
