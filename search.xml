@@ -62,6 +62,25 @@
       </tags>
   </entry>
   <entry>
+    <title>脉诊笔记-基于分类器集成融合心电图时间和形态信息的心跳分类</title>
+    <url>/2023/07/15/%E8%84%89%E8%AF%8A/</url>
+    <content><![CDATA[<p>资料：</p>
+<p>（英文） <a href="C:\Users\86137\Desktop\脉诊\脉诊论文\1_Heartbeat_Classification_Fusing_Temporal_and_Morphological_Information_of_ECGs_via_Ensemble_of_Classifiers2.pdf">1_Heartbeat_Classification_Fusing_Temporal_and_Morphological_Information_of_ECGs_via_Ensemble_of_Classifiers2.pdf</a> </p>
+<p>（中文） <a href="C:\Users\86137\Desktop\脉诊\脉诊论文\1基于分类器集成融合心电图时间和形态信息的心跳分类.pdf">1基于分类器集成融合心电图时间和形态信息的心跳分类.pdf</a> </p>
+<h1 id="基本资料"><a href="#基本资料" class="headerlink" title="基本资料"></a>基本资料</h1><p>心率紊乱，通常被称为心律失常，心律失常通常与其他形式的心脏病有关。心电图(ECG)是一种无创和廉价的技术，它们经常被用来检测心律异常，测量一段时间内心脏的电活动。对于心脏电活动的常规分析，通常使用由 12 个独立导联记录的ECG。12导联ECG包括3 条双极肢体 导联 (I、II 和 III)，单极肢体导 联 (AVR、 AVL 和 AVF)和 6 条 单极胸导联，也称为心前导联或 V 导 联 (V1、V2、 V3、 V4、V5 和 V6)。每根导联都是从一 个特定的角度观察全身的心脏电活动。记录中每条导联的持续时间约为 2.5 秒。此外，为了准确地评估心律，一段引线的长时间记录被用来提供 10 秒的节奏条。II 型导联是最常用的节奏条 [3]，因为它通常可以很好地看到最重要的波:P、Q、R、S 和 T。</p>
+<p>p 波是心房去极化引起的小缺陷， Q、R 和 S 波通常被认为是一个单一的事件，称为 qrs 复合体，它是 ECG 中振幅最大的部分， 由腹侧去极化 引起。 T 波是 由腹侧再极 化引起的。 最后，在某些情况下，在 T波之后可能会出现一个额外的 U 波。</p>
+<p>用于心律失常分类的通用自动系统：</p>
+<p>1、对信号进行预处理：基线去除和高频噪声的清洗</p>
+<p>2、用心跳分割算法在拍频水平上对信号进行分割（检测qrs复合体</p>
+]]></content>
+      <categories>
+        <category>脉诊</category>
+      </categories>
+      <tags>
+        <tag>脉诊</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>一些常用的数学模型</title>
     <url>/2023/07/16/%E6%95%B0%E5%AD%A6%E6%A8%A1%E5%9E%8B/</url>
     <content><![CDATA[<h1 id="人口模型"><a href="#人口模型" class="headerlink" title="人口模型"></a>人口模型</h1><h2 id="马尔萨斯模型"><a href="#马尔萨斯模型" class="headerlink" title="马尔萨斯模型"></a>马尔萨斯模型</h2><h3 id="模型过程"><a href="#模型过程" class="headerlink" title="模型过程"></a>模型过程</h3><p>人口增长与人口基数和增长率有关，这两项为主要因素。假设人口的增长过程可用微分方程来描述。初看起来，人口增长不能用微分方程来描述，因为人口总数是按整数变化的而不是时间的可微函数。然而人口总数很大时，可以近似认为它是时间的连续函数，甚至是可微函数。</p>
@@ -89,25 +108,6 @@
       </categories>
       <tags>
         <tag>数学建模</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>脉诊笔记-基于分类器集成融合心电图时间和形态信息的心跳分类</title>
-    <url>/2023/07/15/%E8%84%89%E8%AF%8A/</url>
-    <content><![CDATA[<p>资料：</p>
-<p>（英文） <a href="C:\Users\86137\Desktop\脉诊\脉诊论文\1_Heartbeat_Classification_Fusing_Temporal_and_Morphological_Information_of_ECGs_via_Ensemble_of_Classifiers2.pdf">1_Heartbeat_Classification_Fusing_Temporal_and_Morphological_Information_of_ECGs_via_Ensemble_of_Classifiers2.pdf</a> </p>
-<p>（中文） <a href="C:\Users\86137\Desktop\脉诊\脉诊论文\1基于分类器集成融合心电图时间和形态信息的心跳分类.pdf">1基于分类器集成融合心电图时间和形态信息的心跳分类.pdf</a> </p>
-<h1 id="基本资料"><a href="#基本资料" class="headerlink" title="基本资料"></a>基本资料</h1><p>心率紊乱，通常被称为心律失常，心律失常通常与其他形式的心脏病有关。心电图(ECG)是一种无创和廉价的技术，它们经常被用来检测心律异常，测量一段时间内心脏的电活动。对于心脏电活动的常规分析，通常使用由 12 个独立导联记录的ECG。12导联ECG包括3 条双极肢体 导联 (I、II 和 III)，单极肢体导 联 (AVR、 AVL 和 AVF)和 6 条 单极胸导联，也称为心前导联或 V 导 联 (V1、V2、 V3、 V4、V5 和 V6)。每根导联都是从一 个特定的角度观察全身的心脏电活动。记录中每条导联的持续时间约为 2.5 秒。此外，为了准确地评估心律，一段引线的长时间记录被用来提供 10 秒的节奏条。II 型导联是最常用的节奏条 [3]，因为它通常可以很好地看到最重要的波:P、Q、R、S 和 T。</p>
-<p>p 波是心房去极化引起的小缺陷， Q、R 和 S 波通常被认为是一个单一的事件，称为 qrs 复合体，它是 ECG 中振幅最大的部分， 由腹侧去极化 引起。 T 波是 由腹侧再极 化引起的。 最后，在某些情况下，在 T波之后可能会出现一个额外的 U 波。</p>
-<p>用于心律失常分类的通用自动系统：</p>
-<p>1、对信号进行预处理：基线去除和高频噪声的清洗</p>
-<p>2、用心跳分割算法在拍频水平上对信号进行分割（检测qrs复合体</p>
-]]></content>
-      <categories>
-        <category>脉诊</category>
-      </categories>
-      <tags>
-        <tag>脉诊</tag>
       </tags>
   </entry>
 </search>
