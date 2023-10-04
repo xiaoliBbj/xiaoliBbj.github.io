@@ -22,21 +22,67 @@
 ]]></content>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/2023/07/14/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+    <title>GitHub使用教程</title>
+    <url>/2023/10/02/Github%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</url>
+    <content><![CDATA[<h1 id="访问gitHub"><a href="#访问gitHub" class="headerlink" title="访问gitHub"></a>访问gitHub</h1><p>参考文档：</p>
+<p><a href="https://mp.weixin.qq.com/s?__biz=MzI1NDczNTAwMA==&mid=2247493961&idx=1&sn=16386132c1942f9f06d1adef61e4ca9f&scene=21#wechat_redirect">GitHub 访问不了？砸墙狂魔教你几招【文末抽奖】</a></p>
+<p><a href="https://blog.csdn.net/LZJLZJLZJLZJLZJLZJ/article/details/132124711?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_baidulandingword~default-4-132124711-blog-127236651.235%5Ev38%5Epc_relevant_default_base3&spm=1001.2101.3001.4242.3&utm_relevant_index=7">一步步教你解决github无法打开问题_github打不开_乐观男孩的博客-CSDN博客</a></p>
+<p><a href="https://github.com/521xueweihan/GitHub520">GitHub - 521xueweihan&#x2F;GitHub520: :kissing_heart: 让你“爱”上 GitHub，解决访问时图裂、加载慢的问题。（无需安装）</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/629079933">加速你的 GitHub 访问速度，使用 SwitchHosts 工具，畅享极速代码浏览体验！（全网最详细踩坑教程）</a></p>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>用户访问网址，发送请求时，DNS会根据请求返回目标地址的IP地址，之后利用得到的IP地址向GitHub的服务器发送请求，GitHub返回网址，从而用户访问网址成功。如果想要绕开DNS，访问目标地址，可以修改本地的hosts文件。</p>
+<p>直接访问github网址很有可能出现以下情况，出现此情况的原因有很多，如：请求超时。</p>
+<p><img src="D:\blog\source_posts\Github使用教程.assets\image-20231003011743425.png" alt="image-20231003011743425"></p>
+<h2 id="获取IP地址"><a href="#获取IP地址" class="headerlink" title="获取IP地址"></a>获取IP地址</h2><p>想要绕过DNS访问GitHub，可以先查询GitHub的IP地址。获取IP地址有两种方式：</p>
+<blockquote>
+<p>1、上网搜索，例如：<a href="https://ip.tool.chinaz.com/github.com">IP&#x2F;服务器github.com的信息 - 站长工具 (chinaz.com)</a></p>
+<p><img src="D:\blog\source_posts\Github使用教程.assets\image-20231003012347181.png" alt="image-20231003012347181"></p>
+<p>可以从图片看出IP地址为20.205.243.166</p>
+<p>2、在cmd中通过ping域名来获取IP地址</p>
+<p><img src="D:\blog\source_posts\Github使用教程.assets\image-20231003011508992.png" alt="image-20231003011508992"></p>
+<p>由图片可以看出IP地址为20.205.243.166</p>
+</blockquote>
+<h2 id="修改hosts文件"><a href="#修改hosts文件" class="headerlink" title="修改hosts文件"></a>修改hosts文件</h2><h3 id="hosts文件路径"><a href="#hosts文件路径" class="headerlink" title="hosts文件路径"></a>hosts文件路径</h3><ul>
+<li>Windows 系统：<code>C:\Windows\System32\drivers\etc\hosts</code></li>
+<li>Linux 系统：<code>/etc/hosts</code></li>
+<li>Mac（苹果电脑）系统：<code>/etc/hosts</code></li>
+<li>Android（安卓）系统：<code>/system/etc/hosts</code></li>
+<li>iPhone（iOS）系统：<code>/etc/hosts</code></li>
+</ul>
+<h3 id="修改"><a href="#修改" class="headerlink" title="修改"></a>修改</h3><p>前面的数字时前面查到的IP地址</p>
+<p><img src="D:\blog\source_posts\Github使用教程.assets\image-20231003012717890.png" alt="image-20231003012717890"></p>
+<h3 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ipconfig /flushdns</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<p><img src="D:\blog\source_posts\Github使用教程.assets\image-20231003012821520.png" alt="image-20231003012821520"></p>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><h3 id="页面布局混乱"><a href="#页面布局混乱" class="headerlink" title="页面布局混乱"></a>页面布局混乱</h3><p>如果遇到只有文字，但是页面布局混乱，不够清晰，很有可能是网页对应的css文件对应的域名和网站本身对应的域名不相同，说明时上述同样的问题——访问超时，此时需要将其对应的网址按照上述方法挨个重置一下信息应该可以解决。</p>
+<h3 id="访问依旧缓慢"><a href="#访问依旧缓慢" class="headerlink" title="访问依旧缓慢"></a>访问依旧缓慢</h3><p>GitHub有不同地方的服务器，从在线工具（<a href="https://site.ip138.com/github.ip/%EF%BC%89%E5%8D%B3%E5%8F%AF%E6%9F%A5%E5%88%B0%E5%8E%86%E5%8F%B2%E8%A7%A3%E6%9E%90%E8%AE%B0%E5%BD%95%EF%BC%8C%E5%9C%A8cmd%E4%B8%AD%E6%8C%A8%E4%B8%AAping%E4%B8%80%E4%B8%8B%E4%B8%8D%E5%90%8C%E7%9A%84%E5%9C%B0%E5%9D%80%EF%BC%8C%E6%9F%A5%E7%9C%8B%E8%80%97%E6%97%B6%E5%A6%82%E4%BD%95%EF%BC%8C%E9%80%89%E6%8B%A9%E6%9C%80%E5%BF%AB%E7%9A%84IP%E5%9C%B0%E5%9D%80%E8%BF%9B%E8%A1%8C%E8%AE%BF%E9%97%AE%E5%8D%B3%E5%8F%AF%E3%80%82">https://site.ip138.com/github.ip/）即可查到历史解析记录，在cmd中挨个ping一下不同的地址，查看耗时如何，选择最快的IP地址进行访问即可。</a></p>
+<p><img src="D:\blog\source_posts\Github使用教程.assets\image-20231003013746590.png" alt="image-20231003013746590"></p>
+<p><img src="D:\blog\source_posts\Github使用教程.assets\image-20231003014012466.png" alt="image-20231003014012466"></p>
+<p>明显可以看出这个新地址时间远比上一个地址的耗时更长。</p>
+<h2 id="局限性"><a href="#局限性" class="headerlink" title="局限性"></a>局限性</h2><p>1、略微麻烦</p>
+<p>2、需要查看多个IP地址，并且地址需要在国内</p>
+<h1 id="Github520"><a href="#Github520" class="headerlink" title="Github520"></a>Github520</h1><p>项目GitHub网址：<a href="https://github.com/521xueweihan/GitHub520">GitHub - 521xueweihan&#x2F;GitHub520: :kissing_heart: 让你“爱”上 GitHub，解决访问时图裂、加载慢的问题。（无需安装）</a></p>
+<p>先安装switchhosts软件，从软件商城安装即可：</p>
+<p><img src="D:\blog\source_posts\Github使用教程.assets\image-20231004162447358.png" alt="image-20231004162447358"></p>
+<p>配置方法：</p>
+<blockquote>
+<p>以 SwitchHosts 为例，看一下怎么使用的，配置参考下面：</p>
+<ul>
+<li>Title: 随意</li>
+<li>Type: <code>Remote</code></li>
+<li>URL: <code>https://raw.hellogithub.com/hosts</code></li>
+<li>Auto Refresh: 最好选 <code>1 hour</code></li>
+</ul>
+</blockquote>
+<p><img src="D:\blog\source_posts\Github使用教程.assets\image-20231004163052538.png" alt="image-20231004163052538"></p>
+<h1 id="steam插件"><a href="#steam插件" class="headerlink" title="steam插件"></a>steam插件</h1><p><img src="D:\blog\source_posts\Github使用教程.assets\image-20231003015613245.png" alt="image-20231003015613245"></p>
+<p>玩游戏的朋友可能知道这个插件，安装这个插件后玩steam可以顺滑一些，除了玩游戏加快这个功能，它还能够加速访问GitHub网站。</p>
+<p>关于这个软件安装，查看羽翼城大佬博客，按教程安装即可。链接：<a href="https://www.dogfight360.com/blog/">https://www.dogfight360.com/blog/</a></p>
+<h1 id="外网服务器"><a href="#外网服务器" class="headerlink" title="外网服务器"></a>外网服务器</h1><p>很多翻墙的朋友会有这个软件，开启代理以后就能够科学上网，当然前提是你买了流量套餐。</p>
+<p><img src="D:\blog\source_posts\Github使用教程.assets\image-20231003015800547.png" alt="image-20231003015800547"></p>
+<p>相关软件在买完套餐之后根据其提供的配置文档进行安装。购买便宜套餐链接：<a href="https://搞快点.com/">https://xn--66t76gw3n.com/</a></p>
+<h1 id="gitclone"><a href="#gitclone" class="headerlink" title="gitclone"></a>gitclone</h1><p>网址：<a href="https://www.gitclone.com/">https://www.gitclone.com/</a></p>
+<p>无法上传代码，但是可以快速下载代码学习</p>
+<h1 id="gitee导入"><a href="#gitee导入" class="headerlink" title="gitee导入"></a>gitee导入</h1><p><img src="D:\blog\source_posts\Github使用教程.assets\image-20231004163806273.png" alt="image-20231004163806273"></p>
 ]]></content>
   </entry>
   <entry>
@@ -150,6 +196,24 @@
       </tags>
   </entry>
   <entry>
+    <title>Hello World</title>
+    <url>/2023/07/14/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
     <title>vue</title>
     <url>/2023/08/17/vue/</url>
     <content><![CDATA[<p>课程链接：<a href="https://www.bilibili.com/video/BV1Rs4y127j8?p=1&vd_source=05b9305044517a2659100450096dfe80">菜菜小趴菜vue3</a></p>
@@ -175,47 +239,35 @@
       </tags>
   </entry>
   <entry>
-    <title>什么是数学建模</title>
-    <url>/2023/07/16/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/</url>
-    <content><![CDATA[<h1 id="数学模型"><a href="#数学模型" class="headerlink" title="数学模型"></a>数学模型</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>对一个现实世界的特定对象，为了某个目的，根据内在规律，作出必要的简化假设，运用数学工具，得到数学结构</p>
-<h2 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h2><p>自由落体运动，高度和时间的函数关系式<br>$$<br>h&#x3D;\frac{1}{2}gt^2<br>$$</p>
-<h2 id="常用的分类标准数学模型"><a href="#常用的分类标准数学模型" class="headerlink" title="常用的分类标准数学模型"></a>常用的分类标准数学模型</h2><h3 id="按变量性质"><a href="#按变量性质" class="headerlink" title="按变量性质"></a>按变量性质</h3><p>确定性模型和随机性模型</p>
-<p>连续模型和离散模型</p>
-<h3 id="按时间关系"><a href="#按时间关系" class="headerlink" title="按时间关系"></a>按时间关系</h3><p>静态模型和动态模型</p>
-<h3 id="按研究工具"><a href="#按研究工具" class="headerlink" title="按研究工具"></a>按研究工具</h3><p>初等模型、几何模型、微分方程模型、运筹学模型、概率模型、统计模型、图论与网络模型、层次分析模型、系统动力学模型、灰色系统模型</p>
-<h3 id="按研究对象"><a href="#按研究对象" class="headerlink" title="按研究对象"></a>按研究对象</h3><p>经济模型、生态模型、人口模型、交通模型、战争模型、资源模型、环境模型</p>
-<h3 id="按建模目的"><a href="#按建模目的" class="headerlink" title="按建模目的"></a>按建模目的</h3><p>分析模型、预测模型、优化模型、决策模型、控制模型</p>
-<h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><p>逼真性、可行性、渐进性（建模的反复迭代）、强健性（抗干扰能力，适应能力）、转移性、逻辑性</p>
-<h1 id="数学建模"><a href="#数学建模" class="headerlink" title="数学建模"></a>数学建模</h1><h2 id="概念-1"><a href="#概念-1" class="headerlink" title="概念"></a>概念</h2><p>应用知识从实际课题中抽象、提炼出数学模型的过程</p>
-<h2 id="一般步骤"><a href="#一般步骤" class="headerlink" title="一般步骤"></a>一般步骤</h2><p>对现实问题的调查研究——假设+简化+抽象——简历初步数学模型——对模型检验和评价——改进模型——迭代</p>
-<p>ps：</p>
-<p>在检验和评价阶段可以采用75%的数据建模，25%的数据评价和检验</p>
-<h3 id="调查研究"><a href="#调查研究" class="headerlink" title="调查研究"></a>调查研究</h3><p>需要大量查看参考文献，了解实际问题的历史背景和内在规律，对问题进行全面的、深入的、细致的调查和研究，收集相关的数据</p>
-<h3 id="模型假设"><a href="#模型假设" class="headerlink" title="模型假设"></a>模型假设</h3><p>抓住主要因素，暂不考虑或忽略次要因素，对模型大胆假设，理清变量之间的关系，建立相应模型</p>
-<h3 id="模型建立"><a href="#模型建立" class="headerlink" title="模型建立"></a>模型建立</h3><p>实体或对象之间的内在关系用数学语言加以描述，建立问题的数学结构，得到数学模型</p>
-<h4 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h4><h5 id="分清变量类型，恰当使用数学工具"><a href="#分清变量类型，恰当使用数学工具" class="headerlink" title="分清变量类型，恰当使用数学工具"></a>分清变量类型，恰当使用数学工具</h5><p>如果是<strong>确定型变量</strong>，建模多用微积分、微分方程、线性规划、非线性规划、图论与网络、投入产出、插值与拟合</p>
-<p>如果是<strong>随机变量</strong>，建模多用概率、统计、随机性存储论、排队论、对策论、决策论、随机微分方程</p>
-<h5 id="抓住问题本质，简化变量之间的关系"><a href="#抓住问题本质，简化变量之间的关系" class="headerlink" title="抓住问题本质，简化变量之间的关系"></a>抓住问题本质，简化变量之间的关系</h5><p>建模原则：模型简单明了，思路清晰，侧重于实际应用</p>
-<h5 id="建模要有严密推理"><a href="#建模要有严密推理" class="headerlink" title="建模要有严密推理"></a>建模要有严密推理</h5><h5 id="建模要有足够的精确度"><a href="#建模要有足够的精确度" class="headerlink" title="建模要有足够的精确度"></a>建模要有足够的精确度</h5><h3 id="模型求解"><a href="#模型求解" class="headerlink" title="模型求解"></a>模型求解</h3><h3 id="模型检验"><a href="#模型检验" class="headerlink" title="模型检验"></a>模型检验</h3><p><strong>对模型进行分析和检验</strong></p>
-<p>分析：误差分析，模型对数据的稳定性分析和灵敏度分析</p>
-<p>检验：得到结果的理论值与实际值相比较</p>
-<h3 id="模型应用"><a href="#模型应用" class="headerlink" title="模型应用"></a>模型应用</h3><h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><blockquote>
-<h3 id="中国未来五十年的人口预测"><a href="#中国未来五十年的人口预测" class="headerlink" title="中国未来五十年的人口预测"></a>中国未来五十年的人口预测</h3><p>当今，人类生存面临五大问题：人口问题、工业化的资金问题、粮食问题、资源问题和环境污染问题。其中人口问题为首要问题，主要是人口增长过快，尤其是20世纪70年代到80年代，增加10亿人口只用了12年。有人预计到21世纪中叶，人类将超过100亿。地球上人类可利用的资源是有限的，世界人口的迅速膨胀，尤其是发展中国家过高的人口增长率成为十分严峻的问题。</p>
-<p>面临这样的形式问题，我们国家作为发展中国家的必须进行自我控制，即采取必要的措施来抑制过快的人口增长率。而影响人口增长的因素有哪些？其中人口的基数、出生率和死亡率的高低、人口男女比例大小、人口年龄组成情况、工农业生产水平的高低、营养条件、医疗水平、人口素质和环境污染等诸因素都影响人口增长、另外各民族的风俗习惯、传统观念、自然灾难、战争和人口迁移等也与人口增长密切相关。</p>
-<p>试建立一个数学模型，对我国人口作出增长预测和控制，为正确的人口政策提供科学的依据。</p>
-</blockquote>
-<p>思考：首先确定主要因素是人口基数，出生率和死亡率，其他因素作为次要因素，接下来提出假设，假设我国人口基数此时为x，出生率今年为b，死亡率今年为d，由此得出下一年的人口数量为：（1+b-d）x，出生率和死亡率可以参考往年的数值。</p>
-<blockquote>
-<h2 id="老师的思路"><a href="#老师的思路" class="headerlink" title="老师的思路"></a>老师的思路</h2><p>假设人口增长只与人口的基数和增长率有关，这两个为主要因素。N0表示当年人口基数，r表示年增长率，Nk表示k年后人口数量，建立数学模型<br>$$<br>Nk&#x3D;N0（1+r）^k<br>$$<br>对模型检验需要搜集获得足够的数据。</p>
-<p>检验后发现模型不好，采用马尔萨斯模型，之后又发现不够好，于是改进为逻辑斯蒂模型</p>
+    <title>网站搭建</title>
+    <url>/2023/08/30/%E5%85%B3%E4%BA%8E%E6%90%AD%E5%BB%BA%E7%BD%91%E7%AB%99%E8%BF%99%E4%B8%80%E4%BB%B6%E4%BA%8B/</url>
+    <content><![CDATA[<h1 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h1><figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 添加全局前置守卫</span></span><br><span class="line">router.<span class="title function_">beforeEach</span>(<span class="function">(<span class="params">to, <span class="keyword">from</span>, next</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// const requiresAuth = to.matched.some(record =&gt; record.meta.requiresAuth);</span></span><br><span class="line">    <span class="keyword">const</span> isCookieValid = <span class="title function_">validateCookie</span>(); <span class="comment">// 调用验证 cookie 的函数</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 如果目标为登录页面，则直接放行导航</span></span><br><span class="line">    <span class="keyword">if</span> (to.<span class="property">path</span> === <span class="string">&#x27;/login&#x27;</span> || to.<span class="property">path</span> === <span class="string">&#x27;/admin&#x27;</span>) &#123;</span><br><span class="line">        <span class="title function_">next</span>(); <span class="comment">// 如果目标路径已经是登录路径，则直接放行导航</span></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (isCookieValid) &#123;</span><br><span class="line">        <span class="comment">// cookie 有效，或者不需要验证，继续导航到目标页面</span></span><br><span class="line">        <span class="title function_">next</span>();</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// 如果需要验证且 cookie 无效，重定向到登录页面</span></span><br><span class="line">        <span class="title function_">next</span>(<span class="string">&#x27;/login&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 解密 DES 函数</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">decryptDES</span>(<span class="params">ciphertext: <span class="built_in">string</span>, key: <span class="built_in">string</span>, iv: <span class="built_in">string</span></span>): <span class="built_in">string</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> decrypted = <span class="title class_">CryptoJS</span>.<span class="property">DES</span>.<span class="title function_">decrypt</span>(&#123;</span><br><span class="line">        <span class="attr">ciphertext</span>: <span class="title class_">CryptoJS</span>.<span class="property">enc</span>.<span class="property">Hex</span>.<span class="title function_">parse</span>(ciphertext),</span><br><span class="line">    &#125;, <span class="title class_">CryptoJS</span>.<span class="property">enc</span>.<span class="property">Utf8</span>.<span class="title function_">parse</span>(key), &#123;</span><br><span class="line">        <span class="attr">iv</span>: <span class="title class_">CryptoJS</span>.<span class="property">enc</span>.<span class="property">Hex</span>.<span class="title function_">parse</span>(iv),</span><br><span class="line">        <span class="attr">mode</span>: <span class="title class_">CryptoJS</span>.<span class="property">mode</span>.<span class="property">CBC</span>,</span><br><span class="line">        <span class="attr">padding</span>: <span class="title class_">CryptoJS</span>.<span class="property">pad</span>.<span class="property">Pkcs7</span>,</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> decrypted.<span class="title function_">toString</span>(<span class="title class_">CryptoJS</span>.<span class="property">enc</span>.<span class="property">Utf8</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 验证 cookie 的函数</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">validateCookie</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> cookies = <span class="variable language_">document</span>.<span class="property">cookie</span>.<span class="title function_">split</span>(<span class="string">&#x27;;&#x27;</span>); <span class="comment">// 将所有 Cookie 拆分成数组</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; cookies.<span class="property">length</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">const</span> cookie = cookies[i].<span class="title function_">trim</span>().<span class="title function_">split</span>(<span class="string">&#x27;=&#x27;</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> (cookie[<span class="number">0</span>] == <span class="string">&#x27;expiration_time&#x27;</span>) &#123;</span><br><span class="line">            <span class="keyword">const</span> ciphertext = cookie[<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">const</span> key = <span class="string">&#x27;88888888&#x27;</span>;</span><br><span class="line">            <span class="keyword">const</span> iv = <span class="string">&#x27;0000000000000000&#x27;</span>;</span><br><span class="line">            <span class="keyword">const</span> plaintext = <span class="title function_">decryptDES</span>(ciphertext, key, iv);</span><br><span class="line">            <span class="comment">// 将 plaintext 转换为数字</span></span><br><span class="line">            <span class="keyword">const</span> expiration_time = <span class="built_in">parseInt</span>(plaintext);</span><br><span class="line">            <span class="comment">// 获取当前时间戳</span></span><br><span class="line">            <span class="keyword">const</span> timestamp = <span class="title class_">Date</span>.<span class="title function_">parse</span>(<span class="keyword">new</span> <span class="title class_">Date</span>().<span class="title function_">toString</span>()) / <span class="number">1000</span>;</span><br><span class="line">            <span class="keyword">if</span> (expiration_time &gt; timestamp) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>; <span class="comment">// 如果 cookie 有效，返回 true</span></span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>; <span class="comment">// 如果 cookie 无效，返回 false</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>; <span class="comment">// 如果未找到 expiration_time，返回 false</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> router;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="to-from-next"><a href="#to-from-next" class="headerlink" title="(to, from, next)"></a>(to, from, next)</h2><blockquote>
+<p><code>(to, from, next)</code> 是 Vue Router 中全局前置守卫函数的参数，用于控制路由导航的流程。这三个参数分别代表了：</p>
+<ol>
+<li><code>to</code>：即将进入的目标路由对象，表示用户要导航到的路由。</li>
+<li><code>from</code>：即将离开的当前路由对象，表示用户要离开的路由。</li>
+<li><code>next</code>：一个回调函数，用于控制路由导航是否继续进行。它可以接受一个参数，用于指定导航的下一个步骤，如继续导航到目标路由、中断导航或重定向到其他路由。</li>
+</ol>
+<p>在全局前置守卫函数内部，你可以根据 <code>to</code> 和 <code>from</code> 的信息，来进行路由导航的控制和判断。<code>next</code> 函数则决定了路由是否继续进行，有以下用法：</p>
+<ul>
+<li><code>next()</code>：继续导航到目标路由，相当于放行。</li>
+<li><code>next(false)</code>：中断导航，不进行路由切换。</li>
+<li><code>next(&#39;/path&#39;)</code>：重定向到其他路径，相当于进行路由跳转。</li>
+</ul>
 </blockquote>
 ]]></content>
-      <categories>
-        <category>数学建模</category>
-      </categories>
       <tags>
-        <tag>数学建模</tag>
+        <tag>router,部署,前端</tag>
       </tags>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/2023/10/02/%E6%88%90%E9%95%BF%E5%8E%86%E7%A8%8B/</url>
+    <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title></title>
@@ -238,63 +290,6 @@
 <p>transform 属性向元素应用 2D 或 3D 转换。该属性允许我们对元素进行旋转、缩放、移动或倾斜。</p>
 </blockquote>
 <h3 id="3"><a href="#3" class="headerlink" title="3"></a>3</h3>]]></content>
-  </entry>
-  <entry>
-    <title>一些常用的数学模型</title>
-    <url>/2023/07/31/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E6%A8%A1%E5%9E%8B/</url>
-    <content><![CDATA[<p>代码来源：<a href="https://zhuanlan.zhihu.com/p/618061990?utm_id=0">https://zhuanlan.zhihu.com/p/618061990?utm_id=0</a></p>
-<h1 id="线性规划"><a href="#线性规划" class="headerlink" title="线性规划"></a>线性规划</h1><p>导入代码模块</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> scipy</span><br><span class="line"><span class="keyword">import</span> sympy</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> matplotlib</span><br><span class="line"><span class="keyword">import</span> numpy</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="简单线性规划"><a href="#简单线性规划" class="headerlink" title="简单线性规划"></a>简单线性规划</h2><h3 id="例一（linprog）"><a href="#例一（linprog）" class="headerlink" title="例一（linprog）"></a>例一（linprog）</h3><p><img src="https://pic2.zhimg.com/80/v2-c6f90939bd931458d35d950cea8f2d59_1440w.webp" alt="img"></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 简单线性规划</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> scipy.optimize <span class="keyword">import</span> linprog</span><br><span class="line"></span><br><span class="line"><span class="comment"># 目标函数</span></span><br><span class="line">f=[-<span class="number">2</span>,-<span class="number">3</span>,<span class="number">5</span>]</span><br><span class="line"><span class="comment"># 小于等于约束</span></span><br><span class="line">aub=[[-<span class="number">2</span>,<span class="number">5</span>,-<span class="number">1</span>],[<span class="number">1</span>,<span class="number">3</span>,<span class="number">1</span>]]</span><br><span class="line">bub=[-<span class="number">10</span>,<span class="number">12</span>]</span><br><span class="line"><span class="comment"># 等式约束</span></span><br><span class="line">aeq=[[<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>]]</span><br><span class="line">beq=[<span class="number">7</span>]</span><br><span class="line"><span class="comment"># 非零约束</span></span><br><span class="line">x0bounds=(<span class="number">0</span>,<span class="literal">None</span>)</span><br><span class="line">x1bounds=(<span class="number">0</span>,<span class="literal">None</span>)</span><br><span class="line">x3bounds=(<span class="number">0</span>,<span class="literal">None</span>)</span><br><span class="line"><span class="comment"># 标准型线性规划：最小值、小于等于约束、等输约束、非零约束</span></span><br><span class="line"><span class="comment"># simplex单纯形法；interior-point内点法;highs使用HIPS求解器</span></span><br><span class="line">res = linprog(f, A_ub=aub, b_ub=bub,A_eq=aeq,b_eq=beq ,bounds=[x0bounds, x1bounds,x3bounds], method=<span class="string">&#x27;highs&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(res)</span><br></pre></td></tr></table></figure>
-
-<p>运行时结果：</p>
-<p><img src="D:\blog\source_posts\数学建模模型.assets\image-20230731183116746.png" alt="image-20230731183116746"></p>
-<blockquote>
-<p>这段代码是关于数学线性规划的Python代码运行后得出的结果。让我逐步解释一下每一部分的含义：</p>
-<ol>
-<li><code>con</code>: 这是一个数组，值为 <code>[0.]</code>。通常在线性规划中，这个数组表示约束条件（constraints）。这里只有一个约束条件，即等式约束条件。</li>
-<li><code>crossover_nit</code>: 这个值为 <code>0</code>，表示交叉（crossover）的迭代次数。</li>
-<li><code>eqlin</code>: 这是一个包含 <code>marginals</code> 和 <code>residual</code> 两个部分的等式约束信息。<code>marginals</code> 表示等式约束条件的边际值，值为 <code>[-2.28571429]</code>。而 <code>residual</code> 表示等式约束条件的残差，值为 <code>[0.]</code>。</li>
-<li><code>fun</code>: 这个值为 <code>-14.571428571428573</code>，表示线性规划的目标函数值（objective function value）。目标是最大化或最小化此值。</li>
-<li><code>ineqlin</code>: 这是一个包含 <code>marginals</code> 和 <code>residual</code> 两个部分的不等式约束信息。<code>marginals</code> 表示不等式约束条件的边际值，值为 <code>[-0.14285714, -0. ]</code>。而 <code>residual</code> 表示不等式约束条件的残差，值为 <code>[0., 3.85714286]</code>。这里有两个不等式约束条件。</li>
-<li><code>lower</code>: 这是一个包含 <code>marginals</code> 和 <code>residual</code> 两个部分的下界信息。<code>marginals</code> 表示变量的下界（lower bound）边际值，但该值由一个内存视图（MemoryView）来表示。而 <code>residual</code> 表示下界条件的残差，值为 <code>[6.42857143, 0.57142857, 0.]</code>。</li>
-<li><code>message</code>: 这是一个字符串，值为 <code>&#39;Optimization terminated successfully.&#39;</code>，表示优化过程成功终止。</li>
-<li><code>nit</code>: 这个值为 <code>3</code>，表示迭代次数（iterations）。</li>
-<li><code>slack</code>: 这是一个数组，值为 <code>[0., 3.85714286]</code>。在线性规划中，这个数组表示松弛变量（slack variables），它们用于衡量不等式约束条件是否被满足。</li>
-<li><code>status</code>: 这个值为 <code>0</code>，表示优化的状态。在大多数优化库中，状态为 <code>0</code> 表示成功找到最优解。</li>
-<li><code>success</code>: 这个值为 <code>True</code>，表示优化是否成功。</li>
-<li><code>upper</code>: 这是一个包含 <code>marginals</code> 和 <code>residual</code> 两个部分的上界信息。<code>marginals</code> 表示变量的上界（upper bound）边际值，但该值由一个内存视图（MemoryView）来表示。而 <code>residual</code> 表示上界条件的残差，值为 <code>[inf, inf, inf]</code>。这里 <code>inf</code> 表示正无穷大，说明部分变量可能没有上界。</li>
-<li><code>x</code>: 这是一个数组，值为 <code>[6.42857143, 0.57142857, 0.]</code>。这是线性规划得出的最优解，表示使目标函数达到最大或最小值时的变量取值。</li>
-</ol>
-<p>综上所述，这段数学线性规划代码的运行结果表明优化成功，得出的最优解为 <code>x = [6.42857143, 0.57142857, 0.]</code>，在这个解下，目标函数的值为 <code>-14.571428571428573</code>。同时，满足了等式约束条件以及不等式约束条件，并且部分变量可能没有上界。</p>
-</blockquote>
-<h3 id="例二（linprog）"><a href="#例二（linprog）" class="headerlink" title="例二（linprog）"></a>例二（linprog）</h3><p><img src="https://pic2.zhimg.com/80/v2-8b7ba11e726c91025155a9f073fda695_1440w.webp" alt="img"></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 简单线性规划</span></span><br><span class="line"><span class="keyword">from</span> scipy.optimize <span class="keyword">import</span> linprog</span><br><span class="line"><span class="comment"># 目标函数</span></span><br><span class="line">f=[-<span class="number">4</span>,-<span class="number">3</span>]</span><br><span class="line"><span class="comment"># 小于等于约束</span></span><br><span class="line">aub=[[<span class="number">2</span>,<span class="number">1</span>],[<span class="number">1</span>,<span class="number">1</span>],[<span class="number">0</span>,<span class="number">1</span>]]</span><br><span class="line">bub=[<span class="number">10</span>,<span class="number">8</span>,<span class="number">7</span>]</span><br><span class="line"><span class="comment"># 等式约束</span></span><br><span class="line">aeq=<span class="literal">None</span></span><br><span class="line">beq=<span class="literal">None</span></span><br><span class="line"><span class="comment"># 非零约束</span></span><br><span class="line">x0bounds=(<span class="number">0</span>,<span class="literal">None</span>)</span><br><span class="line">x1bounds=(<span class="number">0</span>,<span class="literal">None</span>)</span><br><span class="line">x=[x0bounds, x1bounds]</span><br><span class="line"><span class="comment"># 标准型线性规划：最小值、小于等于约束、等输约束、非零约束</span></span><br><span class="line"><span class="comment"># simplex单纯形法；interior-point内点法;highs使用HIPS求解器</span></span><br><span class="line">res = linprog(f, A_ub=aub, b_ub=bub,A_eq=aeq,b_eq=beq ,bounds=x, method=<span class="string">&#x27;simplex&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(res)</span><br></pre></td></tr></table></figure>
-
-<p><img src="D:\blog\source_posts\数学建模模型.assets\image-20230731183904084.png" alt="image-20230731183904084"></p>
-<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>其他的方法有：</p>
-<ul>
-<li><a href="https://blog.csdn.net/m0_54510474/article/details/127849897#minimize_51">minimize()函数</a></li>
-<li><a href="https://blog.csdn.net/m0_54510474/article/details/127849897#cvxpy_96">cvxpy库</a></li>
-<li><a href="https://blog.csdn.net/m0_54510474/article/details/127849897#cvxopt_130">cvxopt库</a></li>
-</ul>
-<p>可查看：<a href="https://blog.csdn.net/m0_54510474/article/details/127849897">https://blog.csdn.net/m0_54510474/article/details/127849897</a></p>
-<h2 id="简单整数规划"><a href="#简单整数规划" class="headerlink" title="简单整数规划"></a>简单整数规划</h2><p><img src="https://pic3.zhimg.com/80/v2-b68d4e5869618c8b0c3a38088d27de7a_1440w.webp" alt="img"></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 简单整数规划</span><br><span class="line"></span><br><span class="line">import pulp as pp</span><br><span class="line"># 参数设置</span><br><span class="line">c = [3,4,1]        #目标函数未知数前的系数</span><br><span class="line"># 约束1</span><br><span class="line">A_gq = [[1,6,2],[2,0,0]]   # 大于等于式子 未知数前的系数集合 二维数组</span><br><span class="line">b_gq = [5,3]         # 大于等于式子右边的数值 一维数组</span><br><span class="line"># 确定最大最小化问题，当前确定的是最小化问题</span><br><span class="line">m = pp.LpProblem(sense=pp.LpMinimize)</span><br><span class="line"># 定义三个变量放到列表中 生成x1 x2 x3</span><br><span class="line">x = [pp.LpVariable(f&#x27;x&#123;i&#125;&#x27;,lowBound=0,cat=&#x27;Integer&#x27;) for i in [1,2,3]]</span><br><span class="line"># 定义目标函数，并将目标函数加入求解的问题中</span><br><span class="line">m += pp.lpDot(c,x) # lpDot 用于计算点积</span><br><span class="line"># 设置比较条件</span><br><span class="line">for i in range(len(A_gq)):# 大于等于</span><br><span class="line">    m += (pp.lpDot(A_gq[i],x) &gt;= b_gq[i])</span><br><span class="line"># 求解</span><br><span class="line">m.solve()</span><br><span class="line"># 输出结果</span><br><span class="line">print(f&#x27;优化结果：&#123;pp.value(m.objective)&#125;&#x27;)</span><br><span class="line">print(f&#x27;参数取值：&#123;[pp.value(var) for var in x]&#125;&#x27;)</span><br></pre></td></tr></table></figure>
-
-<p>代码运行结果：</p>
-<p><img src="D:\blog\source_posts\数学建模模型.assets\image-20230731184740251.png" alt="image-20230731184740251"></p>
-]]></content>
-      <categories>
-        <category>模型</category>
-      </categories>
-      <tags>
-        <tag>数学建模模型</tag>
-      </tags>
   </entry>
   <entry>
     <title>web前端</title>
@@ -1730,6 +1725,106 @@
       </tags>
   </entry>
   <entry>
+    <title>什么是数学建模</title>
+    <url>/2023/07/16/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/</url>
+    <content><![CDATA[<h1 id="数学模型"><a href="#数学模型" class="headerlink" title="数学模型"></a>数学模型</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>对一个现实世界的特定对象，为了某个目的，根据内在规律，作出必要的简化假设，运用数学工具，得到数学结构</p>
+<h2 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h2><p>自由落体运动，高度和时间的函数关系式<br>$$<br>h&#x3D;\frac{1}{2}gt^2<br>$$</p>
+<h2 id="常用的分类标准数学模型"><a href="#常用的分类标准数学模型" class="headerlink" title="常用的分类标准数学模型"></a>常用的分类标准数学模型</h2><h3 id="按变量性质"><a href="#按变量性质" class="headerlink" title="按变量性质"></a>按变量性质</h3><p>确定性模型和随机性模型</p>
+<p>连续模型和离散模型</p>
+<h3 id="按时间关系"><a href="#按时间关系" class="headerlink" title="按时间关系"></a>按时间关系</h3><p>静态模型和动态模型</p>
+<h3 id="按研究工具"><a href="#按研究工具" class="headerlink" title="按研究工具"></a>按研究工具</h3><p>初等模型、几何模型、微分方程模型、运筹学模型、概率模型、统计模型、图论与网络模型、层次分析模型、系统动力学模型、灰色系统模型</p>
+<h3 id="按研究对象"><a href="#按研究对象" class="headerlink" title="按研究对象"></a>按研究对象</h3><p>经济模型、生态模型、人口模型、交通模型、战争模型、资源模型、环境模型</p>
+<h3 id="按建模目的"><a href="#按建模目的" class="headerlink" title="按建模目的"></a>按建模目的</h3><p>分析模型、预测模型、优化模型、决策模型、控制模型</p>
+<h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><p>逼真性、可行性、渐进性（建模的反复迭代）、强健性（抗干扰能力，适应能力）、转移性、逻辑性</p>
+<h1 id="数学建模"><a href="#数学建模" class="headerlink" title="数学建模"></a>数学建模</h1><h2 id="概念-1"><a href="#概念-1" class="headerlink" title="概念"></a>概念</h2><p>应用知识从实际课题中抽象、提炼出数学模型的过程</p>
+<h2 id="一般步骤"><a href="#一般步骤" class="headerlink" title="一般步骤"></a>一般步骤</h2><p>对现实问题的调查研究——假设+简化+抽象——简历初步数学模型——对模型检验和评价——改进模型——迭代</p>
+<p>ps：</p>
+<p>在检验和评价阶段可以采用75%的数据建模，25%的数据评价和检验</p>
+<h3 id="调查研究"><a href="#调查研究" class="headerlink" title="调查研究"></a>调查研究</h3><p>需要大量查看参考文献，了解实际问题的历史背景和内在规律，对问题进行全面的、深入的、细致的调查和研究，收集相关的数据</p>
+<h3 id="模型假设"><a href="#模型假设" class="headerlink" title="模型假设"></a>模型假设</h3><p>抓住主要因素，暂不考虑或忽略次要因素，对模型大胆假设，理清变量之间的关系，建立相应模型</p>
+<h3 id="模型建立"><a href="#模型建立" class="headerlink" title="模型建立"></a>模型建立</h3><p>实体或对象之间的内在关系用数学语言加以描述，建立问题的数学结构，得到数学模型</p>
+<h4 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h4><h5 id="分清变量类型，恰当使用数学工具"><a href="#分清变量类型，恰当使用数学工具" class="headerlink" title="分清变量类型，恰当使用数学工具"></a>分清变量类型，恰当使用数学工具</h5><p>如果是<strong>确定型变量</strong>，建模多用微积分、微分方程、线性规划、非线性规划、图论与网络、投入产出、插值与拟合</p>
+<p>如果是<strong>随机变量</strong>，建模多用概率、统计、随机性存储论、排队论、对策论、决策论、随机微分方程</p>
+<h5 id="抓住问题本质，简化变量之间的关系"><a href="#抓住问题本质，简化变量之间的关系" class="headerlink" title="抓住问题本质，简化变量之间的关系"></a>抓住问题本质，简化变量之间的关系</h5><p>建模原则：模型简单明了，思路清晰，侧重于实际应用</p>
+<h5 id="建模要有严密推理"><a href="#建模要有严密推理" class="headerlink" title="建模要有严密推理"></a>建模要有严密推理</h5><h5 id="建模要有足够的精确度"><a href="#建模要有足够的精确度" class="headerlink" title="建模要有足够的精确度"></a>建模要有足够的精确度</h5><h3 id="模型求解"><a href="#模型求解" class="headerlink" title="模型求解"></a>模型求解</h3><h3 id="模型检验"><a href="#模型检验" class="headerlink" title="模型检验"></a>模型检验</h3><p><strong>对模型进行分析和检验</strong></p>
+<p>分析：误差分析，模型对数据的稳定性分析和灵敏度分析</p>
+<p>检验：得到结果的理论值与实际值相比较</p>
+<h3 id="模型应用"><a href="#模型应用" class="headerlink" title="模型应用"></a>模型应用</h3><h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><blockquote>
+<h3 id="中国未来五十年的人口预测"><a href="#中国未来五十年的人口预测" class="headerlink" title="中国未来五十年的人口预测"></a>中国未来五十年的人口预测</h3><p>当今，人类生存面临五大问题：人口问题、工业化的资金问题、粮食问题、资源问题和环境污染问题。其中人口问题为首要问题，主要是人口增长过快，尤其是20世纪70年代到80年代，增加10亿人口只用了12年。有人预计到21世纪中叶，人类将超过100亿。地球上人类可利用的资源是有限的，世界人口的迅速膨胀，尤其是发展中国家过高的人口增长率成为十分严峻的问题。</p>
+<p>面临这样的形式问题，我们国家作为发展中国家的必须进行自我控制，即采取必要的措施来抑制过快的人口增长率。而影响人口增长的因素有哪些？其中人口的基数、出生率和死亡率的高低、人口男女比例大小、人口年龄组成情况、工农业生产水平的高低、营养条件、医疗水平、人口素质和环境污染等诸因素都影响人口增长、另外各民族的风俗习惯、传统观念、自然灾难、战争和人口迁移等也与人口增长密切相关。</p>
+<p>试建立一个数学模型，对我国人口作出增长预测和控制，为正确的人口政策提供科学的依据。</p>
+</blockquote>
+<p>思考：首先确定主要因素是人口基数，出生率和死亡率，其他因素作为次要因素，接下来提出假设，假设我国人口基数此时为x，出生率今年为b，死亡率今年为d，由此得出下一年的人口数量为：（1+b-d）x，出生率和死亡率可以参考往年的数值。</p>
+<blockquote>
+<h2 id="老师的思路"><a href="#老师的思路" class="headerlink" title="老师的思路"></a>老师的思路</h2><p>假设人口增长只与人口的基数和增长率有关，这两个为主要因素。N0表示当年人口基数，r表示年增长率，Nk表示k年后人口数量，建立数学模型<br>$$<br>Nk&#x3D;N0（1+r）^k<br>$$<br>对模型检验需要搜集获得足够的数据。</p>
+<p>检验后发现模型不好，采用马尔萨斯模型，之后又发现不够好，于是改进为逻辑斯蒂模型</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>数学建模</category>
+      </categories>
+      <tags>
+        <tag>数学建模</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>一些常用的数学模型</title>
+    <url>/2023/07/31/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E6%A8%A1%E5%9E%8B/</url>
+    <content><![CDATA[<p>代码来源：<a href="https://zhuanlan.zhihu.com/p/618061990?utm_id=0">https://zhuanlan.zhihu.com/p/618061990?utm_id=0</a></p>
+<h1 id="线性规划"><a href="#线性规划" class="headerlink" title="线性规划"></a>线性规划</h1><p>导入代码模块</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> scipy</span><br><span class="line"><span class="keyword">import</span> sympy</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> matplotlib</span><br><span class="line"><span class="keyword">import</span> numpy</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="简单线性规划"><a href="#简单线性规划" class="headerlink" title="简单线性规划"></a>简单线性规划</h2><h3 id="例一（linprog）"><a href="#例一（linprog）" class="headerlink" title="例一（linprog）"></a>例一（linprog）</h3><p><img src="https://pic2.zhimg.com/80/v2-c6f90939bd931458d35d950cea8f2d59_1440w.webp" alt="img"></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 简单线性规划</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> scipy.optimize <span class="keyword">import</span> linprog</span><br><span class="line"></span><br><span class="line"><span class="comment"># 目标函数</span></span><br><span class="line">f=[-<span class="number">2</span>,-<span class="number">3</span>,<span class="number">5</span>]</span><br><span class="line"><span class="comment"># 小于等于约束</span></span><br><span class="line">aub=[[-<span class="number">2</span>,<span class="number">5</span>,-<span class="number">1</span>],[<span class="number">1</span>,<span class="number">3</span>,<span class="number">1</span>]]</span><br><span class="line">bub=[-<span class="number">10</span>,<span class="number">12</span>]</span><br><span class="line"><span class="comment"># 等式约束</span></span><br><span class="line">aeq=[[<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>]]</span><br><span class="line">beq=[<span class="number">7</span>]</span><br><span class="line"><span class="comment"># 非零约束</span></span><br><span class="line">x0bounds=(<span class="number">0</span>,<span class="literal">None</span>)</span><br><span class="line">x1bounds=(<span class="number">0</span>,<span class="literal">None</span>)</span><br><span class="line">x3bounds=(<span class="number">0</span>,<span class="literal">None</span>)</span><br><span class="line"><span class="comment"># 标准型线性规划：最小值、小于等于约束、等输约束、非零约束</span></span><br><span class="line"><span class="comment"># simplex单纯形法；interior-point内点法;highs使用HIPS求解器</span></span><br><span class="line">res = linprog(f, A_ub=aub, b_ub=bub,A_eq=aeq,b_eq=beq ,bounds=[x0bounds, x1bounds,x3bounds], method=<span class="string">&#x27;highs&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(res)</span><br></pre></td></tr></table></figure>
+
+<p>运行时结果：</p>
+<p><img src="D:\blog\source_posts\数学建模模型.assets\image-20230731183116746.png" alt="image-20230731183116746"></p>
+<blockquote>
+<p>这段代码是关于数学线性规划的Python代码运行后得出的结果。让我逐步解释一下每一部分的含义：</p>
+<ol>
+<li><code>con</code>: 这是一个数组，值为 <code>[0.]</code>。通常在线性规划中，这个数组表示约束条件（constraints）。这里只有一个约束条件，即等式约束条件。</li>
+<li><code>crossover_nit</code>: 这个值为 <code>0</code>，表示交叉（crossover）的迭代次数。</li>
+<li><code>eqlin</code>: 这是一个包含 <code>marginals</code> 和 <code>residual</code> 两个部分的等式约束信息。<code>marginals</code> 表示等式约束条件的边际值，值为 <code>[-2.28571429]</code>。而 <code>residual</code> 表示等式约束条件的残差，值为 <code>[0.]</code>。</li>
+<li><code>fun</code>: 这个值为 <code>-14.571428571428573</code>，表示线性规划的目标函数值（objective function value）。目标是最大化或最小化此值。</li>
+<li><code>ineqlin</code>: 这是一个包含 <code>marginals</code> 和 <code>residual</code> 两个部分的不等式约束信息。<code>marginals</code> 表示不等式约束条件的边际值，值为 <code>[-0.14285714, -0. ]</code>。而 <code>residual</code> 表示不等式约束条件的残差，值为 <code>[0., 3.85714286]</code>。这里有两个不等式约束条件。</li>
+<li><code>lower</code>: 这是一个包含 <code>marginals</code> 和 <code>residual</code> 两个部分的下界信息。<code>marginals</code> 表示变量的下界（lower bound）边际值，但该值由一个内存视图（MemoryView）来表示。而 <code>residual</code> 表示下界条件的残差，值为 <code>[6.42857143, 0.57142857, 0.]</code>。</li>
+<li><code>message</code>: 这是一个字符串，值为 <code>&#39;Optimization terminated successfully.&#39;</code>，表示优化过程成功终止。</li>
+<li><code>nit</code>: 这个值为 <code>3</code>，表示迭代次数（iterations）。</li>
+<li><code>slack</code>: 这是一个数组，值为 <code>[0., 3.85714286]</code>。在线性规划中，这个数组表示松弛变量（slack variables），它们用于衡量不等式约束条件是否被满足。</li>
+<li><code>status</code>: 这个值为 <code>0</code>，表示优化的状态。在大多数优化库中，状态为 <code>0</code> 表示成功找到最优解。</li>
+<li><code>success</code>: 这个值为 <code>True</code>，表示优化是否成功。</li>
+<li><code>upper</code>: 这是一个包含 <code>marginals</code> 和 <code>residual</code> 两个部分的上界信息。<code>marginals</code> 表示变量的上界（upper bound）边际值，但该值由一个内存视图（MemoryView）来表示。而 <code>residual</code> 表示上界条件的残差，值为 <code>[inf, inf, inf]</code>。这里 <code>inf</code> 表示正无穷大，说明部分变量可能没有上界。</li>
+<li><code>x</code>: 这是一个数组，值为 <code>[6.42857143, 0.57142857, 0.]</code>。这是线性规划得出的最优解，表示使目标函数达到最大或最小值时的变量取值。</li>
+</ol>
+<p>综上所述，这段数学线性规划代码的运行结果表明优化成功，得出的最优解为 <code>x = [6.42857143, 0.57142857, 0.]</code>，在这个解下，目标函数的值为 <code>-14.571428571428573</code>。同时，满足了等式约束条件以及不等式约束条件，并且部分变量可能没有上界。</p>
+</blockquote>
+<h3 id="例二（linprog）"><a href="#例二（linprog）" class="headerlink" title="例二（linprog）"></a>例二（linprog）</h3><p><img src="https://pic2.zhimg.com/80/v2-8b7ba11e726c91025155a9f073fda695_1440w.webp" alt="img"></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 简单线性规划</span></span><br><span class="line"><span class="keyword">from</span> scipy.optimize <span class="keyword">import</span> linprog</span><br><span class="line"><span class="comment"># 目标函数</span></span><br><span class="line">f=[-<span class="number">4</span>,-<span class="number">3</span>]</span><br><span class="line"><span class="comment"># 小于等于约束</span></span><br><span class="line">aub=[[<span class="number">2</span>,<span class="number">1</span>],[<span class="number">1</span>,<span class="number">1</span>],[<span class="number">0</span>,<span class="number">1</span>]]</span><br><span class="line">bub=[<span class="number">10</span>,<span class="number">8</span>,<span class="number">7</span>]</span><br><span class="line"><span class="comment"># 等式约束</span></span><br><span class="line">aeq=<span class="literal">None</span></span><br><span class="line">beq=<span class="literal">None</span></span><br><span class="line"><span class="comment"># 非零约束</span></span><br><span class="line">x0bounds=(<span class="number">0</span>,<span class="literal">None</span>)</span><br><span class="line">x1bounds=(<span class="number">0</span>,<span class="literal">None</span>)</span><br><span class="line">x=[x0bounds, x1bounds]</span><br><span class="line"><span class="comment"># 标准型线性规划：最小值、小于等于约束、等输约束、非零约束</span></span><br><span class="line"><span class="comment"># simplex单纯形法；interior-point内点法;highs使用HIPS求解器</span></span><br><span class="line">res = linprog(f, A_ub=aub, b_ub=bub,A_eq=aeq,b_eq=beq ,bounds=x, method=<span class="string">&#x27;simplex&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(res)</span><br></pre></td></tr></table></figure>
+
+<p><img src="D:\blog\source_posts\数学建模模型.assets\image-20230731183904084.png" alt="image-20230731183904084"></p>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>其他的方法有：</p>
+<ul>
+<li><a href="https://blog.csdn.net/m0_54510474/article/details/127849897#minimize_51">minimize()函数</a></li>
+<li><a href="https://blog.csdn.net/m0_54510474/article/details/127849897#cvxpy_96">cvxpy库</a></li>
+<li><a href="https://blog.csdn.net/m0_54510474/article/details/127849897#cvxopt_130">cvxopt库</a></li>
+</ul>
+<p>可查看：<a href="https://blog.csdn.net/m0_54510474/article/details/127849897">https://blog.csdn.net/m0_54510474/article/details/127849897</a></p>
+<h2 id="简单整数规划"><a href="#简单整数规划" class="headerlink" title="简单整数规划"></a>简单整数规划</h2><p><img src="https://pic3.zhimg.com/80/v2-b68d4e5869618c8b0c3a38088d27de7a_1440w.webp" alt="img"></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 简单整数规划</span><br><span class="line"></span><br><span class="line">import pulp as pp</span><br><span class="line"># 参数设置</span><br><span class="line">c = [3,4,1]        #目标函数未知数前的系数</span><br><span class="line"># 约束1</span><br><span class="line">A_gq = [[1,6,2],[2,0,0]]   # 大于等于式子 未知数前的系数集合 二维数组</span><br><span class="line">b_gq = [5,3]         # 大于等于式子右边的数值 一维数组</span><br><span class="line"># 确定最大最小化问题，当前确定的是最小化问题</span><br><span class="line">m = pp.LpProblem(sense=pp.LpMinimize)</span><br><span class="line"># 定义三个变量放到列表中 生成x1 x2 x3</span><br><span class="line">x = [pp.LpVariable(f&#x27;x&#123;i&#125;&#x27;,lowBound=0,cat=&#x27;Integer&#x27;) for i in [1,2,3]]</span><br><span class="line"># 定义目标函数，并将目标函数加入求解的问题中</span><br><span class="line">m += pp.lpDot(c,x) # lpDot 用于计算点积</span><br><span class="line"># 设置比较条件</span><br><span class="line">for i in range(len(A_gq)):# 大于等于</span><br><span class="line">    m += (pp.lpDot(A_gq[i],x) &gt;= b_gq[i])</span><br><span class="line"># 求解</span><br><span class="line">m.solve()</span><br><span class="line"># 输出结果</span><br><span class="line">print(f&#x27;优化结果：&#123;pp.value(m.objective)&#125;&#x27;)</span><br><span class="line">print(f&#x27;参数取值：&#123;[pp.value(var) for var in x]&#125;&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p>代码运行结果：</p>
+<p><img src="D:\blog\source_posts\数学建模模型.assets\image-20230731184740251.png" alt="image-20230731184740251"></p>
+]]></content>
+      <categories>
+        <category>模型</category>
+      </categories>
+      <tags>
+        <tag>数学建模模型</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>一些常用的数学模型</title>
     <url>/2023/07/16/%E6%95%B0%E5%AD%A6%E6%A8%A1%E5%9E%8B/</url>
     <content><![CDATA[<h1 id="人口模型"><a href="#人口模型" class="headerlink" title="人口模型"></a>人口模型</h1><h2 id="马尔萨斯模型"><a href="#马尔萨斯模型" class="headerlink" title="马尔萨斯模型"></a>马尔萨斯模型</h2><h3 id="模型过程"><a href="#模型过程" class="headerlink" title="模型过程"></a>模型过程</h3><p>人口增长与人口基数和增长率有关，这两项为主要因素。假设人口的增长过程可用微分方程来描述。初看起来，人口增长不能用微分方程来描述，因为人口总数是按整数变化的而不是时间的可微函数。然而人口总数很大时，可以近似认为它是时间的连续函数，甚至是可微函数。</p>
@@ -1936,101 +2031,6 @@
 ]]></content>
       <tags>
         <tag>气候变化，人类疾病</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>GitHub使用教程</title>
-    <url>/2023/10/02/Github%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</url>
-    <content><![CDATA[<h1 id="访问gitHub"><a href="#访问gitHub" class="headerlink" title="访问gitHub"></a>访问gitHub</h1><p>参考文档：</p>
-<p><a href="https://mp.weixin.qq.com/s?__biz=MzI1NDczNTAwMA==&mid=2247493961&idx=1&sn=16386132c1942f9f06d1adef61e4ca9f&scene=21#wechat_redirect">GitHub 访问不了？砸墙狂魔教你几招【文末抽奖】</a></p>
-<p><a href="https://blog.csdn.net/LZJLZJLZJLZJLZJLZJ/article/details/132124711?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_baidulandingword~default-4-132124711-blog-127236651.235%5Ev38%5Epc_relevant_default_base3&spm=1001.2101.3001.4242.3&utm_relevant_index=7">一步步教你解决github无法打开问题_github打不开_乐观男孩的博客-CSDN博客</a></p>
-<p><a href="https://github.com/521xueweihan/GitHub520">GitHub - 521xueweihan&#x2F;GitHub520: :kissing_heart: 让你“爱”上 GitHub，解决访问时图裂、加载慢的问题。（无需安装）</a></p>
-<p><a href="https://zhuanlan.zhihu.com/p/629079933">加速你的 GitHub 访问速度，使用 SwitchHosts 工具，畅享极速代码浏览体验！（全网最详细踩坑教程）</a></p>
-<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>用户访问网址，发送请求时，DNS会根据请求返回目标地址的IP地址，之后利用得到的IP地址向GitHub的服务器发送请求，GitHub返回网址，从而用户访问网址成功。如果想要绕开DNS，访问目标地址，可以修改本地的hosts文件。</p>
-<p>直接访问github网址很有可能出现以下情况，出现此情况的原因有很多，如：请求超时。</p>
-<p><img src="D:\blog\source_posts\Github使用教程.assets\image-20231003011743425.png" alt="image-20231003011743425"></p>
-<h2 id="获取IP地址"><a href="#获取IP地址" class="headerlink" title="获取IP地址"></a>获取IP地址</h2><p>想要绕过DNS访问GitHub，可以先查询GitHub的IP地址。获取IP地址有两种方式：</p>
-<blockquote>
-<p>1、上网搜索，例如：<a href="https://ip.tool.chinaz.com/github.com">IP&#x2F;服务器github.com的信息 - 站长工具 (chinaz.com)</a></p>
-<p><img src="D:\blog\source_posts\Github使用教程.assets\image-20231003012347181.png" alt="image-20231003012347181"></p>
-<p>可以从图片看出IP地址为20.205.243.166</p>
-<p>2、在cmd中通过ping域名来获取IP地址</p>
-<p><img src="D:\blog\source_posts\Github使用教程.assets\image-20231003011508992.png" alt="image-20231003011508992"></p>
-<p>由图片可以看出IP地址为20.205.243.166</p>
-</blockquote>
-<h2 id="修改hosts文件"><a href="#修改hosts文件" class="headerlink" title="修改hosts文件"></a>修改hosts文件</h2><h3 id="hosts文件路径"><a href="#hosts文件路径" class="headerlink" title="hosts文件路径"></a>hosts文件路径</h3><ul>
-<li>Windows 系统：<code>C:\Windows\System32\drivers\etc\hosts</code></li>
-<li>Linux 系统：<code>/etc/hosts</code></li>
-<li>Mac（苹果电脑）系统：<code>/etc/hosts</code></li>
-<li>Android（安卓）系统：<code>/system/etc/hosts</code></li>
-<li>iPhone（iOS）系统：<code>/etc/hosts</code></li>
-</ul>
-<h3 id="修改"><a href="#修改" class="headerlink" title="修改"></a>修改</h3><p>前面的数字时前面查到的IP地址</p>
-<p><img src="D:\blog\source_posts\Github使用教程.assets\image-20231003012717890.png" alt="image-20231003012717890"></p>
-<h3 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ipconfig /flushdns</span><br></pre></td></tr></table></figure>
-
-<p><img src="D:\blog\source_posts\Github使用教程.assets\image-20231003012821520.png" alt="image-20231003012821520"></p>
-<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><h3 id="页面布局混乱"><a href="#页面布局混乱" class="headerlink" title="页面布局混乱"></a>页面布局混乱</h3><p>如果遇到只有文字，但是页面布局混乱，不够清晰，很有可能是网页对应的css文件对应的域名和网站本身对应的域名不相同，说明时上述同样的问题——访问超时，此时需要将其对应的网址按照上述方法挨个重置一下信息应该可以解决。</p>
-<h3 id="访问依旧缓慢"><a href="#访问依旧缓慢" class="headerlink" title="访问依旧缓慢"></a>访问依旧缓慢</h3><p>GitHub有不同地方的服务器，从在线工具（<a href="https://site.ip138.com/github.ip/%EF%BC%89%E5%8D%B3%E5%8F%AF%E6%9F%A5%E5%88%B0%E5%8E%86%E5%8F%B2%E8%A7%A3%E6%9E%90%E8%AE%B0%E5%BD%95%EF%BC%8C%E5%9C%A8cmd%E4%B8%AD%E6%8C%A8%E4%B8%AAping%E4%B8%80%E4%B8%8B%E4%B8%8D%E5%90%8C%E7%9A%84%E5%9C%B0%E5%9D%80%EF%BC%8C%E6%9F%A5%E7%9C%8B%E8%80%97%E6%97%B6%E5%A6%82%E4%BD%95%EF%BC%8C%E9%80%89%E6%8B%A9%E6%9C%80%E5%BF%AB%E7%9A%84IP%E5%9C%B0%E5%9D%80%E8%BF%9B%E8%A1%8C%E8%AE%BF%E9%97%AE%E5%8D%B3%E5%8F%AF%E3%80%82">https://site.ip138.com/github.ip/）即可查到历史解析记录，在cmd中挨个ping一下不同的地址，查看耗时如何，选择最快的IP地址进行访问即可。</a></p>
-<p><img src="D:\blog\source_posts\Github使用教程.assets\image-20231003013746590.png" alt="image-20231003013746590"></p>
-<p><img src="D:\blog\source_posts\Github使用教程.assets\image-20231003014012466.png" alt="image-20231003014012466"></p>
-<p>明显可以看出这个新地址时间远比上一个地址的耗时更长。</p>
-<h2 id="局限性"><a href="#局限性" class="headerlink" title="局限性"></a>局限性</h2><p>1、略微麻烦</p>
-<p>2、需要查看多个IP地址，并且地址需要在国内</p>
-<h1 id="Github520"><a href="#Github520" class="headerlink" title="Github520"></a>Github520</h1><p>项目GitHub网址：<a href="https://github.com/521xueweihan/GitHub520">GitHub - 521xueweihan&#x2F;GitHub520: :kissing_heart: 让你“爱”上 GitHub，解决访问时图裂、加载慢的问题。（无需安装）</a></p>
-<p>先安装switchhosts软件，从软件商城安装即可：</p>
-<p><img src="D:\blog\source_posts\Github使用教程.assets\image-20231004162447358.png" alt="image-20231004162447358"></p>
-<p>配置方法：</p>
-<blockquote>
-<p>以 SwitchHosts 为例，看一下怎么使用的，配置参考下面：</p>
-<ul>
-<li>Title: 随意</li>
-<li>Type: <code>Remote</code></li>
-<li>URL: <code>https://raw.hellogithub.com/hosts</code></li>
-<li>Auto Refresh: 最好选 <code>1 hour</code></li>
-</ul>
-</blockquote>
-<p><img src="D:\blog\source_posts\Github使用教程.assets\image-20231004163052538.png" alt="image-20231004163052538"></p>
-<h1 id="steam插件"><a href="#steam插件" class="headerlink" title="steam插件"></a>steam插件</h1><p><img src="D:\blog\source_posts\Github使用教程.assets\image-20231003015613245.png" alt="image-20231003015613245"></p>
-<p>玩游戏的朋友可能知道这个插件，安装这个插件后玩steam可以顺滑一些，除了玩游戏加快这个功能，它还能够加速访问GitHub网站。</p>
-<p>关于这个软件安装，查看羽翼城大佬博客，按教程安装即可。链接：<a href="https://www.dogfight360.com/blog/">https://www.dogfight360.com/blog/</a></p>
-<h1 id="外网服务器"><a href="#外网服务器" class="headerlink" title="外网服务器"></a>外网服务器</h1><p>很多翻墙的朋友会有这个软件，开启代理以后就能够科学上网，当然前提是你买了流量套餐。</p>
-<p><img src="D:\blog\source_posts\Github使用教程.assets\image-20231003015800547.png" alt="image-20231003015800547"></p>
-<p>相关软件在买完套餐之后根据其提供的配置文档进行安装。购买便宜套餐链接：<a href="https://搞快点.com/">https://xn--66t76gw3n.com/</a></p>
-<h1 id="gitclone"><a href="#gitclone" class="headerlink" title="gitclone"></a>gitclone</h1><p>网址：<a href="https://www.gitclone.com/">https://www.gitclone.com/</a></p>
-<p>无法上传代码，但是可以快速下载代码学习</p>
-<h1 id="gitee导入"><a href="#gitee导入" class="headerlink" title="gitee导入"></a>gitee导入</h1><p><img src="D:\blog\source_posts\Github使用教程.assets\image-20231004163806273.png" alt="image-20231004163806273"></p>
-]]></content>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/2023/10/02/%E6%88%90%E9%95%BF%E5%8E%86%E7%A8%8B/</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
-    <title>网站搭建</title>
-    <url>/2023/08/30/%E5%85%B3%E4%BA%8E%E6%90%AD%E5%BB%BA%E7%BD%91%E7%AB%99%E8%BF%99%E4%B8%80%E4%BB%B6%E4%BA%8B/</url>
-    <content><![CDATA[<h1 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h1><figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 添加全局前置守卫</span></span><br><span class="line">router.<span class="title function_">beforeEach</span>(<span class="function">(<span class="params">to, <span class="keyword">from</span>, next</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// const requiresAuth = to.matched.some(record =&gt; record.meta.requiresAuth);</span></span><br><span class="line">    <span class="keyword">const</span> isCookieValid = <span class="title function_">validateCookie</span>(); <span class="comment">// 调用验证 cookie 的函数</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 如果目标为登录页面，则直接放行导航</span></span><br><span class="line">    <span class="keyword">if</span> (to.<span class="property">path</span> === <span class="string">&#x27;/login&#x27;</span> || to.<span class="property">path</span> === <span class="string">&#x27;/admin&#x27;</span>) &#123;</span><br><span class="line">        <span class="title function_">next</span>(); <span class="comment">// 如果目标路径已经是登录路径，则直接放行导航</span></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (isCookieValid) &#123;</span><br><span class="line">        <span class="comment">// cookie 有效，或者不需要验证，继续导航到目标页面</span></span><br><span class="line">        <span class="title function_">next</span>();</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// 如果需要验证且 cookie 无效，重定向到登录页面</span></span><br><span class="line">        <span class="title function_">next</span>(<span class="string">&#x27;/login&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 解密 DES 函数</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">decryptDES</span>(<span class="params">ciphertext: <span class="built_in">string</span>, key: <span class="built_in">string</span>, iv: <span class="built_in">string</span></span>): <span class="built_in">string</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> decrypted = <span class="title class_">CryptoJS</span>.<span class="property">DES</span>.<span class="title function_">decrypt</span>(&#123;</span><br><span class="line">        <span class="attr">ciphertext</span>: <span class="title class_">CryptoJS</span>.<span class="property">enc</span>.<span class="property">Hex</span>.<span class="title function_">parse</span>(ciphertext),</span><br><span class="line">    &#125;, <span class="title class_">CryptoJS</span>.<span class="property">enc</span>.<span class="property">Utf8</span>.<span class="title function_">parse</span>(key), &#123;</span><br><span class="line">        <span class="attr">iv</span>: <span class="title class_">CryptoJS</span>.<span class="property">enc</span>.<span class="property">Hex</span>.<span class="title function_">parse</span>(iv),</span><br><span class="line">        <span class="attr">mode</span>: <span class="title class_">CryptoJS</span>.<span class="property">mode</span>.<span class="property">CBC</span>,</span><br><span class="line">        <span class="attr">padding</span>: <span class="title class_">CryptoJS</span>.<span class="property">pad</span>.<span class="property">Pkcs7</span>,</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> decrypted.<span class="title function_">toString</span>(<span class="title class_">CryptoJS</span>.<span class="property">enc</span>.<span class="property">Utf8</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 验证 cookie 的函数</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">validateCookie</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> cookies = <span class="variable language_">document</span>.<span class="property">cookie</span>.<span class="title function_">split</span>(<span class="string">&#x27;;&#x27;</span>); <span class="comment">// 将所有 Cookie 拆分成数组</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; cookies.<span class="property">length</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">const</span> cookie = cookies[i].<span class="title function_">trim</span>().<span class="title function_">split</span>(<span class="string">&#x27;=&#x27;</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> (cookie[<span class="number">0</span>] == <span class="string">&#x27;expiration_time&#x27;</span>) &#123;</span><br><span class="line">            <span class="keyword">const</span> ciphertext = cookie[<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">const</span> key = <span class="string">&#x27;88888888&#x27;</span>;</span><br><span class="line">            <span class="keyword">const</span> iv = <span class="string">&#x27;0000000000000000&#x27;</span>;</span><br><span class="line">            <span class="keyword">const</span> plaintext = <span class="title function_">decryptDES</span>(ciphertext, key, iv);</span><br><span class="line">            <span class="comment">// 将 plaintext 转换为数字</span></span><br><span class="line">            <span class="keyword">const</span> expiration_time = <span class="built_in">parseInt</span>(plaintext);</span><br><span class="line">            <span class="comment">// 获取当前时间戳</span></span><br><span class="line">            <span class="keyword">const</span> timestamp = <span class="title class_">Date</span>.<span class="title function_">parse</span>(<span class="keyword">new</span> <span class="title class_">Date</span>().<span class="title function_">toString</span>()) / <span class="number">1000</span>;</span><br><span class="line">            <span class="keyword">if</span> (expiration_time &gt; timestamp) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>; <span class="comment">// 如果 cookie 有效，返回 true</span></span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>; <span class="comment">// 如果 cookie 无效，返回 false</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>; <span class="comment">// 如果未找到 expiration_time，返回 false</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> router;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="to-from-next"><a href="#to-from-next" class="headerlink" title="(to, from, next)"></a>(to, from, next)</h2><blockquote>
-<p><code>(to, from, next)</code> 是 Vue Router 中全局前置守卫函数的参数，用于控制路由导航的流程。这三个参数分别代表了：</p>
-<ol>
-<li><code>to</code>：即将进入的目标路由对象，表示用户要导航到的路由。</li>
-<li><code>from</code>：即将离开的当前路由对象，表示用户要离开的路由。</li>
-<li><code>next</code>：一个回调函数，用于控制路由导航是否继续进行。它可以接受一个参数，用于指定导航的下一个步骤，如继续导航到目标路由、中断导航或重定向到其他路由。</li>
-</ol>
-<p>在全局前置守卫函数内部，你可以根据 <code>to</code> 和 <code>from</code> 的信息，来进行路由导航的控制和判断。<code>next</code> 函数则决定了路由是否继续进行，有以下用法：</p>
-<ul>
-<li><code>next()</code>：继续导航到目标路由，相当于放行。</li>
-<li><code>next(false)</code>：中断导航，不进行路由切换。</li>
-<li><code>next(&#39;/path&#39;)</code>：重定向到其他路径，相当于进行路由跳转。</li>
-</ul>
-</blockquote>
-]]></content>
-      <tags>
-        <tag>router,部署,前端</tag>
       </tags>
   </entry>
 </search>
