@@ -22,70 +22,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>GitHub使用教程</title>
-    <url>/2023/10/02/Github%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</url>
-    <content><![CDATA[<h1 id="访问gitHub"><a href="#访问gitHub" class="headerlink" title="访问gitHub"></a>访问gitHub</h1><p>参考文档：</p>
-<p><a href="https://mp.weixin.qq.com/s?__biz=MzI1NDczNTAwMA==&mid=2247493961&idx=1&sn=16386132c1942f9f06d1adef61e4ca9f&scene=21#wechat_redirect">GitHub 访问不了？砸墙狂魔教你几招【文末抽奖】</a></p>
-<p><a href="https://blog.csdn.net/LZJLZJLZJLZJLZJLZJ/article/details/132124711?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_baidulandingword~default-4-132124711-blog-127236651.235%5Ev38%5Epc_relevant_default_base3&spm=1001.2101.3001.4242.3&utm_relevant_index=7">一步步教你解决github无法打开问题_github打不开_乐观男孩的博客-CSDN博客</a></p>
-<p><a href="https://github.com/521xueweihan/GitHub520">GitHub - 521xueweihan&#x2F;GitHub520: :kissing_heart: 让你“爱”上 GitHub，解决访问时图裂、加载慢的问题。（无需安装）</a></p>
-<p><a href="https://zhuanlan.zhihu.com/p/629079933">加速你的 GitHub 访问速度，使用 SwitchHosts 工具，畅享极速代码浏览体验！（全网最详细踩坑教程）</a></p>
-<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>用户访问网址，发送请求时，DNS会根据请求返回目标地址的IP地址，之后利用得到的IP地址向GitHub的服务器发送请求，GitHub返回网址，从而用户访问网址成功。如果想要绕开DNS，访问目标地址，可以修改本地的hosts文件。</p>
-<p>直接访问github网址很有可能出现以下情况，出现此情况的原因有很多，如：请求超时。</p>
-<p><img src="D:\blog\source_posts\Github使用教程.assets\image-20231003011743425.png" alt="image-20231003011743425"></p>
-<h2 id="获取IP地址"><a href="#获取IP地址" class="headerlink" title="获取IP地址"></a>获取IP地址</h2><p>想要绕过DNS访问GitHub，可以先查询GitHub的IP地址。获取IP地址有两种方式：</p>
-<blockquote>
-<p>1、上网搜索，例如：<a href="https://ip.tool.chinaz.com/github.com">IP&#x2F;服务器github.com的信息 - 站长工具 (chinaz.com)</a></p>
-<p><img src="D:\blog\source_posts\Github使用教程.assets\image-20231003012347181.png" alt="image-20231003012347181"></p>
-<p>可以从图片看出IP地址为20.205.243.166</p>
-<p>2、在cmd中通过ping域名来获取IP地址</p>
-<p><img src="D:\blog\source_posts\Github使用教程.assets\image-20231003011508992.png" alt="image-20231003011508992"></p>
-<p>由图片可以看出IP地址为20.205.243.166</p>
-</blockquote>
-<h2 id="修改hosts文件"><a href="#修改hosts文件" class="headerlink" title="修改hosts文件"></a>修改hosts文件</h2><h3 id="hosts文件路径"><a href="#hosts文件路径" class="headerlink" title="hosts文件路径"></a>hosts文件路径</h3><ul>
-<li>Windows 系统：<code>C:\Windows\System32\drivers\etc\hosts</code></li>
-<li>Linux 系统：<code>/etc/hosts</code></li>
-<li>Mac（苹果电脑）系统：<code>/etc/hosts</code></li>
-<li>Android（安卓）系统：<code>/system/etc/hosts</code></li>
-<li>iPhone（iOS）系统：<code>/etc/hosts</code></li>
-</ul>
-<h3 id="修改"><a href="#修改" class="headerlink" title="修改"></a>修改</h3><p>前面的数字时前面查到的IP地址</p>
-<p><img src="D:\blog\source_posts\Github使用教程.assets\image-20231003012717890.png" alt="image-20231003012717890"></p>
-<h3 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ipconfig /flushdns</span><br></pre></td></tr></table></figure>
-
-<p><img src="D:\blog\source_posts\Github使用教程.assets\image-20231003012821520.png" alt="image-20231003012821520"></p>
-<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><h3 id="页面布局混乱"><a href="#页面布局混乱" class="headerlink" title="页面布局混乱"></a>页面布局混乱</h3><p>如果遇到只有文字，但是页面布局混乱，不够清晰，很有可能是网页对应的css文件对应的域名和网站本身对应的域名不相同，说明时上述同样的问题——访问超时，此时需要将其对应的网址按照上述方法挨个重置一下信息应该可以解决。</p>
-<h3 id="访问依旧缓慢"><a href="#访问依旧缓慢" class="headerlink" title="访问依旧缓慢"></a>访问依旧缓慢</h3><p>GitHub有不同地方的服务器，从在线工具（<a href="https://site.ip138.com/github.ip/%EF%BC%89%E5%8D%B3%E5%8F%AF%E6%9F%A5%E5%88%B0%E5%8E%86%E5%8F%B2%E8%A7%A3%E6%9E%90%E8%AE%B0%E5%BD%95%EF%BC%8C%E5%9C%A8cmd%E4%B8%AD%E6%8C%A8%E4%B8%AAping%E4%B8%80%E4%B8%8B%E4%B8%8D%E5%90%8C%E7%9A%84%E5%9C%B0%E5%9D%80%EF%BC%8C%E6%9F%A5%E7%9C%8B%E8%80%97%E6%97%B6%E5%A6%82%E4%BD%95%EF%BC%8C%E9%80%89%E6%8B%A9%E6%9C%80%E5%BF%AB%E7%9A%84IP%E5%9C%B0%E5%9D%80%E8%BF%9B%E8%A1%8C%E8%AE%BF%E9%97%AE%E5%8D%B3%E5%8F%AF%E3%80%82">https://site.ip138.com/github.ip/）即可查到历史解析记录，在cmd中挨个ping一下不同的地址，查看耗时如何，选择最快的IP地址进行访问即可。</a></p>
-<p><img src="D:\blog\source_posts\Github使用教程.assets\image-20231003013746590.png" alt="image-20231003013746590"></p>
-<p><img src="D:\blog\source_posts\Github使用教程.assets\image-20231003014012466.png" alt="image-20231003014012466"></p>
-<p>明显可以看出这个新地址时间远比上一个地址的耗时更长。</p>
-<h2 id="局限性"><a href="#局限性" class="headerlink" title="局限性"></a>局限性</h2><p>1、略微麻烦</p>
-<p>2、需要查看多个IP地址，并且地址需要在国内</p>
-<h1 id="Github520"><a href="#Github520" class="headerlink" title="Github520"></a>Github520</h1><p>项目GitHub网址：<a href="https://github.com/521xueweihan/GitHub520">GitHub - 521xueweihan&#x2F;GitHub520: :kissing_heart: 让你“爱”上 GitHub，解决访问时图裂、加载慢的问题。（无需安装）</a></p>
-<p>先安装switchhosts软件，从软件商城安装即可：</p>
-<p><img src="D:\blog\source_posts\Github使用教程.assets\image-20231004162447358.png" alt="image-20231004162447358"></p>
-<p>配置方法：</p>
-<blockquote>
-<p>以 SwitchHosts 为例，看一下怎么使用的，配置参考下面：</p>
-<ul>
-<li>Title: 随意</li>
-<li>Type: <code>Remote</code></li>
-<li>URL: <code>https://raw.hellogithub.com/hosts</code></li>
-<li>Auto Refresh: 最好选 <code>1 hour</code></li>
-</ul>
-</blockquote>
-<p><img src="D:\blog\source_posts\Github使用教程.assets\image-20231004163052538.png" alt="image-20231004163052538"></p>
-<h1 id="steam插件"><a href="#steam插件" class="headerlink" title="steam插件"></a>steam插件</h1><p><img src="D:\blog\source_posts\Github使用教程.assets\image-20231003015613245.png" alt="image-20231003015613245"></p>
-<p>玩游戏的朋友可能知道这个插件，安装这个插件后玩steam可以顺滑一些，除了玩游戏加快这个功能，它还能够加速访问GitHub网站。</p>
-<p>关于这个软件安装，查看羽翼城大佬博客，按教程安装即可。链接：<a href="https://www.dogfight360.com/blog/">https://www.dogfight360.com/blog/</a></p>
-<h1 id="外网服务器"><a href="#外网服务器" class="headerlink" title="外网服务器"></a>外网服务器</h1><p>很多翻墙的朋友会有这个软件，开启代理以后就能够科学上网，当然前提是你买了流量套餐。</p>
-<p><img src="D:\blog\source_posts\Github使用教程.assets\image-20231003015800547.png" alt="image-20231003015800547"></p>
-<p>相关软件在买完套餐之后根据其提供的配置文档进行安装。购买便宜套餐链接：<a href="https://搞快点.com/">https://xn--66t76gw3n.com/</a></p>
-<h1 id="gitclone"><a href="#gitclone" class="headerlink" title="gitclone"></a>gitclone</h1><p>网址：<a href="https://www.gitclone.com/">https://www.gitclone.com/</a></p>
-<p>无法上传代码，但是可以快速下载代码学习</p>
-<h1 id="gitee导入"><a href="#gitee导入" class="headerlink" title="gitee导入"></a>gitee导入</h1><p><img src="D:\blog\source_posts\Github使用教程.assets\image-20231004163806273.png" alt="image-20231004163806273"></p>
-]]></content>
-  </entry>
-  <entry>
     <title>go语言指南</title>
     <url>/2023/07/25/go%E8%AF%AD%E8%A8%80%E6%8C%87%E5%8D%97/</url>
     <content><![CDATA[<h1 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a>开发环境</h1><h2 id="下载安装"><a href="#下载安装" class="headerlink" title="下载安装"></a>下载安装</h2><p>网址：<a href="https://go.dev/">https://go.dev/</a></p>
@@ -191,6 +127,9 @@
 </ol>
 </blockquote>
 ]]></content>
+      <categories>
+        <category>go</category>
+      </categories>
       <tags>
         <tag>go</tag>
       </tags>
@@ -214,17 +153,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>vue</title>
-    <url>/2023/08/17/vue/</url>
-    <content><![CDATA[<p>课程链接：<a href="https://www.bilibili.com/video/BV1Rs4y127j8?p=1&vd_source=05b9305044517a2659100450096dfe80">菜菜小趴菜vue3</a></p>
-<blockquote>
-<p>vue学习进度：</p>
-<p>2023&#x2F;8&#x2F;17：&#x2F;40</p>
-</blockquote>
-<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>渐进式JS框架，性能出色，适用场景丰富的web前端框架</p>
-<h1 id="API风格"><a href="#API风格" class="headerlink" title="API风格"></a>API风格</h1>]]></content>
-  </entry>
-  <entry>
     <title>word2vec</title>
     <url>/2023/07/24/word2vec/</url>
     <content><![CDATA[<p>论文地址：[<a href="https://arxiv.org/abs/1701.06279">1701.06279] dna2vec：可变长度 k-mers 的一致向量表示 (arxiv.org)</a></p>
@@ -237,37 +165,6 @@
       <tags>
         <tag>NLP</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>网站搭建</title>
-    <url>/2023/08/30/%E5%85%B3%E4%BA%8E%E6%90%AD%E5%BB%BA%E7%BD%91%E7%AB%99%E8%BF%99%E4%B8%80%E4%BB%B6%E4%BA%8B/</url>
-    <content><![CDATA[<h1 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h1><figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 添加全局前置守卫</span></span><br><span class="line">router.<span class="title function_">beforeEach</span>(<span class="function">(<span class="params">to, <span class="keyword">from</span>, next</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// const requiresAuth = to.matched.some(record =&gt; record.meta.requiresAuth);</span></span><br><span class="line">    <span class="keyword">const</span> isCookieValid = <span class="title function_">validateCookie</span>(); <span class="comment">// 调用验证 cookie 的函数</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 如果目标为登录页面，则直接放行导航</span></span><br><span class="line">    <span class="keyword">if</span> (to.<span class="property">path</span> === <span class="string">&#x27;/login&#x27;</span> || to.<span class="property">path</span> === <span class="string">&#x27;/admin&#x27;</span>) &#123;</span><br><span class="line">        <span class="title function_">next</span>(); <span class="comment">// 如果目标路径已经是登录路径，则直接放行导航</span></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (isCookieValid) &#123;</span><br><span class="line">        <span class="comment">// cookie 有效，或者不需要验证，继续导航到目标页面</span></span><br><span class="line">        <span class="title function_">next</span>();</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// 如果需要验证且 cookie 无效，重定向到登录页面</span></span><br><span class="line">        <span class="title function_">next</span>(<span class="string">&#x27;/login&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 解密 DES 函数</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">decryptDES</span>(<span class="params">ciphertext: <span class="built_in">string</span>, key: <span class="built_in">string</span>, iv: <span class="built_in">string</span></span>): <span class="built_in">string</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> decrypted = <span class="title class_">CryptoJS</span>.<span class="property">DES</span>.<span class="title function_">decrypt</span>(&#123;</span><br><span class="line">        <span class="attr">ciphertext</span>: <span class="title class_">CryptoJS</span>.<span class="property">enc</span>.<span class="property">Hex</span>.<span class="title function_">parse</span>(ciphertext),</span><br><span class="line">    &#125;, <span class="title class_">CryptoJS</span>.<span class="property">enc</span>.<span class="property">Utf8</span>.<span class="title function_">parse</span>(key), &#123;</span><br><span class="line">        <span class="attr">iv</span>: <span class="title class_">CryptoJS</span>.<span class="property">enc</span>.<span class="property">Hex</span>.<span class="title function_">parse</span>(iv),</span><br><span class="line">        <span class="attr">mode</span>: <span class="title class_">CryptoJS</span>.<span class="property">mode</span>.<span class="property">CBC</span>,</span><br><span class="line">        <span class="attr">padding</span>: <span class="title class_">CryptoJS</span>.<span class="property">pad</span>.<span class="property">Pkcs7</span>,</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> decrypted.<span class="title function_">toString</span>(<span class="title class_">CryptoJS</span>.<span class="property">enc</span>.<span class="property">Utf8</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 验证 cookie 的函数</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">validateCookie</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> cookies = <span class="variable language_">document</span>.<span class="property">cookie</span>.<span class="title function_">split</span>(<span class="string">&#x27;;&#x27;</span>); <span class="comment">// 将所有 Cookie 拆分成数组</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; cookies.<span class="property">length</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">const</span> cookie = cookies[i].<span class="title function_">trim</span>().<span class="title function_">split</span>(<span class="string">&#x27;=&#x27;</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> (cookie[<span class="number">0</span>] == <span class="string">&#x27;expiration_time&#x27;</span>) &#123;</span><br><span class="line">            <span class="keyword">const</span> ciphertext = cookie[<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">const</span> key = <span class="string">&#x27;88888888&#x27;</span>;</span><br><span class="line">            <span class="keyword">const</span> iv = <span class="string">&#x27;0000000000000000&#x27;</span>;</span><br><span class="line">            <span class="keyword">const</span> plaintext = <span class="title function_">decryptDES</span>(ciphertext, key, iv);</span><br><span class="line">            <span class="comment">// 将 plaintext 转换为数字</span></span><br><span class="line">            <span class="keyword">const</span> expiration_time = <span class="built_in">parseInt</span>(plaintext);</span><br><span class="line">            <span class="comment">// 获取当前时间戳</span></span><br><span class="line">            <span class="keyword">const</span> timestamp = <span class="title class_">Date</span>.<span class="title function_">parse</span>(<span class="keyword">new</span> <span class="title class_">Date</span>().<span class="title function_">toString</span>()) / <span class="number">1000</span>;</span><br><span class="line">            <span class="keyword">if</span> (expiration_time &gt; timestamp) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>; <span class="comment">// 如果 cookie 有效，返回 true</span></span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>; <span class="comment">// 如果 cookie 无效，返回 false</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>; <span class="comment">// 如果未找到 expiration_time，返回 false</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> router;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="to-from-next"><a href="#to-from-next" class="headerlink" title="(to, from, next)"></a>(to, from, next)</h2><blockquote>
-<p><code>(to, from, next)</code> 是 Vue Router 中全局前置守卫函数的参数，用于控制路由导航的流程。这三个参数分别代表了：</p>
-<ol>
-<li><code>to</code>：即将进入的目标路由对象，表示用户要导航到的路由。</li>
-<li><code>from</code>：即将离开的当前路由对象，表示用户要离开的路由。</li>
-<li><code>next</code>：一个回调函数，用于控制路由导航是否继续进行。它可以接受一个参数，用于指定导航的下一个步骤，如继续导航到目标路由、中断导航或重定向到其他路由。</li>
-</ol>
-<p>在全局前置守卫函数内部，你可以根据 <code>to</code> 和 <code>from</code> 的信息，来进行路由导航的控制和判断。<code>next</code> 函数则决定了路由是否继续进行，有以下用法：</p>
-<ul>
-<li><code>next()</code>：继续导航到目标路由，相当于放行。</li>
-<li><code>next(false)</code>：中断导航，不进行路由切换。</li>
-<li><code>next(&#39;/path&#39;)</code>：重定向到其他路径，相当于进行路由跳转。</li>
-</ul>
-</blockquote>
-]]></content>
-      <tags>
-        <tag>router,部署,前端</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/2023/10/02/%E6%88%90%E9%95%BF%E5%8E%86%E7%A8%8B/</url>
-    <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title></title>
@@ -1816,18 +1713,7 @@
 
 <p>代码运行结果：</p>
 <p><img src="D:\blog\source_posts\数学建模模型.assets\image-20230731184740251.png" alt="image-20230731184740251"></p>
-]]></content>
-      <categories>
-        <category>模型</category>
-      </categories>
-      <tags>
-        <tag>数学建模模型</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>一些常用的数学模型</title>
-    <url>/2023/07/16/%E6%95%B0%E5%AD%A6%E6%A8%A1%E5%9E%8B/</url>
-    <content><![CDATA[<h1 id="人口模型"><a href="#人口模型" class="headerlink" title="人口模型"></a>人口模型</h1><h2 id="马尔萨斯模型"><a href="#马尔萨斯模型" class="headerlink" title="马尔萨斯模型"></a>马尔萨斯模型</h2><h3 id="模型过程"><a href="#模型过程" class="headerlink" title="模型过程"></a>模型过程</h3><p>人口增长与人口基数和增长率有关，这两项为主要因素。假设人口的增长过程可用微分方程来描述。初看起来，人口增长不能用微分方程来描述，因为人口总数是按整数变化的而不是时间的可微函数。然而人口总数很大时，可以近似认为它是时间的连续函数，甚至是可微函数。</p>
+<h1 id="人口模型"><a href="#人口模型" class="headerlink" title="人口模型"></a>人口模型</h1><h2 id="马尔萨斯模型"><a href="#马尔萨斯模型" class="headerlink" title="马尔萨斯模型"></a>马尔萨斯模型</h2><h3 id="模型过程"><a href="#模型过程" class="headerlink" title="模型过程"></a>模型过程</h3><p>人口增长与人口基数和增长率有关，这两项为主要因素。假设人口的增长过程可用微分方程来描述。初看起来，人口增长不能用微分方程来描述，因为人口总数是按整数变化的而不是时间的可微函数。然而人口总数很大时，可以近似认为它是时间的连续函数，甚至是可微函数。</p>
 <blockquote>
 <p>N（t）表示t时刻人口总数</p>
 <p>r（t，N（t））表示t时刻的人口增长率，它与时间t和t时刻的人口总数N（t）有关。</p>
@@ -1848,7 +1734,7 @@
 <p>可以查到：r&#x3D;0.029，K&#x3D;2.941*10^(-12)</p>
 ]]></content>
       <categories>
-        <category>数学建模</category>
+        <category>模型</category>
       </categories>
       <tags>
         <tag>数学建模</tag>
@@ -1964,7 +1850,8 @@
   <entry>
     <title></title>
     <url>/2023/08/08/%E9%A1%B9%E7%9B%AE%E6%A0%87%E4%B9%A6/</url>
-    <content><![CDATA[<h1 id="报告正文"><a href="#报告正文" class="headerlink" title="报告正文"></a>报告正文</h1><h2 id="（一）立项依据与研究内容"><a href="#（一）立项依据与研究内容" class="headerlink" title="（一）立项依据与研究内容"></a>（一）立项依据与研究内容</h2><h3 id="项目的立项依据"><a href="#项目的立项依据" class="headerlink" title="项目的立项依据"></a>项目的立项依据</h3><h4 id="研究意义"><a href="#研究意义" class="headerlink" title="研究意义"></a>研究意义</h4><h5 id="必要和意义"><a href="#必要和意义" class="headerlink" title="必要和意义"></a>必要和意义</h5><h5 id="创新和价值"><a href="#创新和价值" class="headerlink" title="创新和价值"></a>创新和价值</h5><h4 id="国内外研究现状及发展动态分析"><a href="#国内外研究现状及发展动态分析" class="headerlink" title="国内外研究现状及发展动态分析"></a>国内外研究现状及发展动态分析</h4><h5 id="研究方案"><a href="#研究方案" class="headerlink" title="研究方案"></a>研究方案</h5><h5 id="技术分析"><a href="#技术分析" class="headerlink" title="技术分析"></a>技术分析</h5><h4 id="需结合科学研究发展趋势来论述科学意义"><a href="#需结合科学研究发展趋势来论述科学意义" class="headerlink" title="需结合科学研究发展趋势来论述科学意义"></a>需结合科学研究发展趋势来论述科学意义</h4><h4 id="结合国民经济和社会发展中迫切需要解决的关键科技问题来论述其应用前景"><a href="#结合国民经济和社会发展中迫切需要解决的关键科技问题来论述其应用前景" class="headerlink" title="结合国民经济和社会发展中迫切需要解决的关键科技问题来论述其应用前景"></a>结合国民经济和社会发展中迫切需要解决的关键科技问题来论述其应用前景</h4><h4 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h4><h3 id="研究内容"><a href="#研究内容" class="headerlink" title="研究内容"></a>研究内容</h3><h4 id="研究的仪器"><a href="#研究的仪器" class="headerlink" title="研究的仪器"></a>研究的仪器</h4><h4 id="研究目标"><a href="#研究目标" class="headerlink" title="研究目标"></a>研究目标</h4><h4 id="拟解决的关键科学问题及解决方案"><a href="#拟解决的关键科学问题及解决方案" class="headerlink" title="拟解决的关键科学问题及解决方案"></a>拟解决的关键科学问题及解决方案</h4><h5 id="检测问题"><a href="#检测问题" class="headerlink" title="检测问题"></a>检测问题</h5><h5 id="预测和分析问题"><a href="#预测和分析问题" class="headerlink" title="预测和分析问题"></a>预测和分析问题</h5><h1 id="拟采取的研究方案及可行性分析"><a href="#拟采取的研究方案及可行性分析" class="headerlink" title="拟采取的研究方案及可行性分析"></a>拟采取的研究方案及可行性分析</h1><h3 id="研究方法"><a href="#研究方法" class="headerlink" title="研究方法"></a>研究方法</h3><h3 id="技术路线"><a href="#技术路线" class="headerlink" title="技术路线"></a>技术路线</h3><h3 id="实验手段"><a href="#实验手段" class="headerlink" title="实验手段"></a>实验手段</h3><h3 id="关键技术"><a href="#关键技术" class="headerlink" title="关键技术"></a>关键技术</h3><h3 id="研究内容-1"><a href="#研究内容-1" class="headerlink" title="研究内容"></a>研究内容</h3><h4 id="产物介绍"><a href="#产物介绍" class="headerlink" title="产物介绍"></a>产物介绍</h4><h4 id="模型介绍"><a href="#模型介绍" class="headerlink" title="模型介绍"></a>模型介绍</h4><h1 id="本项目的特色与创新之处"><a href="#本项目的特色与创新之处" class="headerlink" title="本项目的特色与创新之处"></a>本项目的特色与创新之处</h1><h3 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h3><h1 id="年度研究计划及预期研究结果"><a href="#年度研究计划及预期研究结果" class="headerlink" title="年度研究计划及预期研究结果"></a>年度研究计划及预期研究结果</h1><h3 id="拟组织的重要学术交流活动"><a href="#拟组织的重要学术交流活动" class="headerlink" title="拟组织的重要学术交流活动"></a>拟组织的重要学术交流活动</h3><h3 id="国际合作与交流计划"><a href="#国际合作与交流计划" class="headerlink" title="国际合作与交流计划"></a>国际合作与交流计划</h3><h3 id="预期研究成果"><a href="#预期研究成果" class="headerlink" title="预期研究成果"></a>预期研究成果</h3><h2 id="（二）研究基础与工作条件"><a href="#（二）研究基础与工作条件" class="headerlink" title="（二）研究基础与工作条件"></a>（二）研究基础与工作条件</h2><h2 id="研究基础"><a href="#研究基础" class="headerlink" title="研究基础"></a>研究基础</h2><h3 id="与本项目相关的研究工作积累"><a href="#与本项目相关的研究工作积累" class="headerlink" title="与本项目相关的研究工作积累"></a>与本项目相关的研究工作积累</h3><h3 id="已取得的研究工作成绩"><a href="#已取得的研究工作成绩" class="headerlink" title="已取得的研究工作成绩"></a>已取得的研究工作成绩</h3><h2 id="工作条件"><a href="#工作条件" class="headerlink" title="工作条件"></a>工作条件</h2><h3 id="已具备的实验条件"><a href="#已具备的实验条件" class="headerlink" title="已具备的实验条件"></a>已具备的实验条件</h3><h3 id="尚缺少的实验条件和拟解决的途径"><a href="#尚缺少的实验条件和拟解决的途径" class="headerlink" title="尚缺少的实验条件和拟解决的途径"></a>尚缺少的实验条件和拟解决的途径</h3><h3 id="利用国家实验室、国家重点实验室和部门重点实验室等研究基地的计划与落实情况"><a href="#利用国家实验室、国家重点实验室和部门重点实验室等研究基地的计划与落实情况" class="headerlink" title="利用国家实验室、国家重点实验室和部门重点实验室等研究基地的计划与落实情况"></a>利用国家实验室、国家重点实验室和部门重点实验室等研究基地的计划与落实情况</h3><h2 id="正在承担的与本项目相关的科研项目情况"><a href="#正在承担的与本项目相关的科研项目情况" class="headerlink" title="正在承担的与本项目相关的科研项目情况"></a>正在承担的与本项目相关的科研项目情况</h2><h3 id="申请人和主要参与者正在承担的与本项目相关的科研项目情况"><a href="#申请人和主要参与者正在承担的与本项目相关的科研项目情况" class="headerlink" title="申请人和主要参与者正在承担的与本项目相关的科研项目情况"></a>申请人和主要参与者正在承担的与本项目相关的科研项目情况</h3><p>包括国家自然科学基金的项目和国家其他科技计划项目，要注明项目的资助机构、项目类别、批准号、项目名称、获资助金额、起止年月、与本项目的关系及负责的内容等</p>
+    <content><![CDATA[<hr>
+<h2 id="title-项目标书date-’2023-8-16’updated-’2023-8-16’tags-项目标书categories-项目标书keywords-项目标书description-准备大三的暑假回到实验室中和老师同学一起写项目标书，以下就是项目标书的大纲，特此记录。"><a href="#title-项目标书date-’2023-8-16’updated-’2023-8-16’tags-项目标书categories-项目标书keywords-项目标书description-准备大三的暑假回到实验室中和老师同学一起写项目标书，以下就是项目标书的大纲，特此记录。" class="headerlink" title="title:项目标书date:’2023-8-16’updated:’2023-8-16’tags:项目标书categories:项目标书keywords:项目标书description:准备大三的暑假回到实验室中和老师同学一起写项目标书，以下就是项目标书的大纲，特此记录。"></a>title:项目标书<br>date:’2023-8-16’<br>updated:’2023-8-16’<br>tags:项目标书<br>categories:项目标书<br>keywords:项目标书<br>description:准备大三的暑假回到实验室中和老师同学一起写项目标书，以下就是项目标书的大纲，特此记录。</h2><h1 id="报告正文"><a href="#报告正文" class="headerlink" title="报告正文"></a>报告正文</h1><h2 id="（一）立项依据与研究内容"><a href="#（一）立项依据与研究内容" class="headerlink" title="（一）立项依据与研究内容"></a>（一）立项依据与研究内容</h2><h3 id="项目的立项依据"><a href="#项目的立项依据" class="headerlink" title="项目的立项依据"></a>项目的立项依据</h3><h4 id="研究意义"><a href="#研究意义" class="headerlink" title="研究意义"></a>研究意义</h4><h5 id="必要和意义"><a href="#必要和意义" class="headerlink" title="必要和意义"></a>必要和意义</h5><h5 id="创新和价值"><a href="#创新和价值" class="headerlink" title="创新和价值"></a>创新和价值</h5><h4 id="国内外研究现状及发展动态分析"><a href="#国内外研究现状及发展动态分析" class="headerlink" title="国内外研究现状及发展动态分析"></a>国内外研究现状及发展动态分析</h4><h5 id="研究方案"><a href="#研究方案" class="headerlink" title="研究方案"></a>研究方案</h5><h5 id="技术分析"><a href="#技术分析" class="headerlink" title="技术分析"></a>技术分析</h5><h4 id="需结合科学研究发展趋势来论述科学意义"><a href="#需结合科学研究发展趋势来论述科学意义" class="headerlink" title="需结合科学研究发展趋势来论述科学意义"></a>需结合科学研究发展趋势来论述科学意义</h4><h4 id="结合国民经济和社会发展中迫切需要解决的关键科技问题来论述其应用前景"><a href="#结合国民经济和社会发展中迫切需要解决的关键科技问题来论述其应用前景" class="headerlink" title="结合国民经济和社会发展中迫切需要解决的关键科技问题来论述其应用前景"></a>结合国民经济和社会发展中迫切需要解决的关键科技问题来论述其应用前景</h4><h4 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h4><h3 id="研究内容"><a href="#研究内容" class="headerlink" title="研究内容"></a>研究内容</h3><h4 id="研究的仪器"><a href="#研究的仪器" class="headerlink" title="研究的仪器"></a>研究的仪器</h4><h4 id="研究目标"><a href="#研究目标" class="headerlink" title="研究目标"></a>研究目标</h4><h4 id="拟解决的关键科学问题及解决方案"><a href="#拟解决的关键科学问题及解决方案" class="headerlink" title="拟解决的关键科学问题及解决方案"></a>拟解决的关键科学问题及解决方案</h4><h5 id="检测问题"><a href="#检测问题" class="headerlink" title="检测问题"></a>检测问题</h5><h5 id="预测和分析问题"><a href="#预测和分析问题" class="headerlink" title="预测和分析问题"></a>预测和分析问题</h5><h1 id="拟采取的研究方案及可行性分析"><a href="#拟采取的研究方案及可行性分析" class="headerlink" title="拟采取的研究方案及可行性分析"></a>拟采取的研究方案及可行性分析</h1><h3 id="研究方法"><a href="#研究方法" class="headerlink" title="研究方法"></a>研究方法</h3><h3 id="技术路线"><a href="#技术路线" class="headerlink" title="技术路线"></a>技术路线</h3><h3 id="实验手段"><a href="#实验手段" class="headerlink" title="实验手段"></a>实验手段</h3><h3 id="关键技术"><a href="#关键技术" class="headerlink" title="关键技术"></a>关键技术</h3><h3 id="研究内容-1"><a href="#研究内容-1" class="headerlink" title="研究内容"></a>研究内容</h3><h4 id="产物介绍"><a href="#产物介绍" class="headerlink" title="产物介绍"></a>产物介绍</h4><h4 id="模型介绍"><a href="#模型介绍" class="headerlink" title="模型介绍"></a>模型介绍</h4><h1 id="本项目的特色与创新之处"><a href="#本项目的特色与创新之处" class="headerlink" title="本项目的特色与创新之处"></a>本项目的特色与创新之处</h1><h3 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h3><h1 id="年度研究计划及预期研究结果"><a href="#年度研究计划及预期研究结果" class="headerlink" title="年度研究计划及预期研究结果"></a>年度研究计划及预期研究结果</h1><h3 id="拟组织的重要学术交流活动"><a href="#拟组织的重要学术交流活动" class="headerlink" title="拟组织的重要学术交流活动"></a>拟组织的重要学术交流活动</h3><h3 id="国际合作与交流计划"><a href="#国际合作与交流计划" class="headerlink" title="国际合作与交流计划"></a>国际合作与交流计划</h3><h3 id="预期研究成果"><a href="#预期研究成果" class="headerlink" title="预期研究成果"></a>预期研究成果</h3><h2 id="（二）研究基础与工作条件"><a href="#（二）研究基础与工作条件" class="headerlink" title="（二）研究基础与工作条件"></a>（二）研究基础与工作条件</h2><h2 id="研究基础"><a href="#研究基础" class="headerlink" title="研究基础"></a>研究基础</h2><h3 id="与本项目相关的研究工作积累"><a href="#与本项目相关的研究工作积累" class="headerlink" title="与本项目相关的研究工作积累"></a>与本项目相关的研究工作积累</h3><h3 id="已取得的研究工作成绩"><a href="#已取得的研究工作成绩" class="headerlink" title="已取得的研究工作成绩"></a>已取得的研究工作成绩</h3><h2 id="工作条件"><a href="#工作条件" class="headerlink" title="工作条件"></a>工作条件</h2><h3 id="已具备的实验条件"><a href="#已具备的实验条件" class="headerlink" title="已具备的实验条件"></a>已具备的实验条件</h3><h3 id="尚缺少的实验条件和拟解决的途径"><a href="#尚缺少的实验条件和拟解决的途径" class="headerlink" title="尚缺少的实验条件和拟解决的途径"></a>尚缺少的实验条件和拟解决的途径</h3><h3 id="利用国家实验室、国家重点实验室和部门重点实验室等研究基地的计划与落实情况"><a href="#利用国家实验室、国家重点实验室和部门重点实验室等研究基地的计划与落实情况" class="headerlink" title="利用国家实验室、国家重点实验室和部门重点实验室等研究基地的计划与落实情况"></a>利用国家实验室、国家重点实验室和部门重点实验室等研究基地的计划与落实情况</h3><h2 id="正在承担的与本项目相关的科研项目情况"><a href="#正在承担的与本项目相关的科研项目情况" class="headerlink" title="正在承担的与本项目相关的科研项目情况"></a>正在承担的与本项目相关的科研项目情况</h2><h3 id="申请人和主要参与者正在承担的与本项目相关的科研项目情况"><a href="#申请人和主要参与者正在承担的与本项目相关的科研项目情况" class="headerlink" title="申请人和主要参与者正在承担的与本项目相关的科研项目情况"></a>申请人和主要参与者正在承担的与本项目相关的科研项目情况</h3><p>包括国家自然科学基金的项目和国家其他科技计划项目，要注明项目的资助机构、项目类别、批准号、项目名称、获资助金额、起止年月、与本项目的关系及负责的内容等</p>
 <h2 id="完成国家自然科学基金项目情况"><a href="#完成国家自然科学基金项目情况" class="headerlink" title="完成国家自然科学基金项目情况"></a>完成国家自然科学基金项目情况</h2><p>对申请人负责的前一个已资助期满的科学基金项目（项目名称及批准号）完成情况、后续研究进展及与本申请项目的关系加以详细说明。另附该项目的研究工作总结摘要（限500字）和相关成果详细目录</p>
 <h2 id="（三）其他需要说明的情况"><a href="#（三）其他需要说明的情况" class="headerlink" title="（三）其他需要说明的情况"></a>（三）其他需要说明的情况</h2><p>\1. 申请人同年申请不同类型的国家自然科学基金项目情况（列明同年申请的其他项目的项目类型、项目名称信息，并说明与本项目之间的区别与联系）。</p>
 <p>无</p>
@@ -2031,6 +1918,271 @@
 ]]></content>
       <tags>
         <tag>气候变化，人类疾病</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>GitHub使用教程</title>
+    <url>/2023/10/02/Github%E8%AE%BF%E9%97%AE%E6%95%99%E7%A8%8B/</url>
+    <content><![CDATA[<h1 id="访问gitHub"><a href="#访问gitHub" class="headerlink" title="访问gitHub"></a>访问gitHub</h1><p>参考文档：</p>
+<p><a href="https://mp.weixin.qq.com/s?__biz=MzI1NDczNTAwMA==&mid=2247493961&idx=1&sn=16386132c1942f9f06d1adef61e4ca9f&scene=21#wechat_redirect">GitHub 访问不了？砸墙狂魔教你几招【文末抽奖】</a></p>
+<p><a href="https://blog.csdn.net/LZJLZJLZJLZJLZJLZJ/article/details/132124711?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_baidulandingword~default-4-132124711-blog-127236651.235%5Ev38%5Epc_relevant_default_base3&spm=1001.2101.3001.4242.3&utm_relevant_index=7">一步步教你解决github无法打开问题_github打不开_乐观男孩的博客-CSDN博客</a></p>
+<p><a href="https://github.com/521xueweihan/GitHub520">GitHub - 521xueweihan&#x2F;GitHub520: :kissing_heart: 让你“爱”上 GitHub，解决访问时图裂、加载慢的问题。（无需安装）</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/629079933">加速你的 GitHub 访问速度，使用 SwitchHosts 工具，畅享极速代码浏览体验！（全网最详细踩坑教程）</a></p>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>用户访问网址，发送请求时，DNS会根据请求返回目标地址的IP地址，之后利用得到的IP地址向GitHub的服务器发送请求，GitHub返回网址，从而用户访问网址成功。如果想要绕开DNS，访问目标地址，可以修改本地的hosts文件。</p>
+<p>直接访问github网址很有可能出现以下情况，出现此情况的原因有很多，如：请求超时。</p>
+<p><img src="D:\blog\source_posts\Github使用教程.assets\image-20231003011743425.png" alt="image-20231003011743425"></p>
+<h2 id="获取IP地址"><a href="#获取IP地址" class="headerlink" title="获取IP地址"></a>获取IP地址</h2><p>想要绕过DNS访问GitHub，可以先查询GitHub的IP地址。获取IP地址有两种方式：</p>
+<blockquote>
+<p>1、上网搜索，例如：<a href="https://ip.tool.chinaz.com/github.com">IP&#x2F;服务器github.com的信息 - 站长工具 (chinaz.com)</a></p>
+<p><img src="D:\blog\source_posts\Github使用教程.assets\image-20231003012347181.png" alt="image-20231003012347181"></p>
+<p>可以从图片看出IP地址为20.205.243.166</p>
+<p>2、在cmd中通过ping域名来获取IP地址</p>
+<p><img src="D:\blog\source_posts\Github使用教程.assets\image-20231003011508992.png" alt="image-20231003011508992"></p>
+<p>由图片可以看出IP地址为20.205.243.166</p>
+</blockquote>
+<h2 id="修改hosts文件"><a href="#修改hosts文件" class="headerlink" title="修改hosts文件"></a>修改hosts文件</h2><h3 id="hosts文件路径"><a href="#hosts文件路径" class="headerlink" title="hosts文件路径"></a>hosts文件路径</h3><ul>
+<li>Windows 系统：<code>C:\Windows\System32\drivers\etc\hosts</code></li>
+<li>Linux 系统：<code>/etc/hosts</code></li>
+<li>Mac（苹果电脑）系统：<code>/etc/hosts</code></li>
+<li>Android（安卓）系统：<code>/system/etc/hosts</code></li>
+<li>iPhone（iOS）系统：<code>/etc/hosts</code></li>
+</ul>
+<h3 id="修改"><a href="#修改" class="headerlink" title="修改"></a>修改</h3><p>前面的数字时前面查到的IP地址</p>
+<p><img src="D:\blog\source_posts\Github使用教程.assets\image-20231003012717890.png" alt="image-20231003012717890"></p>
+<h3 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ipconfig /flushdns</span><br></pre></td></tr></table></figure>
+
+<p><img src="D:\blog\source_posts\Github使用教程.assets\image-20231003012821520.png" alt="image-20231003012821520"></p>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><h3 id="页面布局混乱"><a href="#页面布局混乱" class="headerlink" title="页面布局混乱"></a>页面布局混乱</h3><p>如果遇到只有文字，但是页面布局混乱，不够清晰，很有可能是网页对应的css文件对应的域名和网站本身对应的域名不相同，说明时上述同样的问题——访问超时，此时需要将其对应的网址按照上述方法挨个重置一下信息应该可以解决。</p>
+<h3 id="访问依旧缓慢"><a href="#访问依旧缓慢" class="headerlink" title="访问依旧缓慢"></a>访问依旧缓慢</h3><p>GitHub有不同地方的服务器，从在线工具（<a href="https://site.ip138.com/github.ip/%EF%BC%89%E5%8D%B3%E5%8F%AF%E6%9F%A5%E5%88%B0%E5%8E%86%E5%8F%B2%E8%A7%A3%E6%9E%90%E8%AE%B0%E5%BD%95%EF%BC%8C%E5%9C%A8cmd%E4%B8%AD%E6%8C%A8%E4%B8%AAping%E4%B8%80%E4%B8%8B%E4%B8%8D%E5%90%8C%E7%9A%84%E5%9C%B0%E5%9D%80%EF%BC%8C%E6%9F%A5%E7%9C%8B%E8%80%97%E6%97%B6%E5%A6%82%E4%BD%95%EF%BC%8C%E9%80%89%E6%8B%A9%E6%9C%80%E5%BF%AB%E7%9A%84IP%E5%9C%B0%E5%9D%80%E8%BF%9B%E8%A1%8C%E8%AE%BF%E9%97%AE%E5%8D%B3%E5%8F%AF%E3%80%82">https://site.ip138.com/github.ip/）即可查到历史解析记录，在cmd中挨个ping一下不同的地址，查看耗时如何，选择最快的IP地址进行访问即可。</a></p>
+<p><img src="D:\blog\source_posts\Github使用教程.assets\image-20231003013746590.png" alt="image-20231003013746590"></p>
+<p><img src="D:\blog\source_posts\Github使用教程.assets\image-20231003014012466.png" alt="image-20231003014012466"></p>
+<p>明显可以看出这个新地址时间远比上一个地址的耗时更长。</p>
+<h2 id="局限性"><a href="#局限性" class="headerlink" title="局限性"></a>局限性</h2><p>1、略微麻烦</p>
+<p>2、需要查看多个IP地址，并且地址需要在国内</p>
+<h1 id="Github520"><a href="#Github520" class="headerlink" title="Github520"></a>Github520</h1><p>项目GitHub网址：<a href="https://github.com/521xueweihan/GitHub520">GitHub - 521xueweihan&#x2F;GitHub520: :kissing_heart: 让你“爱”上 GitHub，解决访问时图裂、加载慢的问题。（无需安装）</a></p>
+<p>先安装switchhosts软件，从软件商城安装即可：</p>
+<p><img src="D:\blog\source_posts\Github使用教程.assets\image-20231004162447358.png" alt="image-20231004162447358"></p>
+<p>配置方法：</p>
+<blockquote>
+<p>以 SwitchHosts 为例，看一下怎么使用的，配置参考下面：</p>
+<ul>
+<li>Title: 随意</li>
+<li>Type: <code>Remote</code></li>
+<li>URL: <code>https://raw.hellogithub.com/hosts</code></li>
+<li>Auto Refresh: 最好选 <code>1 hour</code></li>
+</ul>
+</blockquote>
+<p><img src="D:\blog\source_posts\Github使用教程.assets\image-20231004163052538.png" alt="image-20231004163052538"></p>
+<h1 id="steam插件"><a href="#steam插件" class="headerlink" title="steam插件"></a>steam插件</h1><p><img src="D:\blog\source_posts\Github使用教程.assets\image-20231003015613245.png" alt="image-20231003015613245"></p>
+<p>玩游戏的朋友可能知道这个插件，安装这个插件后玩steam可以顺滑一些，除了玩游戏加快这个功能，它还能够加速访问GitHub网站。</p>
+<p>关于这个软件安装，查看羽翼城大佬博客，按教程安装即可。链接：<a href="https://www.dogfight360.com/blog/">https://www.dogfight360.com/blog/</a></p>
+<h1 id="外网服务器"><a href="#外网服务器" class="headerlink" title="外网服务器"></a>外网服务器</h1><p>很多翻墙的朋友会有这个软件，开启代理以后就能够科学上网，当然前提是你买了流量套餐。</p>
+<p><img src="D:\blog\source_posts\Github使用教程.assets\image-20231003015800547.png" alt="image-20231003015800547"></p>
+<p>相关软件在买完套餐之后根据其提供的配置文档进行安装。购买便宜套餐链接：<a href="https://搞快点.com/">https://xn--66t76gw3n.com/</a></p>
+<h1 id="gitclone"><a href="#gitclone" class="headerlink" title="gitclone"></a>gitclone</h1><p>网址：<a href="https://www.gitclone.com/">https://www.gitclone.com/</a></p>
+<p>无法上传代码，但是可以快速下载代码学习</p>
+<h1 id="gitee导入"><a href="#gitee导入" class="headerlink" title="gitee导入"></a>gitee导入</h1><p><img src="D:\blog\source_posts\Github使用教程.assets\image-20231004163806273.png" alt="image-20231004163806273"></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>GitHub项目学习</title>
+    <url>/2023/10/04/GitHub%E9%A1%B9%E7%9B%AE/</url>
+    <content><![CDATA[<h1 id="GitHub使用教程"><a href="#GitHub使用教程" class="headerlink" title="GitHub使用教程"></a>GitHub使用教程</h1><p><a href="https://docs.github.com/zh">GitHub Docs</a></p>
+<p> <strong>重点知识</strong>：</p>
+<ol>
+<li>在 GitHub 上探索项目</li>
+<li>使用 Git 管理项目代码</li>
+<li>导入项目</li>
+<li>管理仓库</li>
+</ol>
+<h1 id="GitHub项目学习"><a href="#GitHub项目学习" class="headerlink" title="GitHub项目学习"></a>GitHub项目学习</h1><p><a href="https://mp.weixin.qq.com/s?__biz=MzI1NDczNTAwMA==&mid=2247492597&idx=1&sn=a4629094599f5b821ec2698ea4ef11f5&scene=21#wechat_redirect">【硬核干货】如何高效找到优质编程项目？</a></p>
+<blockquote>
+<ul>
+<li>更多的 watch，表示对项目的关注度高</li>
+<li>更多的 star（收藏），对项目实用性的肯定</li>
+<li>更多的 Fork（派生搬运），表示想要学习项目或做贡献</li>
+<li>积极的 issues（问题），表示更多人使用项目并希望改进</li>
+<li>积极的 Pull requests（代码合并请求），表示更多人愿意合作贡献代码</li>
+<li>频繁更新最近提交时间，表示项目仍在维护</li>
+<li>可直接访问的官网，更正式</li>
+<li>类别标签明确，帮助开发者对项目进行定位</li>
+</ul>
+</blockquote>
+<p><img src="D:\blog\source_posts\成长历程.assets\image-20231004193047619.png" alt="image-20231004193047619"></p>
+<h1 id="项目全过程"><a href="#项目全过程" class="headerlink" title="项目全过程"></a>项目全过程</h1><p>文档：<a href="https://mp.weixin.qq.com/s?__biz=MzI1NDczNTAwMA==&mid=2247499089&idx=1&sn=5ce992a41890fb326461d8d7df24ba6f&scene=21#wechat_redirect">https://mp.weixin.qq.com/s?__biz=MzI1NDczNTAwMA==&amp;mid=2247499089&amp;idx=1&amp;sn=5ce992a41890fb326461d8d7df24ba6f&amp;scene=21#wechat_redirect</a></p>
+<h1 id="技术选型"><a href="#技术选型" class="headerlink" title="技术选型"></a>技术选型</h1><h2 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h2><p>技术选择：考虑用vue和react</p>
+<p>多元化组件：<a href="https://3x.ant.design/index-cn">ant Design</a></p>
+<h2 id="后端"><a href="#后端" class="headerlink" title="后端"></a>后端</h2><p>技术选择：node和java</p>
+<h1 id="项目部署"><a href="#项目部署" class="headerlink" title="项目部署"></a>项目部署</h1><p>参考文档：<a href="https://mp.weixin.qq.com/s?__biz=MzI1NDczNTAwMA==&mid=2247527119&idx=1&sn=b68602feb61ac48c7b41fcb5388eb81a&chksm=e9c28d38deb5042ea6055a58554808051ee7b97fff1bc92ad958d6d87bceb38d71629750800b&token=906785209&lang=zh_CN#rd">首次公开！我快速做项目的技巧</a></p>
+<h2 id="前端-1"><a href="#前端-1" class="headerlink" title="前端"></a>前端</h2><p>使用vercel部署</p>
+<p><a href="https://vercel.com/">vercel.com</a></p>
+<p>参考网址：<a href="https://zhuanlan.zhihu.com/p/347990778">https://zhuanlan.zhihu.com/p/347990778</a></p>
+<h2 id="后端-1"><a href="#后端-1" class="headerlink" title="后端"></a>后端</h2><p>使用腾讯云托管之类的容器平台来快速发布用 Docker 打包的后端代码。</p>
+<p>或者就是用宝塔面板来可视化地运行 Node、PHP、Java 等项目，可比自己登上服务器，手动启动停止项目要方便多了。</p>
+<h1 id="运维"><a href="#运维" class="headerlink" title="运维"></a>运维</h1><p>比如用百度统计、51.LA 来统计网站用户，用现成的第三方云数据库、云 Redis、容器托管平台来监控服务的运行、配置告警等等</p>
+]]></content>
+      <categories>
+        <category>GitHub,项目</category>
+      </categories>
+      <tags>
+        <tag>GitHub,项目</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>网站搭建</title>
+    <url>/2023/08/30/%E6%90%AD%E5%BB%BA%E7%BD%91%E7%AB%99/</url>
+    <content><![CDATA[<h1 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h1><figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 添加全局前置守卫</span></span><br><span class="line">router.<span class="title function_">beforeEach</span>(<span class="function">(<span class="params">to, <span class="keyword">from</span>, next</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// const requiresAuth = to.matched.some(record =&gt; record.meta.requiresAuth);</span></span><br><span class="line">    <span class="keyword">const</span> isCookieValid = <span class="title function_">validateCookie</span>(); <span class="comment">// 调用验证 cookie 的函数</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 如果目标为登录页面，则直接放行导航</span></span><br><span class="line">    <span class="keyword">if</span> (to.<span class="property">path</span> === <span class="string">&#x27;/login&#x27;</span> || to.<span class="property">path</span> === <span class="string">&#x27;/admin&#x27;</span>) &#123;</span><br><span class="line">        <span class="title function_">next</span>(); <span class="comment">// 如果目标路径已经是登录路径，则直接放行导航</span></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (isCookieValid) &#123;</span><br><span class="line">        <span class="comment">// cookie 有效，或者不需要验证，继续导航到目标页面</span></span><br><span class="line">        <span class="title function_">next</span>();</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// 如果需要验证且 cookie 无效，重定向到登录页面</span></span><br><span class="line">        <span class="title function_">next</span>(<span class="string">&#x27;/login&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 解密 DES 函数</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">decryptDES</span>(<span class="params">ciphertext: <span class="built_in">string</span>, key: <span class="built_in">string</span>, iv: <span class="built_in">string</span></span>): <span class="built_in">string</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> decrypted = <span class="title class_">CryptoJS</span>.<span class="property">DES</span>.<span class="title function_">decrypt</span>(&#123;</span><br><span class="line">        <span class="attr">ciphertext</span>: <span class="title class_">CryptoJS</span>.<span class="property">enc</span>.<span class="property">Hex</span>.<span class="title function_">parse</span>(ciphertext),</span><br><span class="line">    &#125;, <span class="title class_">CryptoJS</span>.<span class="property">enc</span>.<span class="property">Utf8</span>.<span class="title function_">parse</span>(key), &#123;</span><br><span class="line">        <span class="attr">iv</span>: <span class="title class_">CryptoJS</span>.<span class="property">enc</span>.<span class="property">Hex</span>.<span class="title function_">parse</span>(iv),</span><br><span class="line">        <span class="attr">mode</span>: <span class="title class_">CryptoJS</span>.<span class="property">mode</span>.<span class="property">CBC</span>,</span><br><span class="line">        <span class="attr">padding</span>: <span class="title class_">CryptoJS</span>.<span class="property">pad</span>.<span class="property">Pkcs7</span>,</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> decrypted.<span class="title function_">toString</span>(<span class="title class_">CryptoJS</span>.<span class="property">enc</span>.<span class="property">Utf8</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 验证 cookie 的函数</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">validateCookie</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> cookies = <span class="variable language_">document</span>.<span class="property">cookie</span>.<span class="title function_">split</span>(<span class="string">&#x27;;&#x27;</span>); <span class="comment">// 将所有 Cookie 拆分成数组</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; cookies.<span class="property">length</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">const</span> cookie = cookies[i].<span class="title function_">trim</span>().<span class="title function_">split</span>(<span class="string">&#x27;=&#x27;</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> (cookie[<span class="number">0</span>] == <span class="string">&#x27;expiration_time&#x27;</span>) &#123;</span><br><span class="line">            <span class="keyword">const</span> ciphertext = cookie[<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">const</span> key = <span class="string">&#x27;88888888&#x27;</span>;</span><br><span class="line">            <span class="keyword">const</span> iv = <span class="string">&#x27;0000000000000000&#x27;</span>;</span><br><span class="line">            <span class="keyword">const</span> plaintext = <span class="title function_">decryptDES</span>(ciphertext, key, iv);</span><br><span class="line">            <span class="comment">// 将 plaintext 转换为数字</span></span><br><span class="line">            <span class="keyword">const</span> expiration_time = <span class="built_in">parseInt</span>(plaintext);</span><br><span class="line">            <span class="comment">// 获取当前时间戳</span></span><br><span class="line">            <span class="keyword">const</span> timestamp = <span class="title class_">Date</span>.<span class="title function_">parse</span>(<span class="keyword">new</span> <span class="title class_">Date</span>().<span class="title function_">toString</span>()) / <span class="number">1000</span>;</span><br><span class="line">            <span class="keyword">if</span> (expiration_time &gt; timestamp) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>; <span class="comment">// 如果 cookie 有效，返回 true</span></span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>; <span class="comment">// 如果 cookie 无效，返回 false</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>; <span class="comment">// 如果未找到 expiration_time，返回 false</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> router;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="to-from-next"><a href="#to-from-next" class="headerlink" title="(to, from, next)"></a>(to, from, next)</h2><blockquote>
+<p><code>(to, from, next)</code> 是 Vue Router 中全局前置守卫函数的参数，用于控制路由导航的流程。这三个参数分别代表了：</p>
+<ol>
+<li><code>to</code>：即将进入的目标路由对象，表示用户要导航到的路由。</li>
+<li><code>from</code>：即将离开的当前路由对象，表示用户要离开的路由。</li>
+<li><code>next</code>：一个回调函数，用于控制路由导航是否继续进行。它可以接受一个参数，用于指定导航的下一个步骤，如继续导航到目标路由、中断导航或重定向到其他路由。</li>
+</ol>
+<p>在全局前置守卫函数内部，你可以根据 <code>to</code> 和 <code>from</code> 的信息，来进行路由导航的控制和判断。<code>next</code> 函数则决定了路由是否继续进行，有以下用法：</p>
+<ul>
+<li><code>next()</code>：继续导航到目标路由，相当于放行。</li>
+<li><code>next(false)</code>：中断导航，不进行路由切换。</li>
+<li><code>next(&#39;/path&#39;)</code>：重定向到其他路径，相当于进行路由跳转。</li>
+</ul>
+</blockquote>
+]]></content>
+      <tags>
+        <tag>router,部署,前端</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>java学习</title>
+    <url>/2023/10/04/java%E5%AD%A6%E4%B9%A0/</url>
+    <content><![CDATA[<blockquote>
+<p>学习课程：</p>
+<p>学习进度：韩顺平 0基础学java</p>
+<p>2023&#x2F;10&#x2F;5： 11&#x2F;910</p>
+<p>2023&#x2F;10&#x2F;6：</p>
+<p>2023&#x2F;10&#x2F;7：</p>
+<p>2023&#x2F;10&#x2F;8：</p>
+<p>2023&#x2F;10&#x2F;9：</p>
+<p>2023&#x2F;10&#x2F;10：</p>
+<p>2023&#x2F;10&#x2F;11：</p>
+<p>2023&#x2F;10&#x2F;12：</p>
+<p>2023&#x2F;10&#x2F;13：</p>
+</blockquote>
+<h1 id="Java全栈知识体系"><a href="#Java全栈知识体系" class="headerlink" title="Java全栈知识体系"></a>Java全栈知识体系</h1><p>参考文档:<a href="https://pdai.tech/md/resource/tools.html">https://pdai.tech/md/resource/tools.html</a></p>
+<h1 id="学习路线"><a href="#学习路线" class="headerlink" title="学习路线"></a>学习路线</h1><p>参考：<a href="https://yuyuanweb.feishu.cn/wiki/RxC8w2uFQiHspQk4L3qcyjBunZd">https://yuyuanweb.feishu.cn/wiki/RxC8w2uFQiHspQk4L3qcyjBunZd</a></p>
+<h1 id="在线练习"><a href="#在线练习" class="headerlink" title="在线练习"></a>在线练习</h1><p>网址：<a href="https://codegym.cc/zh/">https://codegym.cc/zh/</a></p>
+<h1 id="如何快速学习"><a href="#如何快速学习" class="headerlink" title="如何快速学习"></a>如何快速学习</h1><h1 id="程序运行"><a href="#程序运行" class="headerlink" title="程序运行"></a>程序运行</h1><p>一个.java文件如何在终端运行？</p>
+<p>在终端输入：（进行编译）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">javac test.java</span><br></pre></td></tr></table></figure>
+
+<p>之后得到一个.class文件，这是编译后的文件，计算机执行程序是执行.class文件。</p>
+<p>运行：本质是将.class文件装载到jvm机执行 </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">java test</span><br><span class="line">//java test.class会报错 因为找到的应该是主类</span><br></pre></td></tr></table></figure>
+
+<p><img src="D:\blog\source_posts\java学习.assets\image-20231006184704528.png" alt="image-20231006184704528"></p>
+<h1 id="Java基础知识"><a href="#Java基础知识" class="headerlink" title="Java基础知识"></a>Java基础知识</h1><h2 id="Java之父"><a href="#Java之父" class="headerlink" title="Java之父"></a>Java之父</h2><p>gosling</p>
+<h2 id="Java第一个版本诞生年份"><a href="#Java第一个版本诞生年份" class="headerlink" title="Java第一个版本诞生年份"></a>Java第一个版本诞生年份</h2><p>1995</p>
+<h2 id="Java最新版本"><a href="#Java最新版本" class="headerlink" title="Java最新版本"></a>Java最新版本</h2><p>15</p>
+<h2 id="Java最常用版本"><a href="#Java最常用版本" class="headerlink" title="Java最常用版本"></a>Java最常用版本</h2><p>8 和 11</p>
+<h2 id="公司"><a href="#公司" class="headerlink" title="公司"></a>公司</h2><p>甲骨文</p>
+<h1 id="Java技术体系平台"><a href="#Java技术体系平台" class="headerlink" title="Java技术体系平台"></a>Java技术体系平台</h1><p>Java SE 标准版 standard edition</p>
+<p>Java EE 企业版 enterprise edition</p>
+<p>Java ME小型版 micro edition</p>
+<h1 id="Java重要特点"><a href="#Java重要特点" class="headerlink" title="Java重要特点"></a>Java重要特点</h1><p>面向对象（oop）</p>
+<p>语言是健壮的：强类型机制，异常处理，垃圾的自动收集</p>
+<p>跨平台：.class文件可以通过JVM（java虚拟机，安装了jdk，jvm也顺带安装了），一个解释器，在windows和linux等不同操作系统上面运行</p>
+<p>解释型语言：操作系统会提供一个解释器，对.class文件进行解释</p>
+<blockquote>
+<p>解释型语言：java，js，php 编译后的代码，要由解释器来执行，不能通过机器执行</p>
+<p>编译型语言：c，c++ 编译后的代码是二进制的，可以直接由机器执行</p>
+<p>上面两种的性能，不好说，需要根据语言和解释器来判断性能</p>
+</blockquote>
+<h1 id="JVM"><a href="#JVM" class="headerlink" title="JVM"></a>JVM</h1><p>java virtual machine</p>
+<p>虚拟的计算机，拥有指令集并使用不同的存储区域，负责执行指令，存储数据，包含于JDK</p>
+<p>一次编译，到处执行</p>
+<h1 id="JDK"><a href="#JDK" class="headerlink" title="JDK"></a>JDK</h1><p>Java development kit </p>
+<p>Java开发工具包</p>
+<p>JDK &#x3D; JRE + Java开发工具（java，javac，javadoc，javap等）</p>
+<p>JRE &#x3D; JVM +Java核心类库</p>
+<blockquote>
+<p>终端里面运行的 javac test.java 的“javac”就是一项开发工具</p>
+</blockquote>
+<h2 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h2><p>当前执行的程序在当前目录下如果不存在，操作系统会在系统中已有的path环境变量指定的目录中寻找。如果未找到，会报错“不是内部或外部命令，也不是可运行程序或批处理文件”</p>
+<h1 id="编译器"><a href="#编译器" class="headerlink" title="编译器"></a>编译器</h1><p>编译器是一个特殊的程序，它可将用编程语言编写的程序转换成一系列的机器代码。</p>
+<h1 id="原则"><a href="#原则" class="headerlink" title="原则"></a>原则</h1><p>每个命令都单独占用一行。分号必须放在命令的末尾。</p>
+<p>“一个程序不能只包含命令。”在 Java 编程语言中，命令不能单独存在。它是函数的一部分（在 Java 语言中，‘函数’也称为‘方法’）。方法是类的一部分。换句话说，类被划分为多个方法，而方法被划分为多个命令。因此，类就是一个公寓楼，函数&#x2F;方法是一个公寓，而命令是一个房间。</p>
+<p>对大小写敏感</p>
+<blockquote>
+<p><code>int a</code> 和 <code>Int a</code> 不同</p>
+</blockquote>
+<h1 id="程序组成"><a href="#程序组成" class="headerlink" title="程序组成"></a>程序组成</h1><p>Java 中的程序由类组成。 可能有数万个类。最小程序含有一个类。对于每个类，都创建一个单独的文件。文件的名称与类的名称相匹配。</p>
+<p>一个类的代码由‘类名’和‘类主体’组成。类主体写在大括号内。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Home</span>&#123;</span><br><span class="line">    类主体</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>类主体可能包含多个变量（也称为数据）和方法（‘函数’）。</p>
+<p>一个最小程序必须至少包含一个类，该类必须包含至少一个方法&#x2F;函数才能使程序运行。这个方法必须命名为‘main’。最小程序没有任何命令。这就是为什么它被称为‘最小’。启动程序的类可以有任何名称，但用于启动程序的‘main’方法必须始终保持相同。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//最小程序</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Home</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span> <span class="params">(String[] args)</span><span class="comment">//主方法，程序的入口</span></span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p> 方法的主体由命令组成。方法就是一组被赋予名称（方法名称）的命令。</p>
+<p>一个源文件最多只能与一个public类，其他类不限。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Home</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span> <span class="params">(String[] args)</span><span class="comment">//主方法，程序的入口</span></span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Dog</span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Cat</span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>编译以后，每一个类对应一个.class文件</p>
+<p>源文件的public类和文件名需要一样</p>
+<p>可以将main方法写在非public类中，因此入口函数是非public类的main方法</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Hello</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;</span><br><span class="line">	</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Dog</span>&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;</span><br><span class="line">	</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Cat</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;</span><br><span class="line">	</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">java Dog//运行Dog的主方法，以Dog的方法作为程序入口</span><br><span class="line">java Hello//运行Hello的主方法，以Hello的方法作为程序入口</span><br><span class="line">java Cat//运行Cat的主方法，以Cat的方法作为程序入口</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="输出命令"><a href="#输出命令" class="headerlink" title="输出命令"></a>输出命令</h1><p><code>System.out.println()</code> 命令，每次打印完会换行。 <code>System.out.print()</code> 命令，打印不换行。</p>
+<h1 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h1><p>变量是用来存储数据的特殊实体。</p>
+<h2 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h2><p>类型、名称和值</p>
+<p>值是存储在变量中的特定对象、数据或信息。</p>
+<p>变量名不能包含空格、加号、减号等。最好在一个变量名中只使用字母和数字</p>
+<h1 id="命名"><a href="#命名" class="headerlink" title="命名"></a>命名</h1><p>.java文件是源文件</p>
+<p>.class文件是字节码文件</p>
+<h1 id="转义符"><a href="#转义符" class="headerlink" title="转义符"></a>转义符</h1><blockquote>
+<p>\t 制表位，实现对齐</p>
+<p>\n 换行符</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">\\ ：\</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">\&quot; ：&quot;&quot;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">\&#x27; ：&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>\r :回车，光标会回到当前行的第一个字符，并且替换后面的字符</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">韩顺平\r北京      最后输出：北京平</span><br></pre></td></tr></table></figure>
+
+
+</blockquote>
+]]></content>
+      <categories>
+        <category>java，后端</category>
+      </categories>
+      <tags>
+        <tag>java，后端</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>项目需求</title>
+    <url>/2023/10/04/%E9%A1%B9%E7%9B%AE%E9%9C%80%E6%B1%82/</url>
+    <content><![CDATA[<h1 id="十个勤天官方网站"><a href="#十个勤天官方网站" class="headerlink" title="十个勤天官方网站"></a>十个勤天官方网站</h1><h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><p>十个董事的详细介绍</p>
+<p>种地小游戏</p>
+<p>全部物料合集</p>
+<h1 id="敖子逸个人网站"><a href="#敖子逸个人网站" class="headerlink" title="敖子逸个人网站"></a>敖子逸个人网站</h1><h2 id="需求-1"><a href="#需求-1" class="headerlink" title="需求"></a>需求</h2><p>舞蹈教学板块</p>
+<p>音乐板块</p>
+<p>参加多个活动板块，赋上链接</p>
+<p>详细的明星介绍</p>
+]]></content>
+      <categories>
+        <category>项目需求</category>
+      </categories>
+      <tags>
+        <tag>项目需求</tag>
       </tags>
   </entry>
 </search>
