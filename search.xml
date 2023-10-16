@@ -35,13 +35,146 @@
 <p>参考网址：<a href="https://zhuanlan.zhihu.com/p/347990778">https://zhuanlan.zhihu.com/p/347990778</a></p>
 <h2 id="后端-1"><a href="#后端-1" class="headerlink" title="后端"></a>后端</h2><p>使用腾讯云托管之类的容器平台来快速发布用 Docker 打包的后端代码。</p>
 <p>或者就是用宝塔面板来可视化地运行 Node、PHP、Java 等项目，可比自己登上服务器，手动启动停止项目要方便多了。</p>
+<h2 id="部署到服务器上"><a href="#部署到服务器上" class="headerlink" title="部署到服务器上"></a>部署到服务器上</h2><ul>
+<li>使用宝塔面板</li>
+</ul>
+<h3 id="静态网页前端部署"><a href="#静态网页前端部署" class="headerlink" title="静态网页前端部署"></a>静态网页前端部署</h3><ol>
+<li><p>点击添加站点</p>
+<p><img src="D:\blog\source_posts\GitHub项目.assets\1697255622002.png" alt="1697255622002"></p>
+</li>
+<li><ul>
+<li>添加域名</li>
+</ul>
+<p>ps：再简单一点的话可以添加公共网址例如150.158.18.74，访问网站时直接访问IP地址就可以</p>
+<ul>
+<li>根目录选择前端项目所在的文件夹</li>
+<li>php版本选择：纯静态，因为没有使用php</li>
+<li>点击提交</li>
+</ul>
+<p><img src="D:\blog\source_posts\GitHub项目.assets\image-20231014115525552.png" alt="image-20231014115525552"></p>
+</li>
+<li><p>创建以后这里会出现一行文字，有标颜色的数字，点击之后，出现新的网页，上面有一些文字，即代表创建成功</p>
+<p><img src="D:\blog\source_posts\GitHub项目.assets\image-20231014115858364.png" alt="image-20231014115858364"></p>
+</li>
+</ol>
+<h3 id="后端部署"><a href="#后端部署" class="headerlink" title="后端部署"></a>后端部署</h3><ul>
+<li><p>将idea的项目使用maven打包成jar文件</p>
+</li>
+<li><p>上传至宝塔面板的其中一个文件夹</p>
+</li>
+<li><p>在终端进入上述文件夹，执行下述命令</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">java -jar ···.jar</span><br></pre></td></tr></table></figure>
+
+<p>ps：输入完java -jar以后可以点击<code>tab</code>键，可以自动补全</p>
+</li>
+<li><p>命令执行成功以后，即代表运行了后端项目</p>
+</li>
+<li><p>注意：</p>
+<ul>
+<li>需要将前端项目config.js文件的URL换成IP地址<code>150.158.18.74</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="数据库部署"><a href="#数据库部署" class="headerlink" title="数据库部署"></a>数据库部署</h3><ol>
+<li><p>添加数据库</p>
+<p><img src="D:\blog\source_posts\GitHub项目.assets\image-20231014120540829.png" alt="image-20231014120540829"></p>
+</li>
+<li><p>填写信息</p>
+<ul>
+<li>数据库名称自定义，与用户名相同</li>
+<li>编码方式utf8mb4 默认</li>
+<li>密码：修改为简单的，自己记得住的</li>
+<li>访问权限：自己的服务器就是用 所有人</li>
+</ul>
+<p><img src="D:\blog\source_posts\GitHub项目.assets\image-20231014120645502.png" alt="image-20231014120645502"></p>
+</li>
+<li><p>创建数据库以后，导入sql文件</p>
+<p><img src="D:\blog\source_posts\GitHub项目.assets\image-20231014120819123.png" alt="image-20231014120819123"></p>
+</li>
+<li><p>选择<strong>本地上传</strong></p>
+<p><img src="D:\blog\source_posts\GitHub项目.assets\image-20231014120847128.png" alt="image-20231014120847128"></p>
+</li>
+<li><p>进入终端，连接数据库，name值得是数据库名</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql -h localhost -P 3306 -u name -p</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>输入密码以后，成功连接数据库</p>
+<p><img src="D:\blog\source_posts\GitHub项目.assets\image-20231014121134151.png" alt="image-20231014121134151"></p>
+</li>
+<li><p>更换数据库，查看数据库里面是否有数据表，有的话，数据库建表成功</p>
+<p><img src="D:\blog\source_posts\GitHub项目.assets\image-20231014121249823.png" alt="image-20231014121249823"></p>
+</li>
+<li><p>如果导入的sql文件里面有表，但是导入服务器的数据库里面却没有表，使用<code>dataGrip</code>软件</p>
+</li>
+<li><p>点击新建项目</p>
+</li>
+<li><p>如果你使用的是mysql数据库，执行以下操作：点击加号-&gt;点击数据源-&gt;点击mysql</p>
+<p><img src="D:\blog\source_posts\GitHub项目.assets\image-20231014121602201.png" alt="image-20231014121602201"></p>
+</li>
+<li><p>连接服务器：主机输入服务器的IP地址，输入你想要连接的数据库在服务器里创建的名称和密码</p>
+<p><img src="D:\blog\source_posts\GitHub项目.assets\image-20231014121730676.png" alt="image-20231014121730676"></p>
+</li>
+<li><p>右键服务器地址，点击sql脚本，再点击运行sql脚本</p>
+<p><img src="D:\blog\source_posts\GitHub项目.assets\image-20231014121848986.png" alt="image-20231014121848986"></p>
+</li>
+<li><p>之后选择你想要运行的sql文件，执行以后，重新在终端里面查看数据库，成功</p>
+<p><img src="D:\blog\source_posts\GitHub项目.assets\image-20231014121940825.png" alt="image-20231014121940825"></p>
+</li>
+</ol>
 <h1 id="运维"><a href="#运维" class="headerlink" title="运维"></a>运维</h1><p>比如用百度统计、51.LA 来统计网站用户，用现成的第三方云数据库、云 Redis、容器托管平台来监控服务的运行、配置告警等等</p>
+<h1 id="README文件"><a href="#README文件" class="headerlink" title="README文件"></a>README文件</h1><h2 id="上传图片"><a href="#上传图片" class="headerlink" title="上传图片"></a>上传图片</h2><ol>
+<li>新建图片文件夹，放入图片，推送到远程仓库</li>
+<li>在远程仓库中打开该图片，获取图片在浏览器的地址</li>
+<li>打开README文件，添加下面语句</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">![Image text](这里是你的图片链接)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
 ]]></content>
       <categories>
-        <category>GitHub,项目</category>
+        <category>GitHub,项目,项目部署</category>
       </categories>
       <tags>
         <tag>GitHub,项目</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>12306项目学习历程</title>
+    <url>/2023/10/14/12306%E9%A1%B9%E7%9B%AE%E5%AD%A6%E4%B9%A0%E6%97%85%E9%80%94/</url>
+    <content><![CDATA[<h2 id="学习进度："><a href="#学习进度：" class="headerlink" title="学习进度："></a>学习进度：</h2><blockquote>
+<p>项目地址：<a href="https://gitee.com/nageoffer/12306">https://gitee.com/nageoffer/12306</a></p>
+<p>文档学习：<a href="https://nageoffer.com/pages/008ee6/#%E6%95%B0%E6%8D%AE%E5%BA%93%E5%88%9D%E5%A7%8B%E5%8C%96">https://nageoffer.com/pages/008ee6/#%E6%95%B0%E6%8D%AE%E5%BA%93%E5%88%9D%E5%A7%8B%E5%8C%96</a></p>
+<p>2023&#x2F;10&#x2F;14： </p>
+<p>2023&#x2F;10&#x2F;15：</p>
+<p>2023&#x2F;10&#x2F;16： </p>
+<p>2023&#x2F;10&#x2F;17： </p>
+<p>2023&#x2F;10&#x2F;18：</p>
+<p>2023&#x2F;10&#x2F;19： </p>
+<p>2023&#x2F;10&#x2F;20：</p>
+</blockquote>
+<h1 id="克隆项目"><a href="#克隆项目" class="headerlink" title="克隆项目"></a>克隆项目</h1><p>在cmd中运行下面指令</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone https://gitee.com/nageoffer/12306.git</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="数据库初始化"><a href="#数据库初始化" class="headerlink" title="数据库初始化"></a>数据库初始化</h1><ol>
+<li><p>导入sql文件</p>
+<p><img src="D:\blog\source_posts\12306项目学习旅途.assets\image-20231014165016598.png" alt="image-20231014165016598"></p>
+</li>
+<li><p>添加信息：如果你已经新建了一个数据表，请把下述第一行代码删掉</p>
+<p><img src="D:\blog\source_posts\12306项目学习旅途.assets\image-20231014165029790.png" alt="image-20231014165029790"></p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>java,后端</tag>
       </tags>
   </entry>
   <entry>
@@ -109,6 +242,21 @@
 ]]></content>
   </entry>
   <entry>
+    <title>华为ICT比赛</title>
+    <url>/2023/10/08/ICT%E5%AD%A6%E4%B9%A0/</url>
+    <content><![CDATA[<h1 id="活动安排"><a href="#活动安排" class="headerlink" title="活动安排"></a>活动安排</h1><blockquote>
+<p>报名比赛网址：<a href="https://e.huawei.com/cn/talent/#/ict-academy/ict-competition/regional-competition?zoneCode=027425&zoneId=98269597&compId=85131993&divisionName=&type=C001&controlRegistration=2">https://e.huawei.com/cn/talent/#/ict-academy/ict-competition/regional-competition?zoneCode=027425&amp;zoneId=98269597&amp;compId=85131993&amp;divisionName=&amp;type=C001&amp;controlRegistration=2</a></p>
+<p>报名时间：2023&#x2F;10&#x2F;8</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>云计算</category>
+      </categories>
+      <tags>
+        <tag>ICT,云计算</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>drawio指南</title>
     <url>/2023/08/17/drawio%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<p>下载网址：<a href="https://www.drawio.com/">https://www.drawio.com/</a></p>
@@ -130,22 +278,467 @@
 ]]></content>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/2023/07/14/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+    <title>git命令详解</title>
+    <url>/2023/10/12/git%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3/</url>
+    <content><![CDATA[<h1 id="git-init"><a href="#git-init" class="headerlink" title="git init"></a>git init</h1><ul>
+<li>使用git命令的第一步是在工作目录上面打开git bash，之后的第一条命令是初始化，生成.git文件夹</li>
+<li>命令：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p><img src="D:\blog\source_posts\git命令详解.assets\0d99fde25bc2771968c93bfd14ef722.png" alt="0d99fde25bc2771968c93bfd14ef722"></p>
+<h1 id="拉取项目"><a href="#拉取项目" class="headerlink" title="拉取项目"></a>拉取项目</h1><h2 id="普通的拉取项目clone"><a href="#普通的拉取项目clone" class="headerlink" title="普通的拉取项目clone"></a>普通的拉取项目clone</h2><p>如果你想运行一个GitHub或者gitee的项目，那么你首先应当对项目进行克隆</p>
+<p>注意：</p>
+<ul>
+<li><p>这个命令不是在git bash里面运行，是在系统终端（cmd）里面运行</p>
+</li>
+<li><p>生成相应的文件夹以后，里面已经有.git文件夹，因此不需要运行<code>git init</code>命令</p>
+</li>
+<li><p>最常用的命令是</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone https://(项目的链接)</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<ul>
+<li>作用是：完整拉取项目，并且自动建立本地仓库与远程仓库的连接，做完这步之后不需要使用git remote add命令</li>
+</ul>
+<h2 id="在本地新建分支拉取项目"><a href="#在本地新建分支拉取项目" class="headerlink" title="在本地新建分支拉取项目"></a>在本地新建分支拉取项目</h2><p>如果你的工作目录已经有文件，那么你应该先建立与远程仓库的连接，之后再提交文件。</p>
+<p>需要注意的是，你不能通过<code>git branch name</code>命令先新建一个分支，这样下面的命令无法重新建立一个同名的分支</p>
+<ul>
+<li>新建分支并拉取项目的命令是：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git checkout -b name origin/master</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<ul>
+<li>name代表的是 你想要新建的分支名，这里的sec是我取的新分支名字</li>
+<li>origin代表的是在本地仓库中，你给远程仓库的代名称，在<code>git remote</code>命令中有提到，具体可查看<code>git remote</code>命令</li>
+<li>master代表的是在远程仓库中，你想要拉取的那个分支名字</li>
+</ul>
+<p><img src="D:\blog\source_posts\git命令详解.assets\b1ac032c63c78b9e3dd7cc31fe6029e.png" alt="b1ac032c63c78b9e3dd7cc31fe6029e"></p>
+<h2 id="中前期拉取项目更改的内容git-pull"><a href="#中前期拉取项目更改的内容git-pull" class="headerlink" title="中前期拉取项目更改的内容git pull"></a>中前期拉取项目更改的内容git pull</h2><ul>
+<li>如果你新建项目，或者你原本就有文件，你可以使用下面的命令拉取项目</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git pull origin secondMaster</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<ul>
+<li><p>origin代表的是在本地仓库中，你给远程仓库的代名称，在<code>git remote</code>命令中有提到，具体可查看<code>git remote</code>命令</p>
+</li>
+<li><p>secondMaster代表的是远程仓库中你想要拉取的分支的名字</p>
+</li>
+<li><p>直接拉取以后，会自动在本地仓库中创建一个和远程仓库分支名字相同的分支，例如，执行该命令前，我的本地仓库（原本没有secondMaster分支），执行该命令后，我的本地仓库中有secondMaster分支，并且里面存放的文件和远程仓库上面的文件相同</p>
+</li>
+</ul>
+<p><img src="D:\blog\source_posts\git命令详解.assets\890dd37b494d82b651c97f1a724e1d5.png" alt="890dd37b494d82b651c97f1a724e1d5"></p>
+<h1 id="git-fetch"><a href="#git-fetch" class="headerlink" title="git fetch"></a>git fetch</h1><h1 id="git-merge"><a href="#git-merge" class="headerlink" title="git merge"></a>git merge</h1><ul>
+<li>name是分支名，代表将name这个分支合并至当前的分支</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git merge name</span><br></pre></td></tr></table></figure>
+
+<h1 id="git-remote"><a href="#git-remote" class="headerlink" title="git remote"></a>git remote</h1><h2 id="远程仓库建立连接"><a href="#远程仓库建立连接" class="headerlink" title="远程仓库建立连接"></a>远程仓库建立连接</h2><p>如果当前工作目录已经有文件，而且你想要上传至远程仓库，那第一步不应该将所有文件上传至本地仓库，反而应该先建立与远程仓库的连接</p>
+<ul>
+<li>最常用的命令是</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git remote add origin https://(项目的链接)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>作用是：建立本地仓库与远程仓库的连接</li>
+<li>origin代表的是拉取的远程仓库 在本地仓库的 <code>代名称</code></li>
+</ul>
+<p>这里的link是我给的代名称，一般使用origin会更好一些</p>
+<p><img src="D:\blog\source_posts\git命令详解.assets\49e81ca440914fa26e9e6e972543df5-1697092559668-9.png" alt="49e81ca440914fa26e9e6e972543df5"></p>
+<h2 id="建立连接是否成功"><a href="#建立连接是否成功" class="headerlink" title="建立连接是否成功"></a>建立连接是否成功</h2><p>想查看有没有建立连接成功，运行下面的指令：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git remote -v</span><br></pre></td></tr></table></figure>
+
+<p><img src="D:\blog\source_posts\git命令详解.assets\49e81ca440914fa26e9e6e972543df5.png" alt="49e81ca440914fa26e9e6e972543df5"></p>
+<h1 id="git-add"><a href="#git-add" class="headerlink" title="git add"></a>git add</h1><h2 id="提交到暂存区"><a href="#提交到暂存区" class="headerlink" title="提交到暂存区"></a>提交到暂存区</h2><ul>
+<li>最常用的命令是</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>作用：提交当前工作目录下全部文件到暂存区</li>
+</ul>
+<h1 id="git-commit"><a href="#git-commit" class="headerlink" title="git commit"></a>git commit</h1><h2 id="提交到本地仓库"><a href="#提交到本地仓库" class="headerlink" title="提交到本地仓库"></a>提交到本地仓库</h2><ul>
+<li>最常用的命令是</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git commit -m &quot;你想要备注的信息&quot;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>作用：将所有暂存区的文件提交到本地仓库上</li>
+<li>m代表message的意思</li>
+</ul>
+<p><img src="D:\blog\source_posts\git命令详解.assets\7574c502fb50dddf8759f0120157302.png" alt="7574c502fb50dddf8759f0120157302"></p>
+<h1 id="git-status"><a href="#git-status" class="headerlink" title="git status"></a>git status</h1><h2 id="查看文件的状态"><a href="#查看文件的状态" class="headerlink" title="查看文件的状态"></a>查看文件的状态</h2><ul>
+<li>如果你不确定自己的文件有没有提交到本地仓库中，你可以使用下面的命令：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure>
+
+<p><img src="D:\blog\source_posts\git命令详解.assets\9e51551ff4142a03bcfea246d2e34b9.png" alt="9e51551ff4142a03bcfea246d2e34b9"></p>
+<h1 id="git-branch"><a href="#git-branch" class="headerlink" title="git branch"></a>git branch</h1><h2 id="查看分支个数及名称"><a href="#查看分支个数及名称" class="headerlink" title="查看分支个数及名称"></a>查看分支个数及名称</h2><ul>
+<li>如果此时你想查看本地仓库下面有几个分支，可以使用下面的命令：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git branch</span><br></pre></td></tr></table></figure>
+
+<p><img src="D:\blog\source_posts\git命令详解.assets\0d99fde25bc2771968c93bfd14ef722-1697092511570-4.png" alt="0d99fde25bc2771968c93bfd14ef722"></p>
+<h2 id="创建分支"><a href="#创建分支" class="headerlink" title="创建分支"></a>创建分支</h2><ul>
+<li>如果你想创建分支，name需要替换成你想要的分支名</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git branch name</span><br></pre></td></tr></table></figure>
+
+<h2 id="切换分支"><a href="#切换分支" class="headerlink" title="切换分支"></a>切换分支</h2><ul>
+<li>如果你想要切换分支，假设我想切换成master(分支的名字)分支</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git switch master</span><br></pre></td></tr></table></figure>
+
+<p><img src="D:\blog\source_posts\git命令详解.assets\31dd4b3717e40e34a2ab6e402f99b6b.png" alt="31dd4b3717e40e34a2ab6e402f99b6b"></p>
+<h2 id="删除分支"><a href="#删除分支" class="headerlink" title="删除分支"></a>删除分支</h2><ul>
+<li>如果你想要删除某个分支，name需要替换成你想要删除的分支名</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git branch -d name</span><br></pre></td></tr></table></figure>
+
+<h1 id="推送项目"><a href="#推送项目" class="headerlink" title="推送项目"></a>推送项目</h1><h2 id="如果本地分支名与远程分支名不同"><a href="#如果本地分支名与远程分支名不同" class="headerlink" title="如果本地分支名与远程分支名不同"></a>如果本地分支名与远程分支名不同</h2><ul>
+<li>你可以使用下面的命令推送项目</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git push origin master:secondMaster</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>origin代表的是在本地仓库中，你给远程仓库的代名称，在<code>git remote</code>命令中有提到，具体可查看<code>git remote</code>命令</p>
+</li>
+<li><p>master代表的是你希望存放远程分支项目文件的本地分支</p>
+</li>
+<li><p>secondMaster代表的是远程仓库中你想要拉取的分支的名字</p>
+</li>
+</ul>
+<p><img src="D:\blog\source_posts\git命令详解.assets\2e069ce114157ddb12b8831a41985b4.png" alt="2e069ce114157ddb12b8831a41985b4"></p>
+<h2 id="如果本地分支名与远程分支名相同"><a href="#如果本地分支名与远程分支名相同" class="headerlink" title="如果本地分支名与远程分支名相同"></a>如果本地分支名与远程分支名相同</h2><ul>
+<li>你可以使用下面的命令推送项目</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>origin代表的是在本地仓库中，你给远程仓库的代名称，在<code>git remote</code>命令中有提到，具体可查看<code>git remote</code>命令</li>
+<li>master代表的是你本地仓库与远程仓库相同的分支名</li>
+</ul>
+<h1 id="合并远程仓库分支"><a href="#合并远程仓库分支" class="headerlink" title="合并远程仓库分支"></a>合并远程仓库分支</h1><p>思路：将远程仓库的所有分支拉取，之后在本地仓库进行分支合并，并解决其带来的冲突，解决以后，再将所有合并一起的master分支进行推送，之后远程仓库的所有分支便合并到master分支中。</p>
+<p><img src="D:\blog\source_posts\git命令详解.assets\image-20231012150513695.png" alt="image-20231012150513695"></p>
+<p><img src="D:\blog\source_posts\git命令详解.assets\image-20231012150531427.png" alt="image-20231012150531427"></p>
 ]]></content>
+      <categories>
+        <category>git</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>MySQL进阶（原理）学习</title>
+    <url>/2023/10/15/MySQL%E5%8E%9F%E7%90%86/</url>
+    <content><![CDATA[<h1 id="学习课程："><a href="#学习课程：" class="headerlink" title="学习课程："></a>学习课程：</h1><h2 id="学习进度："><a href="#学习进度：" class="headerlink" title="学习进度："></a>学习进度：</h2><blockquote>
+<p>学习目标：58-96，121-147</p>
+<p>2023&#x2F;10&#x2F;14: 58-74&#x2F;195</p>
+</blockquote>
+<h1 id="存储引擎"><a href="#存储引擎" class="headerlink" title="存储引擎"></a>存储引擎</h1><h2 id="MySQL体系结构"><a href="#MySQL体系结构" class="headerlink" title="MySQL体系结构"></a>MySQL体系结构</h2><p><img src="D:\blog\source_posts\MySQL原理.assets\image-20231015091119737.png" alt="image-20231015091119737"></p>
+<ul>
+<li><p>连接层：连接客户端的连接，包括权限认证</p>
+</li>
+<li><p>服务层：所有跨存储引擎的操作都是在服务层完成，sql的接口，sql的解析，sql的优化</p>
+</li>
+<li><p>可插拔存储引擎层：可以在这个基础上进行拓展</p>
+<ul>
+<li>控制mysql数据的存储与提取的方式</li>
+<li>index是在存储引擎层实现的，不同的存储引擎索引的结构是不一样的</li>
+</ul>
+</li>
+<li><p>存储层：控制数据如何存，如何取，如何进行组织，具体的数据是存储在磁盘当中</p>
+<p><img src="D:\blog\source_posts\MySQL原理.assets\b6ba1b8fcc5ec9ae11f21d9b4337a8e.jpg" alt="b6ba1b8fcc5ec9ae11f21d9b4337a8e"></p>
+<p><img src="D:\blog\source_posts\MySQL原理.assets\08e674a5080f8ffb3b1fd3267aab9ae.jpg" alt="08e674a5080f8ffb3b1fd3267aab9ae"></p>
+</li>
+</ul>
+<h2 id="存储引擎简介"><a href="#存储引擎简介" class="headerlink" title="存储引擎简介"></a>存储引擎简介</h2><ul>
+<li>存储引擎是存储数据，建立索引，更新&#x2F;查询数据等技术的实现方式</li>
+<li>不同的存储引擎，实现上述功能的机制是不同的</li>
+<li>存储引擎基于<code>数据表</code>，而不是基于库。所以被称为<code>表类型</code></li>
+<li>一个数据库下的多张表可以选择不同的存储引擎</li>
+</ul>
+<h3 id="查询建表语句"><a href="#查询建表语句" class="headerlink" title="查询建表语句"></a>查询建表语句</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">show create table account;</span><br></pre></td></tr></table></figure>
+
+<p><img src="D:\blog\source_posts\MySQL原理.assets\690f54b03782da3006863df599c9adb.jpg" alt="690f54b03782da3006863df599c9adb"></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ENGINE=InnoDB  AUTO_INCREMENT=5   CHARSET=utf8mb4      COLLATE= utf8mb4 _0900_ai_ci     COMMENT=‘账户表’</span><br></pre></td></tr></table></figure>
+<ul>
+<li>ENGINE存储引擎默认是InnoDB，创建表可以指定存储引擎</li>
+<li>AUTO_INCREMENT&#x3D;5表示 id字段是自增的，下一个数据申请的id是5</li>
+<li>指明当前表的字符集是CHARSET&#x3D;utf8mb4</li>
+<li>排序方式：COLLATE&#x3D; utf8mb4 _0900_ai_ci</li>
+<li>COMMENT&#x3D;‘账户表’ 表示注释信息</li>
+</ul>
+<h3 id="查询数据库支持的引擎"><a href="#查询数据库支持的引擎" class="headerlink" title="查询数据库支持的引擎"></a>查询数据库支持的引擎</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">show engines;</span><br></pre></td></tr></table></figure>
+
+<p><img src="D:\blog\source_posts\MySQL原理.assets\image-20231015082229623.png" alt="image-20231015082229623"></p>
+<h3 id="创建表并指定引擎"><a href="#创建表并指定引擎" class="headerlink" title="创建表并指定引擎"></a>创建表并指定引擎</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">create table my(</span><br><span class="line">	id int,</span><br><span class="line">	name varchar(10)</span><br><span class="line">) engine = Memory;</span><br></pre></td></tr></table></figure>
+
+<h2 id="存储引擎特点"><a href="#存储引擎特点" class="headerlink" title="存储引擎特点"></a>存储引擎特点</h2><h3 id="InnoDB"><a href="#InnoDB" class="headerlink" title="InnoDB"></a>InnoDB</h3><h4 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h4><p>高可靠性和高性能的通用引擎，MySQL5.5之后的默认存储引擎</p>
+<h4 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h4><ul>
+<li>DML操作遵循ACID模型，支持事务</li>
+<li>行级锁，提高并发访问性能</li>
+<li>支持外键约束，保证书当局的完整性和正确性</li>
+</ul>
+<blockquote>
+<p>DML：数据增删改语句</p>
+<p>ACID：事务四大特性：原子性，一致性，隔离性，持久性</p>
+</blockquote>
+<h4 id="ibd文件"><a href="#ibd文件" class="headerlink" title="ibd文件"></a>ibd文件</h4><p>xxx.ibd：xxx是表名，innodb引擎的每个表都对应一个表空间文件，存储表的索引、数据和表结构（frm-&gt;sdi-&gt;ibd）</p>
+<ul>
+<li>参数：innodb_file_per_table：是否每个表都对应一个表空间文件（也有可能多个表共同享有一个表空间文件）</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">show variables like &#x27;innodb_file_per_table&#x27;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>存放位置：<code>C:\ProgramData\MySQL\MySQL Server 8.0\Data</code>下面数据库名字对应的文件夹里存放ibd文件，无法直接打开（因为是二进制的）</p>
+</li>
+<li><p>查看方式：在终端对应文件夹上打开，json文件形式</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ibd2sdi 名字.ibd</span><br></pre></td></tr></table></figure>
+
+<p><img src="D:\blog\source_posts\MySQL原理.assets\image-20231015084028534.png" alt="image-20231015084028534"></p>
+<h4 id="逻辑存储结构"><a href="#逻辑存储结构" class="headerlink" title="逻辑存储结构"></a>逻辑存储结构</h4><ul>
+<li>数据表中数据存放在Page里面</li>
+<li>一个page是磁盘操作的最小单元，大小也是固定的，16K</li>
+<li>一个Extent大小是固定的，1M。存放64个页</li>
+</ul>
+<p><img src="D:\blog\source_posts\MySQL原理.assets\image-20231015084458743.png" alt="image-20231015084458743"></p>
+<h3 id="MyISAM"><a href="#MyISAM" class="headerlink" title="MyISAM"></a>MyISAM</h3><h4 id="介绍-1"><a href="#介绍-1" class="headerlink" title="介绍"></a>介绍</h4><p>MySQL早期默认存储引擎</p>
+<h4 id="特点-1"><a href="#特点-1" class="headerlink" title="特点"></a>特点</h4><ul>
+<li>不支持事务，不支持外键</li>
+<li>支持表锁，不支持行锁</li>
+<li>访问速度快</li>
+</ul>
+<h4 id="在磁盘中的三种文件"><a href="#在磁盘中的三种文件" class="headerlink" title="在磁盘中的三种文件"></a>在磁盘中的三种文件</h4><p>MYD：存放数据</p>
+<p>MYI：存放索引</p>
+<p>SDI：存放表结构，一个文本文件，可以直接打开</p>
+<ul>
+<li>json.cn网站可格式化SDI文本信息</li>
+</ul>
+<h3 id="Memory"><a href="#Memory" class="headerlink" title="Memory"></a>Memory</h3><h4 id="介绍-2"><a href="#介绍-2" class="headerlink" title="介绍"></a>介绍</h4><p>表数据存储在内存中，受硬件或断电影响，只能将其作为临时表或缓存使用</p>
+<h4 id="特点-2"><a href="#特点-2" class="headerlink" title="特点"></a>特点</h4><ul>
+<li>由于存放位置-&gt;访问速度快</li>
+<li>hash索引</li>
+</ul>
+<h4 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h4><p>SDI文件：只存放表结构</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><h4 id="面试题：InnoDB与MyISAM的区别"><a href="#面试题：InnoDB与MyISAM的区别" class="headerlink" title="面试题：InnoDB与MyISAM的区别"></a>面试题：InnoDB与MyISAM的区别</h4><ol>
+<li>InnoDB支持事务，MyISAM不支持</li>
+<li>InnoDB支持外键，MyISAM不支持</li>
+<li>InnoDB锁机制支持行锁，MyISAM支持表锁</li>
+</ol>
+<p><img src="D:\blog\source_posts\MySQL原理.assets\image-20231015085400389.png" alt="image-20231015085400389"></p>
+<h2 id="存储引擎选择"><a href="#存储引擎选择" class="headerlink" title="存储引擎选择"></a>存储引擎选择</h2><h3 id="InnoDB-1"><a href="#InnoDB-1" class="headerlink" title="InnoDB"></a>InnoDB</h3><ul>
+<li>事务完整性有高要求</li>
+<li>对并发时数据一致性有要求</li>
+</ul>
+<h3 id="MyISAM-1"><a href="#MyISAM-1" class="headerlink" title="MyISAM"></a>MyISAM</h3><ul>
+<li>大多执行插入和读操作，很少执行更新和删除操作</li>
+<li>对事务完整性、并发性要求不高</li>
+</ul>
+<h4 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h4><ul>
+<li>日志</li>
+<li>电商的评论和浏览功能</li>
+</ul>
+<h4 id="现状"><a href="#现状" class="headerlink" title="现状"></a>现状</h4><ul>
+<li>被noSQL数据库取代，例如mongoDB</li>
+</ul>
+<h3 id="Memory-1"><a href="#Memory-1" class="headerlink" title="Memory"></a>Memory</h3><ul>
+<li>大小有限制</li>
+<li>对数据的安全性无法保证</li>
+</ul>
+<h4 id="举例-1"><a href="#举例-1" class="headerlink" title="举例"></a>举例</h4><p>临时表及缓存</p>
+<h4 id="现状-1"><a href="#现状-1" class="headerlink" title="现状"></a>现状</h4><ul>
+<li>被noSQL数据库取代，例如redis</li>
+</ul>
+<h1 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h1><h2 id="linux的mysql连接DG"><a href="#linux的mysql连接DG" class="headerlink" title="linux的mysql连接DG"></a>linux的mysql连接DG</h2><h3 id="创建一个新用户"><a href="#创建一个新用户" class="headerlink" title="创建一个新用户"></a>创建一个新用户</h3><p>本来就存在mysql</p>
+<p>故 直接开启服务</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo systemctl start mysql</span><br></pre></td></tr></table></figure>
+
+<p><img src="D:\blog\source_posts\MySQL原理.assets\image-20231015115437862.png" alt="image-20231015115437862"></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql -u root -p</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>之前在大数据原理课程已经设置了没有密码</li>
+</ul>
+<p><img src="D:\blog\source_posts\MySQL原理.assets\image-20231015115534293.png" alt="image-20231015115534293"></p>
+<ul>
+<li><p>创建一个root用户，在所有主机上都能访问，并且密码为1</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">create user &#x27;root&#x27;@&#x27;%&#x27; IDENTIFIED WITH mysql_native_password BY &#x27;1&#x27;;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p><img src="D:\blog\source_posts\MySQL原理.assets\image-20231015120028169.png" alt="image-20231015120028169"></p>
+<ul>
+<li><p>分配所有权限</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">grant all on *.* to &#x27;root&#x27;@&#x27;%&#x27;;</span><br></pre></td></tr></table></figure>
+
+<p><img src="D:\blog\source_posts\MySQL原理.assets\image-20231015120150925.png" alt="image-20231015120150925"></p>
+</li>
+</ul>
+<h3 id="datagrip连接"><a href="#datagrip连接" class="headerlink" title="datagrip连接"></a>datagrip连接</h3><h3 id="DataGrip连接linux的mysql"><a href="#DataGrip连接linux的mysql" class="headerlink" title="DataGrip连接linux的mysql"></a>DataGrip连接linux的mysql</h3><ul>
+<li>Linux的IP地址是 <code>192.168.109.128</code>。</li>
+</ul>
+<p><img src="D:\blog\source_posts\MySQL原理.assets\image-20231015120450329.png" alt="image-20231015120450329"></p>
+<h3 id="修改MySQL配置文件"><a href="#修改MySQL配置文件" class="headerlink" title="修改MySQL配置文件"></a>修改MySQL配置文件</h3><p>默认情况下，MySQL可能会绑定到localhost（127.0.0.1），这意味着只能从虚拟机本身访问MySQL。你需要配置MySQL以允许远程连接。修改MySQL配置文件（通常是<code>/etc/mysql/mysql.conf.d/mysqld.cnf</code>或<code>/etc/my.cnf</code>），将<code>bind-address</code>设置为虚拟机的IP地址，例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">bind-address = 192.168.109.128</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>我的MySQL配置文件存在于<code>/etc/mysql/mysql.conf.d/mysqld.cnf</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd /etc/mysql/mysql.conf.d</span><br><span class="line">sudo gedit mysqld.cnf</span><br></pre></td></tr></table></figure>
+
+<p><img src="D:\blog\source_posts\MySQL原理.assets\image-20231015121502997.png" alt="image-20231015121502997"></p>
+<p><img src="D:\blog\source_posts\MySQL原理.assets\image-20231015152444168.png" alt="image-20231015152444168"></p>
+</li>
+</ul>
+<h3 id="查看端口是否打开"><a href="#查看端口是否打开" class="headerlink" title="查看端口是否打开"></a>查看端口是否打开</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">telnet 虚拟机IP地址 端口号</span><br></pre></td></tr></table></figure>
+
+<p><img src="D:\blog\source_posts\MySQL原理.assets\image-20231015122943337.png" alt="image-20231015122943337"></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">netstat -tuln</span><br></pre></td></tr></table></figure>
+
+<p><img src="D:\blog\source_posts\MySQL原理.assets\image-20231015122917807.png" alt="image-20231015122917807"></p>
+<p>可以看出来3306端口开了，但是仍然是本机地址，无法远程连接</p>
+<h3 id="防火墙查看"><a href="#防火墙查看" class="headerlink" title="防火墙查看"></a>防火墙查看</h3><p>发现没有防火墙</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">systemctl start firewalld</span><br></pre></td></tr></table></figure>
+
+<p><img src="D:\blog\source_posts\MySQL原理.assets\image-20231015134318529.png" alt="image-20231015134318529"></p>
+<h3 id="重启mysql"><a href="#重启mysql" class="headerlink" title="重启mysql"></a>重启mysql</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo systemctl restart mysql</span><br></pre></td></tr></table></figure>
+
+<p>chatgpt之后发现，一直没连接上是因为没有重启mysql</p>
+<p><img src="D:\blog\source_posts\MySQL原理.assets\image-20231015133807786.png" alt="image-20231015133807786"></p>
+<p>重新查看端口</p>
+<p><img src="D:\blog\source_posts\MySQL原理.assets\image-20231015144939661.png" alt="image-20231015144939661"></p>
+<h3 id="进入mysql"><a href="#进入mysql" class="headerlink" title="进入mysql"></a>进入mysql</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql -u root -p</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="索引概述"><a href="#索引概述" class="headerlink" title="索引概述"></a>索引概述</h2><ul>
+<li>帮助MySQL<strong>高效获取数据</strong>的<strong>有序</strong>的<strong>数据结构</strong></li>
+</ul>
+<p>这些数据结构以某种方式<strong>引用（指向）</strong>数据</p>
+<ul>
+<li><p>无索引：全表扫描，将所有满足条件的查找出来</p>
+</li>
+<li><p>有索引：搜索效率高</p>
+<p><img src="D:\blog\source_posts\MySQL原理.assets\image-20231015134959015.png" alt="image-20231015134959015"></p>
+</li>
+</ul>
+<h2 id="索引优缺点"><a href="#索引优缺点" class="headerlink" title="索引优缺点"></a>索引优缺点</h2><h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ul>
+<li>帮助高效检索数据，降低数据库的IO成本</li>
+<li>通过索引对数据进行排序，降低数据排序的成本，降低CPU的消耗</li>
+</ul>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ul>
+<li>索引列占康健</li>
+<li>大大提高查询效率的同时，降低了更新表的速度，影响增删改的效率降低</li>
+</ul>
+<h2 id="索引结构"><a href="#索引结构" class="headerlink" title="索引结构"></a>索引结构</h2><h3 id="B-树索引"><a href="#B-树索引" class="headerlink" title="B+树索引"></a>B+树索引</h3><ul>
+<li>innodb，memory，myisam都支持，最常见的索引类型</li>
+</ul>
+<h3 id="hash索引"><a href="#hash索引" class="headerlink" title="hash索引"></a>hash索引</h3><ul>
+<li>底层数据结构使用哈希表实现，只有精确匹配索引列的查询才有效，不支持范围查询</li>
+</ul>
+<h3 id="R-tree（空间）索引"><a href="#R-tree（空间）索引" class="headerlink" title="R-tree（空间）索引"></a>R-tree（空间）索引</h3><ul>
+<li>MyISAM引擎的一个特殊索引类型</li>
+<li>主要用于地理空间数据类型，使用较少</li>
+</ul>
+<h3 id="Full-text（全文）索引"><a href="#Full-text（全文）索引" class="headerlink" title="Full-text（全文）索引"></a>Full-text（全文）索引</h3><ul>
+<li>通过建立倒排索引快速匹配文档的方式，类似于Lucene，Solr，ES</li>
+<li>使用较少</li>
+</ul>
+<h3 id="引擎和索引对应的支持情况"><a href="#引擎和索引对应的支持情况" class="headerlink" title="引擎和索引对应的支持情况"></a>引擎和索引对应的支持情况</h3><ul>
+<li>InnoDB中具有自适应hash功能，mysql在指定条件下，会根据查询条件，自动将B+树索引构建为哈希索引</li>
+</ul>
+<p><img src="D:\blog\source_posts\MySQL原理.assets\image-20231015140013512.png" alt="image-20231015140013512"></p>
+<h3 id="Btree"><a href="#Btree" class="headerlink" title="Btree"></a>Btree</h3><h4 id="二叉树弊端"><a href="#二叉树弊端" class="headerlink" title="二叉树弊端"></a>二叉树弊端</h4><ul>
+<li>顺序插入时，会形成一个链表，查询性能大大降低。【平衡问题】</li>
+<li>大数据量情况下，层级较深，检索速度慢</li>
+</ul>
+<h4 id="红黑树弊端"><a href="#红黑树弊端" class="headerlink" title="红黑树弊端"></a>红黑树弊端</h4><ul>
+<li>大数据量情况下，层级较深，检索速度慢</li>
+</ul>
+<p><img src="D:\blog\source_posts\MySQL原理.assets\image-20231015140912368.png" alt="image-20231015140912368"></p>
+<h4 id="B树"><a href="#B树" class="headerlink" title="B树"></a>B树</h4><p>演变网站：<a href="https://www.cs.usfca.edu/~galles/visualization/Algorithms.html">https://www.cs.usfca.edu/~galles/visualization/Algorithms.html</a></p>
+<p>以一颗最大度数为5（5阶）的b-tree为例，每个节点最多存储4个key，5个指针</p>
+<ul>
+<li>树的度数，是指一个结点的子节点个数</li>
+<li>中间元素向上分裂</li>
+</ul>
+<p><img src="D:\blog\source_posts\MySQL原理.assets\image-20231015141202584.png" alt="image-20231015141202584"></p>
+<h4 id="B-树"><a href="#B-树" class="headerlink" title="B+树"></a>B+树</h4><p>以一颗最大度数为4（4阶）的b-tree为例，每个节点最多存储3个key，4个指针</p>
+<ul>
+<li>叶子节点存放数据，所有元素出现在叶子节点</li>
+<li>所有叶子节点构成单向链表</li>
+<li>非叶子节点只是起到索引的作用</li>
+</ul>
+<p><img src="D:\blog\source_posts\MySQL原理.assets\image-20231015142707129.png" alt="image-20231015142707129"></p>
+<h4 id="MySQL中的B-树"><a href="#MySQL中的B-树" class="headerlink" title="MySQL中的B+树"></a>MySQL中的B+树</h4><p>在原B+树的基础上，增加一个指向相邻叶子节点的链表指针，形成带有顺序指针的B+树，提高区间访问的性能</p>
+<ul>
+<li>搜索效率稳定</li>
+<li>双向链表便于范围搜索和排序</li>
+</ul>
+<p><img src="D:\blog\source_posts\MySQL原理.assets\image-20231015142936796.png" alt="image-20231015142936796"></p>
+<h3 id="hash索引-1"><a href="#hash索引-1" class="headerlink" title="hash索引"></a>hash索引</h3><p>利用一定的hash算法，将键值换算成新的hash值，映射到对应的槽位上，然后存储在hash表中</p>
+<p><img src="D:\blog\source_posts\MySQL原理.assets\image-20231015143621831.png" alt="image-20231015143621831"></p>
+<h4 id="哈希冲突-x2F-碰撞"><a href="#哈希冲突-x2F-碰撞" class="headerlink" title="哈希冲突&#x2F;碰撞"></a>哈希冲突&#x2F;碰撞</h4><p>如果两个或多个简直，映射到一个相同的槽位时，就产生了哈希冲突&#x2F;碰撞，可以通过链表解决</p>
+<h4 id="特点-3"><a href="#特点-3" class="headerlink" title="特点"></a>特点</h4><ul>
+<li>只支持等值匹配（对等比较），不支持范围查询</li>
+<li>计算的结果无序，所以无法利用索引完成排序操作</li>
+<li>查询效率高，通常只需要一次检索，效率通常要高于B+树索引</li>
+</ul>
+<h2 id="索引面试题：为什么InnoDB存储引擎使用B-树索引，而不是二叉树，红黑树，B树"><a href="#索引面试题：为什么InnoDB存储引擎使用B-树索引，而不是二叉树，红黑树，B树" class="headerlink" title="索引面试题：为什么InnoDB存储引擎使用B+树索引，而不是二叉树，红黑树，B树"></a>索引面试题：为什么InnoDB存储引擎使用B+树索引，而不是二叉树，红黑树，B树</h2><p><img src="D:\blog\source_posts\MySQL原理.assets\image-20231015144524283.png" alt="image-20231015144524283"></p>
+<h2 id="索引分类"><a href="#索引分类" class="headerlink" title="索引分类"></a>索引分类</h2><p><img src="D:\blog\source_posts\MySQL原理.assets\image-20231015144710307.png" alt="image-20231015144710307"></p>
+<h3 id="主键索引"><a href="#主键索引" class="headerlink" title="主键索引"></a>主键索引</h3><h3 id="唯一索引"><a href="#唯一索引" class="headerlink" title="唯一索引"></a>唯一索引</h3><h3 id="常规索引"><a href="#常规索引" class="headerlink" title="常规索引"></a>常规索引</h3><h3 id="全文索引"><a href="#全文索引" class="headerlink" title="全文索引"></a>全文索引</h3><h3 id="InnoDB引擎下的索引分类"><a href="#InnoDB引擎下的索引分类" class="headerlink" title="InnoDB引擎下的索引分类"></a>InnoDB引擎下的索引分类</h3><p><img src="D:\blog\source_posts\MySQL原理.assets\image-20231015144815537.png" alt="image-20231015144815537"></p>
+<h4 id="聚集索引"><a href="#聚集索引" class="headerlink" title="聚集索引"></a>聚集索引</h4><p>无论如何一定存在</p>
+<p>结构：叶子节点所挂的数据就是主键对应<strong>那一行的行数据</strong></p>
+<ul>
+<li>选取规则<ul>
+<li>如果存在主键，默认<strong>主键索引</strong>就是聚集索引</li>
+<li>如果不存在主键，使用<strong>唯一索引</strong>作为聚集索引</li>
+<li>如果没有主键，也没有合适的唯一索引，innodb会自动生成一个<strong>rowid</strong>作为隐藏的聚集索引</li>
+</ul>
+</li>
+</ul>
+<h4 id="二级索引"><a href="#二级索引" class="headerlink" title="二级索引"></a>二级索引</h4><p>结构：叶子节点所挂的数据时主键</p>
+<p><img src="D:\blog\source_posts\MySQL原理.assets\image-20231015145444265.png" alt="image-20231015145444265"></p>
+<h5 id="回表查询"><a href="#回表查询" class="headerlink" title="回表查询"></a>回表查询</h5><p>先走二级索引获得主键值，再通过主键索引找到主键所对应的行数据</p>
+<h4 id="难题"><a href="#难题" class="headerlink" title="难题"></a>难题</h4><p><img src="D:\blog\source_posts\MySQL原理.assets\image-20231015150156548.png" alt="image-20231015150156548"></p>
+<h2 id="索引语法"><a href="#索引语法" class="headerlink" title="索引语法"></a>索引语法</h2><h3 id="创建索引"><a href="#创建索引" class="headerlink" title="创建索引"></a>创建索引</h3><ul>
+<li>[UNIQUE|FULLTEXT]   不指定的话，默认是常规索引</li>
+<li>一个索引可以关联多个字段：单列索引&#x2F; 联合（组合）索引</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">CREATE [UNIQUE|FULLTEXT] INDEX index_name ON table_name (index_col_name,...);</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看索引"><a href="#查看索引" class="headerlink" title="查看索引"></a>查看索引</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SHOW INDEX FROM table_name;</span><br><span class="line">//或者</span><br><span class="line">SHOW INDEX FROM table_name\G;</span><br></pre></td></tr></table></figure>
+
+<h3 id="删除索引"><a href="#删除索引" class="headerlink" title="删除索引"></a>删除索引</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">DROP INDEX index_name ON table_name;</span><br></pre></td></tr></table></figure>
+
+<h3 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h3><h4 id="查看数据库"><a href="#查看数据库" class="headerlink" title="查看数据库"></a>查看数据库</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">show databases;</span><br></pre></td></tr></table></figure>
+
+<p><img src="D:\blog\source_posts\MySQL原理.assets\image-20231015150957732.png" alt="image-20231015150957732"></p>
+<h4 id="新建数据库"><a href="#新建数据库" class="headerlink" title="新建数据库"></a>新建数据库</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">create database name;</span><br></pre></td></tr></table></figure>
+
+<p><img src="D:\blog\source_posts\MySQL原理.assets\image-20231015151051100.png" alt="image-20231015151051100"></p>
+<h4 id="进入指定数据库"><a href="#进入指定数据库" class="headerlink" title="进入指定数据库"></a>进入指定数据库</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">use name;</span><br></pre></td></tr></table></figure>
+
+<p><img src="D:\blog\source_posts\MySQL原理.assets\image-20231015151201380.png" alt="image-20231015151201380"></p>
+<h4 id="展示数据表"><a href="#展示数据表" class="headerlink" title="展示数据表"></a>展示数据表</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">show tables;</span><br></pre></td></tr></table></figure>
+
+<p><img src="D:\blog\source_posts\MySQL原理.assets\image-20231015151234699.png" alt="image-20231015151234699"></p>
+<h4 id="创建数据表"><a href="#创建数据表" class="headerlink" title="创建数据表"></a>创建数据表</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">create table table_name(column1 INT, column2 CHAR(20), column3 INT);</span><br></pre></td></tr></table></figure>
+
+<p><img src="D:\blog\source_posts\MySQL原理.assets\image-20231015151403382.png" alt="image-20231015151403382"></p>
+<h4 id="展示数据表-1"><a href="#展示数据表-1" class="headerlink" title="展示数据表"></a>展示数据表</h4><p>展示已经创建的数据表</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">show create table table_name;</span><br></pre></td></tr></table></figure>
+
+<p><img src="D:\blog\source_posts\MySQL原理.assets\image-20231015151505608.png" alt="image-20231015151505608"></p>
+<h2 id="SQL性能分析"><a href="#SQL性能分析" class="headerlink" title="SQL性能分析"></a>SQL性能分析</h2><h2 id="索引使用"><a href="#索引使用" class="headerlink" title="索引使用"></a>索引使用</h2><h2 id="索引设计原则"><a href="#索引设计原则" class="headerlink" title="索引设计原则"></a>索引设计原则</h2><h1 id="SQL优化"><a href="#SQL优化" class="headerlink" title="SQL优化"></a>SQL优化</h1><h1 id="视图-x2F-存储过程-x2F-触发器-x2F-存储函数"><a href="#视图-x2F-存储过程-x2F-触发器-x2F-存储函数" class="headerlink" title="视图&#x2F;存储过程&#x2F;触发器&#x2F;存储函数"></a>视图&#x2F;存储过程&#x2F;触发器&#x2F;存储函数</h1><h1 id="锁-表锁-行锁"><a href="#锁-表锁-行锁" class="headerlink" title="锁 表锁 行锁"></a>锁 表锁 行锁</h1><h1 id="InnoDB原理"><a href="#InnoDB原理" class="headerlink" title="InnoDB原理"></a>InnoDB原理</h1><h1 id="MySQL管理"><a href="#MySQL管理" class="headerlink" title="MySQL管理"></a>MySQL管理</h1>]]></content>
+      <categories>
+        <category>MySQL</category>
+      </categories>
+      <tags>
+        <tag>MySQL</tag>
+      </tags>
   </entry>
   <entry>
     <title>go语言指南</title>
@@ -261,60 +854,123 @@
       </tags>
   </entry>
   <entry>
-    <title>word2vec</title>
-    <url>/2023/07/24/word2vec/</url>
-    <content><![CDATA[<p>论文地址：[<a href="https://arxiv.org/abs/1701.06279">1701.06279] dna2vec：可变长度 k-mers 的一致向量表示 (arxiv.org)</a></p>
-<p>word文档：</p>
-<h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><p>NLP领域的技术，将词转化为“可计算”向量的过程</p>
-<h1 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h1><p>降低维度</p>
-<p>词语之间的相似性</p>
-<h1 id="实现方法"><a href="#实现方法" class="headerlink" title="实现方法"></a>实现方法</h1><p>CBOW模型：给定上下文，预测目标词</p>
-<h1 id="dna2vec：可变长度-k-mers-的一致向量表示"><a href="#dna2vec：可变长度-k-mers-的一致向量表示" class="headerlink" title="dna2vec：可变长度 k-mers 的一致向量表示"></a>dna2vec：可变长度 k-mers 的一致向量表示</h1>]]></content>
-      <tags>
-        <tag>NLP</tag>
-      </tags>
+    <title>Hello World</title>
+    <url>/2023/07/14/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
   </entry>
   <entry>
-    <title>网站搭建</title>
-    <url>/2023/08/30/%E6%90%AD%E5%BB%BA%E7%BD%91%E7%AB%99/</url>
-    <content><![CDATA[<h1 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h1><figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 添加全局前置守卫</span></span><br><span class="line">router.<span class="title function_">beforeEach</span>(<span class="function">(<span class="params">to, <span class="keyword">from</span>, next</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// const requiresAuth = to.matched.some(record =&gt; record.meta.requiresAuth);</span></span><br><span class="line">    <span class="keyword">const</span> isCookieValid = <span class="title function_">validateCookie</span>(); <span class="comment">// 调用验证 cookie 的函数</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 如果目标为登录页面，则直接放行导航</span></span><br><span class="line">    <span class="keyword">if</span> (to.<span class="property">path</span> === <span class="string">&#x27;/login&#x27;</span> || to.<span class="property">path</span> === <span class="string">&#x27;/admin&#x27;</span>) &#123;</span><br><span class="line">        <span class="title function_">next</span>(); <span class="comment">// 如果目标路径已经是登录路径，则直接放行导航</span></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (isCookieValid) &#123;</span><br><span class="line">        <span class="comment">// cookie 有效，或者不需要验证，继续导航到目标页面</span></span><br><span class="line">        <span class="title function_">next</span>();</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// 如果需要验证且 cookie 无效，重定向到登录页面</span></span><br><span class="line">        <span class="title function_">next</span>(<span class="string">&#x27;/login&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 解密 DES 函数</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">decryptDES</span>(<span class="params">ciphertext: <span class="built_in">string</span>, key: <span class="built_in">string</span>, iv: <span class="built_in">string</span></span>): <span class="built_in">string</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> decrypted = <span class="title class_">CryptoJS</span>.<span class="property">DES</span>.<span class="title function_">decrypt</span>(&#123;</span><br><span class="line">        <span class="attr">ciphertext</span>: <span class="title class_">CryptoJS</span>.<span class="property">enc</span>.<span class="property">Hex</span>.<span class="title function_">parse</span>(ciphertext),</span><br><span class="line">    &#125;, <span class="title class_">CryptoJS</span>.<span class="property">enc</span>.<span class="property">Utf8</span>.<span class="title function_">parse</span>(key), &#123;</span><br><span class="line">        <span class="attr">iv</span>: <span class="title class_">CryptoJS</span>.<span class="property">enc</span>.<span class="property">Hex</span>.<span class="title function_">parse</span>(iv),</span><br><span class="line">        <span class="attr">mode</span>: <span class="title class_">CryptoJS</span>.<span class="property">mode</span>.<span class="property">CBC</span>,</span><br><span class="line">        <span class="attr">padding</span>: <span class="title class_">CryptoJS</span>.<span class="property">pad</span>.<span class="property">Pkcs7</span>,</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> decrypted.<span class="title function_">toString</span>(<span class="title class_">CryptoJS</span>.<span class="property">enc</span>.<span class="property">Utf8</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 验证 cookie 的函数</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">validateCookie</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> cookies = <span class="variable language_">document</span>.<span class="property">cookie</span>.<span class="title function_">split</span>(<span class="string">&#x27;;&#x27;</span>); <span class="comment">// 将所有 Cookie 拆分成数组</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; cookies.<span class="property">length</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">const</span> cookie = cookies[i].<span class="title function_">trim</span>().<span class="title function_">split</span>(<span class="string">&#x27;=&#x27;</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> (cookie[<span class="number">0</span>] == <span class="string">&#x27;expiration_time&#x27;</span>) &#123;</span><br><span class="line">            <span class="keyword">const</span> ciphertext = cookie[<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">const</span> key = <span class="string">&#x27;88888888&#x27;</span>;</span><br><span class="line">            <span class="keyword">const</span> iv = <span class="string">&#x27;0000000000000000&#x27;</span>;</span><br><span class="line">            <span class="keyword">const</span> plaintext = <span class="title function_">decryptDES</span>(ciphertext, key, iv);</span><br><span class="line">            <span class="comment">// 将 plaintext 转换为数字</span></span><br><span class="line">            <span class="keyword">const</span> expiration_time = <span class="built_in">parseInt</span>(plaintext);</span><br><span class="line">            <span class="comment">// 获取当前时间戳</span></span><br><span class="line">            <span class="keyword">const</span> timestamp = <span class="title class_">Date</span>.<span class="title function_">parse</span>(<span class="keyword">new</span> <span class="title class_">Date</span>().<span class="title function_">toString</span>()) / <span class="number">1000</span>;</span><br><span class="line">            <span class="keyword">if</span> (expiration_time &gt; timestamp) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>; <span class="comment">// 如果 cookie 有效，返回 true</span></span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>; <span class="comment">// 如果 cookie 无效，返回 false</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>; <span class="comment">// 如果未找到 expiration_time，返回 false</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> router;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="to-from-next"><a href="#to-from-next" class="headerlink" title="(to, from, next)"></a>(to, from, next)</h2><blockquote>
-<p><code>(to, from, next)</code> 是 Vue Router 中全局前置守卫函数的参数，用于控制路由导航的流程。这三个参数分别代表了：</p>
-<ol>
-<li><code>to</code>：即将进入的目标路由对象，表示用户要导航到的路由。</li>
-<li><code>from</code>：即将离开的当前路由对象，表示用户要离开的路由。</li>
-<li><code>next</code>：一个回调函数，用于控制路由导航是否继续进行。它可以接受一个参数，用于指定导航的下一个步骤，如继续导航到目标路由、中断导航或重定向到其他路由。</li>
-</ol>
-<p>在全局前置守卫函数内部，你可以根据 <code>to</code> 和 <code>from</code> 的信息，来进行路由导航的控制和判断。<code>next</code> 函数则决定了路由是否继续进行，有以下用法：</p>
-<ul>
-<li><code>next()</code>：继续导航到目标路由，相当于放行。</li>
-<li><code>next(false)</code>：中断导航，不进行路由切换。</li>
-<li><code>next(&#39;/path&#39;)</code>：重定向到其他路径，相当于进行路由跳转。</li>
-</ul>
+    <title>java面试专题</title>
+    <url>/2023/10/11/java%E9%9D%A2%E8%AF%95%E4%B8%93%E9%A2%98/</url>
+    <content><![CDATA[<h1 id="学习视频"><a href="#学习视频" class="headerlink" title="学习视频"></a>学习视频</h1><p><a href="https://www.bilibili.com/video/BV1yT411H7YK/?p=4&spm_id_from=333.1007.top_right_bar_window_history.content.click">新版Java面试专题视频教程，java八股文面试全套真题+深度详解（含大厂高频面试真题）</a></p>
+<h2 id="学习进度"><a href="#学习进度" class="headerlink" title="学习进度"></a>学习进度</h2><blockquote>
+<p>2023&#x2F;10&#x2F;14： 9&#x2F;150</p>
 </blockquote>
+<h1 id="简历筛选规则"><a href="#简历筛选规则" class="headerlink" title="简历筛选规则"></a>简历筛选规则</h1><p><img src="D:\blog\source_posts\java面试专题.assets\3befaf47dda89c3bcf2cdeff06e7008.png" alt="3befaf47dda89c3bcf2cdeff06e7008"></p>
+<h1 id="简历怎么写？"><a href="#简历怎么写？" class="headerlink" title="简历怎么写？"></a>简历怎么写？</h1><p><img src="D:\blog\source_posts\java面试专题.assets\5c1a66b01da32e6656e88e958f2a30d.png" alt="5c1a66b01da32e6656e88e958f2a30d"></p>
+<h1 id="项目怎么找？"><a href="#项目怎么找？" class="headerlink" title="项目怎么找？"></a>项目怎么找？</h1><p><img src="D:\blog\source_posts\java面试专题.assets\189549ead4ac68c0649d9bfea0f76e1.jpg" alt="189549ead4ac68c0649d9bfea0f76e1"></p>
+<h1 id="找到项目关注什么？"><a href="#找到项目关注什么？" class="headerlink" title="找到项目关注什么？"></a>找到项目关注什么？</h1><p><img src="D:\blog\source_posts\java面试专题.assets\c1fdefec53457881001e8ae9c7c6708.png" alt="c1fdefec53457881001e8ae9c7c6708"></p>
+<h1 id="如何深入理解业务？"><a href="#如何深入理解业务？" class="headerlink" title="如何深入理解业务？"></a>如何深入理解业务？</h1><p><img src="D:\blog\source_posts\java面试专题.assets\bc2ac308ffcac881db83b1991910a99.jpg" alt="bc2ac308ffcac881db83b1991910a99"></p>
+<p><img src="D:\blog\source_posts\java面试专题.assets\09e49bd65146464c243caf11ae20865.jpg" alt="09e49bd65146464c243caf11ae20865"></p>
+<h1 id="面试过程"><a href="#面试过程" class="headerlink" title="面试过程"></a>面试过程</h1><p><img src="D:\blog\source_posts\java面试专题.assets\e70e01387d135eeed125c6d94b35962.jpg" alt="e70e01387d135eeed125c6d94b35962"></p>
+<p><img src="D:\blog\source_posts\java面试专题.assets\f7dd20f81c9c604b0454222f6643ed9.jpg" alt="f7dd20f81c9c604b0454222f6643ed9"></p>
+<h1 id="redis"><a href="#redis" class="headerlink" title="redis"></a>redis</h1><h2 id="总述"><a href="#总述" class="headerlink" title="总述"></a>总述</h2><h3 id="使用场景："><a href="#使用场景：" class="headerlink" title="使用场景："></a>使用场景：</h3><p>常考：缓存，分布式锁（互斥锁）</p>
+<p>计数器：使用redis的incr命令</p>
+<p>保存token：使用redis的<code>string</code>类型存储</p>
+<p>消息队列：使用redis的<code>list</code>类型存储</p>
+<p>延迟队列：</p>
+<h3 id="其他面试题："><a href="#其他面试题：" class="headerlink" title="其他面试题："></a>其他面试题：</h3><p>集群、事务、redis为什么这么快</p>
+<p><img src="D:\blog\source_posts\java面试专题.assets\4304a9d5cd92f08058c4b41ba537040.jpg" alt="4304a9d5cd92f08058c4b41ba537040"></p>
+<p><img src="D:\blog\source_posts\java面试专题.assets\c041af30679559ee599d471cd6a2ccb.jpg" alt="c041af30679559ee599d471cd6a2ccb"></p>
+<p><img src="D:\blog\source_posts\java面试专题.assets\772e19d4e9153b67956b55fc07c44ae.jpg" alt="772e19d4e9153b67956b55fc07c44ae"></p>
+<p><img src="D:\blog\source_posts\java面试专题.assets\22de2c5d266b2ae5d96aae9a2a21675.jpg" alt="22de2c5d266b2ae5d96aae9a2a21675"></p>
+<h2 id="缓存-缓存穿透"><a href="#缓存-缓存穿透" class="headerlink" title="缓存-缓存穿透"></a>缓存-缓存穿透</h2><h3 id="正常的读取缓存机制："><a href="#正常的读取缓存机制：" class="headerlink" title="正常的读取缓存机制："></a>正常的读取缓存机制：</h3><p>一个普通的get请求，通过api发送id给redis，如果redis中有存储的数据，则直接返回数据；如果没有，则发送给数据库，数据库就返回数据，并将其存储至redis中。</p>
+<h3 id="概念："><a href="#概念：" class="headerlink" title="概念："></a>概念：</h3><p>一个不存在的数据，mysql无法查询到，也无法访问缓存，因此会导致每次请求都查数据库。当数据库的请求过多，就会击垮数据库，导致宕机。</p>
+<h3 id="解决方法一"><a href="#解决方法一" class="headerlink" title="解决方法一"></a>解决方法一</h3><p>缓存空数据，查询返回的数据为空，仍把这个空结果进行缓存</p>
+<h4 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h4><p>优点：简单</p>
+<p>缺点：消耗redis内存，可能会发生不一致的问题（后面数据添加上以后，redis仍然存储为null，而数据库中已经有新的数据）</p>
+<p><img src="D:\blog\source_posts\java面试专题.assets\092716e631629f9694ef81b6c88f680.jpg" alt="092716e631629f9694ef81b6c88f680"></p>
+<h3 id="解决方法二"><a href="#解决方法二" class="headerlink" title="解决方法二"></a>解决方法二</h3><p>布隆过滤器</p>
+<p>前提：缓存预热的时候，需要预热布隆过滤器。（意思是：数据库往redis中添加数据库的时候，同时往布隆过滤器里面添加）</p>
+<p>作用：拦截不存在的数据</p>
+<p><img src="D:\blog\source_posts\java面试专题.assets\7b374e39861366f763a3e755995cdfb.jpg" alt="7b374e39861366f763a3e755995cdfb"></p>
+<h4 id="优缺点-1"><a href="#优缺点-1" class="headerlink" title="优缺点"></a>优缺点</h4><p>优点：内存占用较少，没有多余的key（{key:value}）</p>
+<p>缺点：实现复杂，有可能存在误判，但是可以控制误判率</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">bloomFilter.tryInit(size,<span class="number">0.05</span>);<span class="comment">//表示5%的误判率</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="D:\blog\source_posts\java面试专题.assets\bc5ac00657ee98c10e223280baa9ec1.jpg" alt="bc5ac00657ee98c10e223280baa9ec1"></p>
+<h2 id="缓存-缓存击穿"><a href="#缓存-缓存击穿" class="headerlink" title="缓存-缓存击穿"></a>缓存-缓存击穿</h2><h3 id="概念：-1"><a href="#概念：-1" class="headerlink" title="概念："></a>概念：</h3><p>当给一个key设置了一个过期时间，当key过期的时候，恰好这个时间点对这个key有大量的并发请求过来，这些并发的请求会将DB击垮</p>
+<p><img src="D:\blog\source_posts\java面试专题.assets\40a1ec756a1c4bc5853436ed147fa0b.jpg" alt="40a1ec756a1c4bc5853436ed147fa0b"></p>
+<h3 id="疑问："><a href="#疑问：" class="headerlink" title="疑问："></a>疑问：</h3><ol>
+<li>在缓存重建的过程中可能时间过长，在这段时间正好有大量的并发请求</li>
+<li>时间过长的原因：有些情况下，存入缓存的数据可能是多个表汇总的结果，需要分图统计</li>
+</ol>
+<p><img src="D:\blog\source_posts\java面试专题.assets\4c4b15c8e71e846625659918e201054.jpg" alt="4c4b15c8e71e846625659918e201054"></p>
+<h3 id="解决方法一-1"><a href="#解决方法一-1" class="headerlink" title="解决方法一"></a>解决方法一</h3><p>互斥锁</p>
+<ul>
+<li>强一致</li>
+<li>性能差</li>
+</ul>
+<h3 id="解决方法二-1"><a href="#解决方法二-1" class="headerlink" title="解决方法二"></a>解决方法二</h3><p>逻辑过期</p>
+<ul>
+<li>高可用</li>
+<li>性能优</li>
+</ul>
+<p><img src="D:\blog\source_posts\java面试专题.assets\b4f64b4eafc4300c8136d558ef530b1.jpg" alt="b4f64b4eafc4300c8136d558ef530b1"></p>
+<h2 id="缓存-缓存雪崩"><a href="#缓存-缓存雪崩" class="headerlink" title="缓存-缓存雪崩"></a>缓存-缓存雪崩</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>在同一时间段大量的缓存key同时失效或者redis服务宕机，导致大量请求到达数据库，带来巨大压力</p>
+<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><ul>
+<li><p>缓存key同时失效：给不同的key的TTL添加随机值，使不同key有不同的过期时间</p>
+</li>
+<li><p>redis服务宕机：利用redis集群提高服务的可用性，例如：哨兵模式，集群模式</p>
+</li>
+<li><p>给缓存业务添加降级限流策略，例如：在ngxin或springcloud 的网关中设计限流的规则</p>
+</li>
+<li><p>给业务添加多级缓存，预防大量key失效，例如：Guava或Caffeine</p>
+</li>
+</ul>
+<p><img src="D:\blog\source_posts\java面试专题.assets\8514355433f735d1ded4e09a9659718.jpg" alt="8514355433f735d1ded4e09a9659718"></p>
+<p><img src="D:\blog\source_posts\java面试专题.assets\8ae768cd584dcc699a49e9cc6c83174.jpg" alt="8ae768cd584dcc699a49e9cc6c83174"></p>
 ]]></content>
+      <categories>
+        <category>java,面试,八股文,简历</category>
+      </categories>
       <tags>
-        <tag>router,部署,前端</tag>
+        <tag>java,面试,八股文,简历</tag>
       </tags>
   </entry>
   <entry>
     <title>java学习</title>
     <url>/2023/10/04/java%E5%AD%A6%E4%B9%A0/</url>
-    <content><![CDATA[<blockquote>
-<p>学习课程：</p>
-<p>学习进度：韩顺平 0基础学java</p>
+    <content><![CDATA[<h2 id="学习进度："><a href="#学习进度：" class="headerlink" title="学习进度："></a>学习进度：</h2><blockquote>
+<p>学习课程：韩顺平 0基础学java</p>
 <p>2023&#x2F;10&#x2F;5： 11&#x2F;910</p>
-<p>2023&#x2F;10&#x2F;6：</p>
-<p>2023&#x2F;10&#x2F;7：</p>
-<p>2023&#x2F;10&#x2F;8：</p>
-<p>2023&#x2F;10&#x2F;9：</p>
-<p>2023&#x2F;10&#x2F;10：</p>
-<p>2023&#x2F;10&#x2F;11：</p>
-<p>2023&#x2F;10&#x2F;12：</p>
-<p>2023&#x2F;10&#x2F;13：</p>
+<p>2023&#x2F;10&#x2F;6： 21&#x2F;910</p>
+<p>2023&#x2F;10&#x2F;7： 45&#x2F;910</p>
+<p>2023&#x2F;10&#x2F;8： 82&#x2F;910</p>
+<p>2023&#x2F;10&#x2F;9： 122&#x2F;910</p>
+<p>2023&#x2F;10&#x2F;10： 127&#x2F;910</p>
+<p>2023&#x2F;10&#x2F;11： 135&#x2F;910</p>
+<p>2023&#x2F;10&#x2F;12： -&#x2F;910</p>
+<p>2023&#x2F;10&#x2F;13： -&#x2F;910</p>
+<p>2023&#x2F;10&#x2F;14： 156&#x2F;910</p>
+<p>2023&#x2F;10&#x2F;15： &#x2F;910</p>
+<p>2023&#x2F;10&#x2F;16： &#x2F;910</p>
+<p>2023&#x2F;10&#x2F;17： &#x2F;910</p>
+<p>2023&#x2F;10&#x2F;18： &#x2F;910</p>
+<p>2023&#x2F;10&#x2F;19： &#x2F;910</p>
+<p>2023&#x2F;10&#x2F;20： &#x2F;910</p>
 </blockquote>
 <h1 id="Java全栈知识体系"><a href="#Java全栈知识体系" class="headerlink" title="Java全栈知识体系"></a>Java全栈知识体系</h1><p>参考文档:<a href="https://pdai.tech/md/resource/tools.html">https://pdai.tech/md/resource/tools.html</a></p>
 <h1 id="学习路线"><a href="#学习路线" class="headerlink" title="学习路线"></a>学习路线</h1><p>参考：<a href="https://yuyuanweb.feishu.cn/wiki/RxC8w2uFQiHspQk4L3qcyjBunZd">https://yuyuanweb.feishu.cn/wiki/RxC8w2uFQiHspQk4L3qcyjBunZd</a></p>
@@ -328,6 +984,7 @@
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">java test</span><br><span class="line">//java test.class会报错 因为找到的应该是主类</span><br></pre></td></tr></table></figure>
 
 <p><img src="D:\blog\source_posts\java学习.assets\image-20231006184704528.png" alt="image-20231006184704528"></p>
+<p>.java文件首先进行编译，生成一个字节码文件.class文件，此时并不能被机器直接运行，当启动jvm虚拟机以后，再运行程序，.class文件会在jvm虚拟机里面运行。</p>
 <h1 id="Java基础知识"><a href="#Java基础知识" class="headerlink" title="Java基础知识"></a>Java基础知识</h1><h2 id="Java之父"><a href="#Java之父" class="headerlink" title="Java之父"></a>Java之父</h2><p>gosling</p>
 <h2 id="Java第一个版本诞生年份"><a href="#Java第一个版本诞生年份" class="headerlink" title="Java第一个版本诞生年份"></a>Java第一个版本诞生年份</h2><p>1995</p>
 <h2 id="Java最新版本"><a href="#Java最新版本" class="headerlink" title="Java最新版本"></a>Java最新版本</h2><p>15</p>
@@ -338,6 +995,9 @@
 <p>Java ME小型版 micro edition</p>
 <h1 id="Java重要特点"><a href="#Java重要特点" class="headerlink" title="Java重要特点"></a>Java重要特点</h1><p>面向对象（oop）</p>
 <p>语言是健壮的：强类型机制，异常处理，垃圾的自动收集</p>
+<blockquote>
+<p>强类型：必须指定每个数据的类型，并且在内存分配不同大小的内存空间</p>
+</blockquote>
 <p>跨平台：.class文件可以通过JVM（java虚拟机，安装了jdk，jvm也顺带安装了），一个解释器，在windows和linux等不同操作系统上面运行</p>
 <p>解释型语言：操作系统会提供一个解释器，对.class文件进行解释</p>
 <blockquote>
@@ -350,13 +1010,18 @@
 <p>一次编译，到处执行</p>
 <h1 id="JDK"><a href="#JDK" class="headerlink" title="JDK"></a>JDK</h1><p>Java development kit </p>
 <p>Java开发工具包</p>
-<p>JDK &#x3D; JRE + Java开发工具（java，javac，javadoc，javap等）</p>
+<p>JDK &#x3D; JRE（Java Runtime Environment） + Java开发工具（java，javac，javadoc，javap等）</p>
 <p>JRE &#x3D; JVM +Java核心类库</p>
 <blockquote>
 <p>终端里面运行的 javac test.java 的“javac”就是一项开发工具</p>
 </blockquote>
 <h2 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h2><p>当前执行的程序在当前目录下如果不存在，操作系统会在系统中已有的path环境变量指定的目录中寻找。如果未找到，会报错“不是内部或外部命令，也不是可运行程序或批处理文件”</p>
+<p>作用：为了让dos的任意目录可以使用java，javac等命令</p>
+<p>用户变量：是对当前用户生效</p>
+<p>系统变量：是对所有用户都生效</p>
 <h1 id="编译器"><a href="#编译器" class="headerlink" title="编译器"></a>编译器</h1><p>编译器是一个特殊的程序，它可将用编程语言编写的程序转换成一系列的机器代码。</p>
+<h1 id="编码"><a href="#编码" class="headerlink" title="编码"></a>编码</h1><p>参考网址：<a href="https://blog.csdn.net/weixin_45490021/article/details/129411170">https://blog.csdn.net/weixin_45490021/article/details/129411170</a></p>
+<p>问题：下载sublime Text以后无法设置文件编码，参考上面网址，成功解决。</p>
 <h1 id="原则"><a href="#原则" class="headerlink" title="原则"></a>原则</h1><p>每个命令都单独占用一行。分号必须放在命令的末尾。</p>
 <p>“一个程序不能只包含命令。”在 Java 编程语言中，命令不能单独存在。它是函数的一部分（在 Java 语言中，‘函数’也称为‘方法’）。方法是类的一部分。换句话说，类被划分为多个方法，而方法被划分为多个命令。因此，类就是一个公寓楼，函数&#x2F;方法是一个公寓，而命令是一个房间。</p>
 <p>对大小写敏感</p>
@@ -385,10 +1050,6 @@
 
 
 <h1 id="输出命令"><a href="#输出命令" class="headerlink" title="输出命令"></a>输出命令</h1><p><code>System.out.println()</code> 命令，每次打印完会换行。 <code>System.out.print()</code> 命令，打印不换行。</p>
-<h1 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h1><p>变量是用来存储数据的特殊实体。</p>
-<h2 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h2><p>类型、名称和值</p>
-<p>值是存储在变量中的特定对象、数据或信息。</p>
-<p>变量名不能包含空格、加号、减号等。最好在一个变量名中只使用字母和数字</p>
 <h1 id="命名"><a href="#命名" class="headerlink" title="命名"></a>命名</h1><p>.java文件是源文件</p>
 <p>.class文件是字节码文件</p>
 <h1 id="转义符"><a href="#转义符" class="headerlink" title="转义符"></a>转义符</h1><blockquote>
@@ -403,14 +1064,754 @@
 <p>\r :回车，光标会回到当前行的第一个字符，并且替换后面的字符</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">韩顺平\r北京      最后输出：北京平</span><br></pre></td></tr></table></figure>
 
-
 </blockquote>
+<h1 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h1><p>注释的文字不会被jvm执行</p>
+<p>多行注释里面不可以嵌套多行注释</p>
+<h2 id="文档注释"><a href="#文档注释" class="headerlink" title="文档注释"></a>文档注释</h2><p>注释内容可以被javadoc解析，生成一套以网页文件形式体现的该程序的说明文档。一般写在类</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">javadoc -d 文件名 -xx -yy test.java</span><br></pre></td></tr></table></figure>
+
+<p>-xx是标签 -yy也是标签，需要全部列举</p>
+<h1 id="javadoc标签"><a href="#javadoc标签" class="headerlink" title="javadoc标签"></a>javadoc标签</h1><p><a href="https://blog.csdn.net/qq_43085982/article/details/130381243">https://blog.csdn.net/qq_43085982/article/details/130381243</a></p>
+<p>标签	含义<br>@author	指定作者<br>{@code}	使用代码字体以原样显示信息，不处理HTML样式<br>@deprecated	指定程序元素已经过时<br>{@docRoot}	指定当前文档的根目录路径<br>@exception	标识由方法或构造函数抛出的异常<br>{@inheritDoc}	从直接超类中继承注释<br>{@link}	插入指向另外一个主题的内联链接<br>{@linkplain}	插入指向另外一个主题的内联链接，但是链接以明文显示<br>{@literal}	以原样显示信息，不处理 HTML 样式<br>@param	文档化参数<br>@return	文档化方法的返回值<br>@see	指定到另一个主题的链接<br>@serial	文档化默认的可串行化文本域<br>@serialData	文档化由 writeObject()或writeExternal()方法写入的数据<br>@serialField	文档化ObjectStreamField组件<br>@since	当引入特定的变化时，声明发布版本<br>@throws	与@exception 相同<br>{@value}	显示常量的值，常量必须是static 类型<br>@version	指定类的版本</p>
+<h3 id="查看javadoc的版本"><a href="#查看javadoc的版本" class="headerlink" title="查看javadoc的版本"></a>查看javadoc的版本</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">javadoc -J-version</span><br></pre></td></tr></table></figure>
+
+<h3 id="运行javadoc报错不合法参数"><a href="#运行javadoc报错不合法参数" class="headerlink" title="运行javadoc报错不合法参数"></a>运行javadoc报错不合法参数</h3><p>参考文档：<a href="https://blog.csdn.net/xiaokui9/article/details/110177341">maven编译时javadoc报错java.lang.IllegalArgumentException</a></p>
+<p>以下是我运行指令的报错：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">javadoc -d d:\javaStudy\doc -author -version javaDocComment.java</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>java.lang.IllegalArgumentException        at sun.net.<a href="http://www.ParseUtil.decode(ParseUtil.java:202)">www.ParseUtil.decode(ParseUtil.java:202)</a>        at sun.misc.URLClassPath$FileLoader.<init>(URLClassPath.java:1322)        at sun.misc.URLClassPath$3.run(URLClassPath.java:571)        at sun.misc.URLClassPath$3.run(URLClassPath.java:566)        at java.security.AccessController.doPrivileged(Native Method)        at sun.misc.URLClassPath.getLoader(URLClassPath.java:565)        at sun.misc.URLClassPath.getLoader(URLClassPath.java:530)        at sun.misc.URLClassPath.getNextLoader(URLClassPath.java:495)        at sun.misc.URLClassPath.access$100(URLClassPath.java:67)        at sun.misc.URLClassPath$1.next(URLClassPath.java:277)        at sun.misc.URLClassPath$1.hasMoreElements(URLClassPath.java:288)        at java.net.URLClassLoader$3$1.run(URLClassLoader.java:609)        at java.net.URLClassLoader$3$1.run(URLClassLoader.java:607)        at java.security.AccessController.doPrivileged(Native Method)        at java.net.URLClassLoader$3.next(URLClassLoader.java:606)        at java.net.URLClassLoader$3.hasMoreElements(URLClassLoader.java:631)        at sun.misc.CompoundEnumeration.next(CompoundEnumeration.java:45)        at sun.misc.CompoundEnumeration.hasMoreElements(CompoundEnumeration.java:54)        at java.util.ServiceLoader$LazyIterator.hasNextService(ServiceLoader.java:354)        at java.util.ServiceLoader$LazyIterator.hasNext(ServiceLoader.java:393)        at java.util.ServiceLoader$1.hasNext(ServiceLoader.java:474)        at javax.xml.parsers.FactoryFinder$1.run(FactoryFinder.java:293)        at java.security.AccessController.doPrivileged(Native Method)        at javax.xml.parsers.FactoryFinder.findServiceProvider(FactoryFinder.java:289)        at javax.xml.parsers.FactoryFinder.find(FactoryFinder.java:267)        at javax.xml.parsers.SAXParserFactory.newInstance(SAXParserFactory.java:127)        at com.sun.tools.doclets.internal.toolkit.builders.LayoutParser.parseXML(LayoutParser.java:89)        at com.sun.tools.doclets.internal.toolkit.builders.ClassBuilder.build(ClassBuilder.java:120)        at com.sun.tools.doclets.formats.html.HtmlDoclet.generateClassFiles(HtmlDoclet.java:189)        at com.sun.tools.doclets.internal.toolkit.AbstractDoclet.generateClassFiles(AbstractDoclet.java:207)        at com.sun.tools.doclets.internal.toolkit.AbstractDoclet.generateClassFiles(AbstractDoclet.java:191)        at com.sun.tools.doclets.internal.toolkit.AbstractDoclet.startGeneration(AbstractDoclet.java:139)        at com.sun.tools.doclets.internal.toolkit.AbstractDoclet.start(AbstractDoclet.java:82)        at com.sun.tools.doclets.formats.html.HtmlDoclet.start(HtmlDoclet.java:80)        at com.sun.tools.doclets.standard.Standard.start(Standard.java:39)        at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)        at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)        at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)        at java.lang.reflect.Method.invoke(Method.java:498)        at com.sun.tools.javadoc.DocletInvoker.invoke(DocletInvoker.java:310)        at com.sun.tools.javadoc.DocletInvoker.start(DocletInvoker.java:189)        at com.sun.tools.javadoc.Start.parseAndExecute(Start.java:366)        at com.sun.tools.javadoc.Start.begin(Start.java:219)        at com.sun.tools.javadoc.Start.begin(Start.java:205)        at com.sun.tools.javadoc.Main.execute(Main.java:64)        at com.sun.tools.javadoc.Main.main(Main.java:54) javadoc: 错误 - java.lang.IllegalArgumentException报错</p>
+</blockquote>
+<p>我的环境变量是这样的：</p>
+<p><img src="D:\blog\source_posts\java学习.assets\image-20231007142137709.png" alt="image-20231007142137709"></p>
+<p>将环境变量换成绝对路径后，成功</p>
+<p><img src="D:\blog\source_posts\java学习.assets\image-20231007142356883.png" alt="image-20231007142356883"></p>
+<p>成功生成：</p>
+<p><img src="D:\blog\source_posts\java学习.assets\image-20231007142507123.png" alt="image-20231007142507123"></p>
+<h1 id="代码规范"><a href="#代码规范" class="headerlink" title="代码规范"></a>代码规范</h1><p>对类和方法的注释用javadoc来写</p>
+<p>普通注释给代码维护者看的：如何修改，写的思路，要注意什么问题</p>
+<p>运算符和&#x3D;号两边加个空格、</p>
+<p>代码编写风格：次行风格，行尾风格。（看“{”的位置）</p>
+<p>代码使用utf-8编码</p>
+<h1 id="DOS"><a href="#DOS" class="headerlink" title="DOS"></a>DOS</h1><p>Disk Operating System磁盘操作系统</p>
+<blockquote>
+<p>md 创建目录</p>
+<p>rd 删除目录</p>
+<p>dir 查看当前目录</p>
+<p>cd 切换目录</p>
+<p>cd \切换回根目录</p>
+<p>..\ 切换上一级目录</p>
+<p>tree d: 查看下面的所有子目录</p>
+<p>cls 清屏</p>
+<p>exit 退出</p>
+<p>copy 拷贝文件</p>
+<p>del 删除文件</p>
+<p>echo 输入内容到文件</p>
+<p>type 输入一个空文件</p>
+<p>move 移动&#x2F;剪切</p>
+</blockquote>
+<h1 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h1><p>变量是用来存储数据的特殊实体。</p>
+<h2 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h2><p>类型、名称和值</p>
+<p>值是存储在变量中的特定对象、数据或信息。</p>
+<p>变量名不能包含空格、加号、减号等。最好在一个变量名中只使用字母和数字</p>
+<h1 id="加号"><a href="#加号" class="headerlink" title="加号"></a>加号</h1><p>运算顺序：从左到右</p>
+<p>两个数值型相加：加法运算</p>
+<p>有任意一方是字符串：拼接运算</p>
+<h1 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h1><h2 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h2><h3 id="数值型"><a href="#数值型" class="headerlink" title="数值型"></a>数值型</h3><h4 id="整数型"><a href="#整数型" class="headerlink" title="整数型"></a>整数型</h4><p>byte 基础存储单位，1字节，-128~127</p>
+<blockquote>
+<p>bit是最小存储单位，1byte&#x3D;8bit</p>
+</blockquote>
+<p>short 2字节，-（2^15）<del>2^15 -1（-32768</del>32767）</p>
+<p>int 4字节，-（2^31）<del>2^31 -1（-2147483648</del>2147483647）</p>
+<blockquote>
+<p>注意：声明常量默认是int型</p>
+</blockquote>
+<p>long 8字节，-（2^63）~2^63 -1</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">n1</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line"><span class="type">long</span> <span class="variable">n2</span> <span class="operator">=</span> <span class="number">1L</span>;<span class="comment">//声明long型变量时，“L/l是必须加上的”</span></span><br><span class="line"><span class="type">long</span> <span class="variable">n2</span> <span class="operator">=</span> <span class="number">1l</span>;</span><br></pre></td></tr></table></figure>
+
+<h4 id="浮点（小数）类型"><a href="#浮点（小数）类型" class="headerlink" title="浮点（小数）类型"></a>浮点（小数）类型</h4><p>单精度float 4字节，-3.403E38~3.403E38</p>
+<p>双精度double 8字节，-1.798E308~1.798E308</p>
+<blockquote>
+<h5 id="细节："><a href="#细节：" class="headerlink" title="细节："></a>细节：</h5><p>面试可能会问：</p>
+<p>浮点数在机器中存放形式：浮点数&#x3D;符号位+指数位+尾数位</p>
+<p>尾数部分可能丢失，造成精度损失（小数都是近似值）</p>
+<h5 id="注意：声明常量默认是double型"><a href="#注意：声明常量默认是double型" class="headerlink" title="注意：声明常量默认是double型"></a>注意：声明常量默认是double型</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">float</span> <span class="variable">num</span> <span class="operator">=</span> <span class="number">1.1f</span>;<span class="comment">//声明float变量时，“f/F”是必须要加上的</span></span><br><span class="line"><span class="type">float</span> <span class="variable">num</span> <span class="operator">=</span> <span class="number">1.1F</span>;</span><br><span class="line"><span class="type">double</span> <span class="variable">num</span> <span class="operator">=</span> <span class="number">1.1</span>;</span><br><span class="line"><span class="type">double</span> <span class="variable">num</span> <span class="operator">=</span> <span class="number">1.1f</span>;<span class="comment">//是可以的</span></span><br><span class="line"><span class="type">double</span> <span class="variable">num</span> <span class="operator">=</span> <span class="number">.1f</span>;<span class="comment">//也是可以的，相当于0.1f</span></span><br><span class="line"><span class="comment">//科学计数法</span></span><br><span class="line"><span class="type">double</span> <span class="variable">num</span> <span class="operator">=</span> <span class="number">5.12e2</span>;<span class="comment">//5.12*(10^2)</span></span><br><span class="line"><span class="type">double</span> <span class="variable">num</span> <span class="operator">=</span> <span class="number">5.12e-2</span>;<span class="comment">//5.12/(10^2)</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="2-7和8-1-x2F-3比较"><a href="#2-7和8-1-x2F-3比较" class="headerlink" title="2.7和8.1&#x2F;3比较"></a>2.7和8.1&#x2F;3比较</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">double</span> <span class="variable">num1</span> <span class="operator">=</span> <span class="number">2.7</span>;<span class="comment">//2.7</span></span><br><span class="line"><span class="type">double</span> <span class="variable">num2</span> <span class="operator">=</span> <span class="number">8.1</span> / <span class="number">3</span>;<span class="comment">//2.6999999999999997</span></span><br><span class="line"><span class="comment">//计算机认为8.1后面可能还有一些数值，因此是以精度的方式进行存储，返回的自然也是包含精度的数值</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>危险☠：</strong>当我们对运算结果是小数的进行相等判断时，要小心</p>
+<p>应该将两数相减，判断结果的绝对值是否在某个精度的范围内</p>
+</blockquote>
+<h3 id="字符型"><a href="#字符型" class="headerlink" title="字符型"></a>字符型</h3><p>char 2字节，存放单个字符，或者单个汉字</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">char</span> <span class="variable">ch</span> <span class="operator">=</span> <span class="number">97</span>;</span><br><span class="line"><span class="type">char</span> <span class="variable">ch</span> <span class="operator">=</span> <span class="string">&#x27;\t&#x27;</span>;<span class="comment">//字符类型可以直接存放一个数字</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<h5 id="细节：-1"><a href="#细节：-1" class="headerlink" title="细节："></a>细节：</h5><p>字符常量是用单引号括起来的单个字符（如果是双引号，则是String字符串类型）</p>
+<p>“\t”表示的是转义字符而不是\和t这两个拼接在一起</p>
+<p>char类型的本质是数字，输出的时候是Unicode对应数字的字符</p>
+<p>char类型可以进行运算</p>
+<h5 id="字符类型的本质：（面试可能会问）"><a href="#字符类型的本质：（面试可能会问）" class="headerlink" title="字符类型的本质：（面试可能会问）"></a>字符类型的本质：（面试可能会问）</h5><p><strong>字符型底层逻辑：</strong>字符型是一个字母，首先会将其转为对应Unicode编码上面的数字，之后将数字转化为二进制存储在计算机中；之后读取的时候会先将二进制读取出来，之后转化为数字，再对应Unicode转化为字母</p>
+<p><strong>常用字母编码表：</strong></p>
+<p><strong>ASCII</strong> 一个字节表示，一共128个字符（实际上可以表示256个字符，26个英文字母不需要这么多</p>
+<p><strong>Unicode</strong> 固定大小的编码，世界上所有符号都纳入其中，使用两个字节表示，字母和汉字都是占用两个字节。<strong>Unicode码兼容ASCII码</strong></p>
+<p><strong>utf-8</strong> <strong>大小可变</strong>的编码，范围：1~6字节，字母使用一个字节，汉字使用三个字节。<strong>使用最广泛的编码</strong></p>
+<p><strong>gbk</strong> 可以表示汉字，范围广，字母使用一个字节，汉字使用两个字节，汉字范围表示小于utf-8</p>
+<p><strong>gb2312</strong> 可以表示汉字，gb2312&lt;gbk，表示的汉字少一些</p>
+<p><strong>big5码</strong> 可以表示繁体字</p>
+</blockquote>
+<h3 id="布尔型"><a href="#布尔型" class="headerlink" title="布尔型"></a>布尔型</h3><p>boolean 1字节，true和false</p>
+<blockquote>
+<h5 id="细节：-2"><a href="#细节：-2" class="headerlink" title="细节："></a>细节：</h5><p>不可以用0和非0的整数代替true和false</p>
+</blockquote>
+<h3 id="自动类型转换"><a href="#自动类型转换" class="headerlink" title="自动类型转换"></a>自动类型转换</h3><p>在Java程序运算或赋值时，精度小的数据类型可以自动转换为精度大的数据类型</p>
+<h4 id="低精度（容量）向高精度（容量）的自动转换路线"><a href="#低精度（容量）向高精度（容量）的自动转换路线" class="headerlink" title="低精度（容量）向高精度（容量）的自动转换路线"></a>低精度（容量）向高精度（容量）的自动转换路线</h4><p>char-&gt;int-&gt;long-&gt;float-&gt;double</p>
+<p>byte-&gt;short&#x2F;-&gt;int-&gt;long-&gt;float-&gt;double</p>
+<h4 id="细节"><a href="#细节" class="headerlink" title="细节"></a>细节</h4><ul>
+<li>有多种类型的数据混合计算时，系统首先自动将所有数据转换为精度（容量）最大的数据类型，再进行计算</li>
+</ul>
+<blockquote>
+<p>1.1是double类型的数据，因为声明的时候默认是double型，加上f才是float型</p>
+</blockquote>
+<ul>
+<li><p>精度大的数据类型赋值给精度小的数据类型会报错</p>
+</li>
+<li><p>(byte,short)和char之间不会发生自动转换</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">byte</span> <span class="variable">b</span> <span class="operator">=</span> <span class="number">10</span>;<span class="comment">//正确，-128~127</span></span><br><span class="line"><span class="comment">//赋值的过程：编译器先判断所赋的值的范围是否符合，如果符合则复制成功</span></span><br><span class="line"></span><br><span class="line"><span class="type">char</span> <span class="variable">c</span> <span class="operator">=</span> b;<span class="comment">//错误</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>byte,short,char任意两种进行运算时，会先被转换为int数据类型。就算两个都是一种数据类型，也会先被转换为int数据类型。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">byte</span> <span class="variable">b1</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line"><span class="type">byte</span> <span class="variable">b2</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line"><span class="type">byte</span> <span class="variable">b3</span> <span class="operator">=</span> b1 + b2;<span class="comment">//报错</span></span><br><span class="line"><span class="type">int</span> <span class="variable">b3</span> <span class="operator">=</span> b1 + b2;<span class="comment">//正确</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>boolean<strong>不参与自动转换</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">boolean</span> <span class="variable">b</span> <span class="operator">=</span> <span class="literal">true</span>;</span><br><span class="line"><span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> b;<span class="comment">//报错</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>自动提升原则：表达式结果的类型自动提升为 <strong>操作数中最大的类型</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">byte b = 1;</span><br><span class="line">short s = 3;</span><br><span class="line">int i = 100;</span><br><span class="line">double d = 1.1;</span><br><span class="line">b + s + i + d</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="强制类型转换"><a href="#强制类型转换" class="headerlink" title="强制类型转换"></a>强制类型转换</h3><p>自动类型转换的逆过程，将精度（容量）大的数据类型转换为精度（容量）小的数据类型。可能会造成精度降低或溢出。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> (<span class="type">int</span>)<span class="number">1.9</span>;<span class="comment">//造成精度损失</span></span><br><span class="line"><span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">100</span>;</span><br><span class="line"><span class="type">byte</span> <span class="variable">b1</span> <span class="operator">=</span> (<span class="type">byte</span>)j;<span class="comment">//造成数据溢出</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>强转符号只针对最近的操作数有效</strong>，可以使用小括号提升优先级</p>
+<p>char类型可以保存int的常量值，但是不能保存int的变量值，需要强转</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">char</span> <span class="variable">c1</span> <span class="operator">=</span> <span class="number">100</span>;</span><br><span class="line"><span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> <span class="number">100</span>;</span><br><span class="line"><span class="type">char</span> <span class="variable">c2</span> <span class="operator">=</span> n;<span class="comment">//报错</span></span><br><span class="line"><span class="type">char</span> <span class="variable">c2</span> <span class="operator">=</span> (<span class="type">char</span>)n;<span class="comment">//正确</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="基本数据类型和String类型的转换"><a href="#基本数据类型和String类型的转换" class="headerlink" title="基本数据类型和String类型的转换"></a>基本数据类型和String类型的转换</h3><h4 id="基本数据类型-gt-String类型"><a href="#基本数据类型-gt-String类型" class="headerlink" title="基本数据类型-&gt;String类型"></a>基本数据类型-&gt;String类型</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">string</span> <span class="variable">s</span> <span class="operator">=</span> 基本数据类型 + <span class="string">&quot;&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<h4 id="String类型-gt-基本数据类型"><a href="#String类型-gt-基本数据类型" class="headerlink" title="String类型-&gt;基本数据类型"></a>String类型-&gt;基本数据类型</h4><p>语法：通过基本数据类型的包装类调用parseXX方法</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Integer.parseInt(<span class="string">&quot;124&quot;</span>);<span class="comment">//124</span></span><br><span class="line">Float.parseFloat(<span class="string">&quot;124&quot;</span>);<span class="comment">//124.0</span></span><br><span class="line">Double.parseDouble(<span class="string">&quot;124&quot;</span>);<span class="comment">//124.0</span></span><br></pre></td></tr></table></figure>
+
+<p>字符串转为字符-&gt;通常是取字符串的第一个字符</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">s = <span class="string">&quot;124&quot;</span>;</span><br><span class="line">s.charAt(<span class="number">0</span>);<span class="comment">//1</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">char</span> <span class="variable">a</span> <span class="operator">=</span> <span class="string">&#x27;男&#x27;</span>;</span><br><span class="line"><span class="type">char</span> <span class="variable">b</span> <span class="operator">=</span> <span class="string">&#x27;女&#x27;</span>;</span><br><span class="line">System.out.println(a+b);<span class="comment">//输出 “男”的字节码值+“女”的字节码值。是一个整数</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="引用数据类型"><a href="#引用数据类型" class="headerlink" title="引用数据类型"></a>引用数据类型</h2><h3 id="类class"><a href="#类class" class="headerlink" title="类class"></a>类class</h3><blockquote>
+<p>string不算是基本数据类型，反而被划分为类的内容</p>
+</blockquote>
+<h3 id="接口interface"><a href="#接口interface" class="headerlink" title="接口interface"></a>接口interface</h3><h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><h1 id="API"><a href="#API" class="headerlink" title="API"></a>API</h1><p>应用程序编程接口Application Programming Interface，Java设计者为我们提供的类和方法</p>
+<p>文档：<a href="https://www.matools.com/">https://www.matools.com/</a></p>
+<h2 id="Java类的组织形式："><a href="#Java类的组织形式：" class="headerlink" title="Java类的组织形式："></a>Java类的组织形式：</h2><p><img src="D:\blog\source_posts\java学习.assets\f4144f61788e1ee1f40995154a02853.jpg" alt="f4144f61788e1ee1f40995154a02853"></p>
+<h1 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h1><h2 id="算数运算符"><a href="#算数运算符" class="headerlink" title="算数运算符"></a>算数运算符</h2><p><img src="D:\blog\source_posts\java学习.assets\380b9664636024df2dd8cc6d3723cf4.jpg" alt="380b9664636024df2dd8cc6d3723cf4"></p>
+<h3 id="x2F-整除"><a href="#x2F-整除" class="headerlink" title="&#x2F;整除"></a>&#x2F;整除</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">System.out.println(<span class="number">10</span> / <span class="number">4</span>);<span class="comment">//2，因为两个整数相除，得到的也是整数</span></span><br><span class="line">System.out.println(<span class="number">10.0</span> / <span class="number">4</span>);<span class="comment">//2.5</span></span><br><span class="line"><span class="type">double</span> <span class="variable">d</span> <span class="operator">=</span> <span class="number">10</span> / <span class="number">4</span>;<span class="comment">//2.0</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="取余"><a href="#取余" class="headerlink" title="%取余"></a>%取余</h3><p>本质： a % b &#x3D; a - a&#x2F;b *b</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">System.out.println(<span class="number">10</span> % <span class="number">3</span>);<span class="comment">//1</span></span><br><span class="line">System.out.println(-<span class="number">10</span> % <span class="number">3</span>);<span class="comment">//-1</span></span><br><span class="line">System.out.println(<span class="number">10</span> % -<span class="number">3</span>);<span class="comment">//1</span></span><br><span class="line">System.out.println(-<span class="number">10</span> % -<span class="number">3</span>);<span class="comment">//-1</span></span><br></pre></td></tr></table></figure>
+
+<p>如果a是一个小数，本质： a % b &#x3D; a - （int）a&#x2F;b *b</p>
+<p>有小数参与运算，得到的值是一个近似值</p>
+<blockquote>
+<p>-10.5%3 &#x3D; -10.5 - （-10）&#x2F;3*3 &#x3D; -10.5 + 9 &#x3D; -1.5</p>
+</blockquote>
+<h2 id="自增面试题"><a href="#自增面试题" class="headerlink" title="自增面试题"></a>自增面试题</h2><h3 id="1、i-x3D-i"><a href="#1、i-x3D-i" class="headerlink" title="1、i&#x3D;i++"></a>1、i&#x3D;i++</h3><blockquote>
+<p>结果是多少？为什么</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">i = i++;</span><br><span class="line">System.out.println(i);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>运算步骤：</p>
+<p>1、temp &#x3D; i</p>
+<p>2、i &#x3D; i + 1</p>
+<p>3、i &#x3D; temp</p>
+<p>结果是 1</p>
+</blockquote>
+<h3 id="2、i-x3D-i"><a href="#2、i-x3D-i" class="headerlink" title="2、i&#x3D;++i"></a>2、i&#x3D;++i</h3><blockquote>
+<p>结果是多少？为什么</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">i = ++i;</span><br><span class="line">System.out.println(i);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>运算步骤：</p>
+<p>1、i &#x3D; i + 1</p>
+<p>2、temp &#x3D; i</p>
+<p>3、 i &#x3D; temp</p>
+<p>结果是：2</p>
+</blockquote>
+<h2 id="关系运算符（比较运算符）"><a href="#关系运算符（比较运算符）" class="headerlink" title="关系运算符（比较运算符）"></a>关系运算符（比较运算符）</h2><p>关系表达式的结果一定是boolean型</p>
+<p><img src="D:\blog\source_posts\java学习.assets\微信图片_20231008183032.jpg" alt="微信图片_20231008183032"></p>
+<h2 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h2><h3 id="短路与、逻辑与、短路或、逻辑或"><a href="#短路与、逻辑与、短路或、逻辑或" class="headerlink" title="短路与、逻辑与、短路或、逻辑或"></a>短路与、逻辑与、短路或、逻辑或</h3><p><img src="D:\blog\source_posts\java学习.assets\微信图片_20231008183446.jpg" alt="微信图片_20231008183446"></p>
+<p><img src="D:\blog\source_posts\java学习.assets\微信图片_20231008183747.jpg" alt="微信图片_20231008183747"></p>
+<h3 id="短路与逻辑的区别"><a href="#短路与逻辑的区别" class="headerlink" title="短路与逻辑的区别"></a>短路与逻辑的区别</h3><ul>
+<li><p>短路与：第一个条件是false，则第二个条件不判断</p>
+</li>
+<li><p>逻辑与：第一个条件是false，第二个条件仍要判断</p>
+</li>
+<li><p>短路或：第一个条件是true，则第二个条件不判断</p>
+</li>
+<li><p>逻辑或：第一个条件是true，第二个条件仍要判断</p>
+</li>
+</ul>
+<h3 id="取反"><a href="#取反" class="headerlink" title="取反"></a>取反</h3><p>! </p>
+<h3 id="异或"><a href="#异或" class="headerlink" title="异或"></a>异或</h3><p>^</p>
+<p>当两者不同时，结果为true，否则为false</p>
+<h3 id="练习-1"><a href="#练习-1" class="headerlink" title="练习"></a>练习</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">x = <span class="literal">true</span>;</span><br><span class="line">z = <span class="number">48</span>;</span><br><span class="line"><span class="keyword">if</span>((x = flase) || (++z == <span class="number">49</span>)) z++;<span class="comment">//z=50。x = false执行完这一条命令，x 是false的，所以为假。</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="赋值运算符"><a href="#赋值运算符" class="headerlink" title="赋值运算符"></a>赋值运算符</h2><h3 id="基本赋值运算符"><a href="#基本赋值运算符" class="headerlink" title="基本赋值运算符"></a>基本赋值运算符</h3><p>&#x3D;</p>
+<h3 id="复合赋值运算符"><a href="#复合赋值运算符" class="headerlink" title="复合赋值运算符"></a>复合赋值运算符</h3><p>+&#x3D;，-&#x3D;，*&#x3D;，&#x2F;&#x3D;，%&#x3D;</p>
+<h3 id="细节-1"><a href="#细节-1" class="headerlink" title="细节"></a>细节</h3><ul>
+<li><p>运算顺序：从右向左，先计算右边，再赋值给左边</p>
+</li>
+<li><p>复合赋值运算符会进行类型转换</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">byte</span> <span class="variable">b</span> <span class="operator">=</span> <span class="number">2</span>;</span><br><span class="line"><span class="comment">//情况一：</span></span><br><span class="line">b = b + <span class="number">3</span>;</span><br><span class="line">System.out.println(b);<span class="comment">//报错，因为 3 是一个int类型，int类型的值无法赋值给byte变量</span></span><br><span class="line"><span class="comment">//情况二：</span></span><br><span class="line">b += <span class="number">3</span>;</span><br><span class="line">System.out.println(b);<span class="comment">//正确，b += 3等价于 b = (byte)(b+3)</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="三元运算符"><a href="#三元运算符" class="headerlink" title="三元运算符"></a>三元运算符</h2><p>条件表达式 ? 表达式1:表达式2</p>
+<p>条件表达式为真执行表达式1，条件表达式为假执行表达式2</p>
+<h2 id="运算符优先级"><a href="#运算符优先级" class="headerlink" title="运算符优先级"></a>运算符优先级</h2><p>单目运算符：只针对一个运算符进行运算，例如++a，–a</p>
+<p>只有单目运算符、赋值运算符，是从右向左运算</p>
+<p><img src="D:\blog\source_posts\java学习.assets\微信图片_20231008222110.jpg" alt="微信图片_20231008222110"></p>
+<h1 id="标识符"><a href="#标识符" class="headerlink" title="标识符"></a>标识符</h1><h2 id="命名规则和规范"><a href="#命名规则和规范" class="headerlink" title="命名规则和规范"></a>命名规则和规范</h2><p>概念：对各种变量、方法、类等命名时使用的字符序列</p>
+<h3 id="命名规则"><a href="#命名规则" class="headerlink" title="命名规则"></a>命名规则</h3><ul>
+<li>由26个字母大小写，0-9，_，$组成</li>
+<li>数字不可以开头</li>
+</ul>
+<h3 id="命名规范"><a href="#命名规范" class="headerlink" title="命名规范"></a>命名规范</h3><ul>
+<li>包名：多个单词组成的所有字母都小写</li>
+<li>类名、接口名：多个单词组成时，所有单词首字母大写【大驼峰】</li>
+<li>变量名、方法名：多个单词组成时，第一个单词首字母小写，后面的单词首字母大写【小驼峰&#x2F;驼峰】</li>
+<li>常量名：所有字母都大写，多单词时每个单词用_连接</li>
+</ul>
+<h1 id="键盘输入"><a href="#键盘输入" class="headerlink" title="键盘输入"></a>键盘输入</h1><p>类对象：简单文本扫描器，Scanner，在java.util包</p>
+<h2 id="使用步骤"><a href="#使用步骤" class="headerlink" title="使用步骤"></a>使用步骤</h2><ol>
+<li><p>导入该类所在的包</p>
+</li>
+<li><p>创建该类对象（声明变量）</p>
+</li>
+<li><p>调用里面的功能</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;<span class="comment">//表示把包下面的类引入</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">javaDocComment</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;</span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">scanner</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">        <span class="type">String</span> <span class="variable">name</span> <span class="operator">=</span> scanner.next();</span><br><span class="line">        <span class="type">int</span> <span class="variable">age</span> <span class="operator">=</span> scanner.nextInt();</span><br><span class="line">        <span class="type">String</span> <span class="variable">sex</span> <span class="operator">=</span> scanner.next();</span><br><span class="line">        <span class="type">double</span> <span class="variable">score</span> <span class="operator">=</span> scanner.nextDouble();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="接收字符"><a href="#接收字符" class="headerlink" title="接收字符"></a>接收字符</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">char</span> <span class="variable">gender</span> <span class="operator">=</span> scanner.next().charAt(<span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="进制"><a href="#进制" class="headerlink" title="进制"></a>进制</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">n1</span> <span class="operator">=</span> <span class="number">0b1010</span>;<span class="comment">//二进制</span></span><br><span class="line"><span class="type">int</span> <span class="variable">n2</span> <span class="operator">=</span> <span class="number">01010</span>;<span class="comment">//八进制</span></span><br><span class="line"><span class="type">int</span> <span class="variable">n3</span> <span class="operator">=</span> <span class="number">1010</span>;<span class="comment">//十进制</span></span><br><span class="line"><span class="type">int</span> <span class="variable">n4</span> <span class="operator">=</span> <span class="number">0x1010</span>;<span class="comment">//十六进制</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="进制转换"><a href="#进制转换" class="headerlink" title="进制转换"></a>进制转换</h2><h3 id="二进制-gt-十进制"><a href="#二进制-gt-十进制" class="headerlink" title="二进制-&gt;十进制"></a>二进制-&gt;十进制</h3><ul>
+<li>规则：从右边开始，将每个数依次提取，乘以2的（位数-1）次方</li>
+</ul>
+<h3 id="八进制-gt-十进制"><a href="#八进制-gt-十进制" class="headerlink" title="八进制-&gt;十进制"></a>八进制-&gt;十进制</h3><ul>
+<li>规则：从右边开始，将每个数依次提取，乘以8的（位数-1）次方</li>
+</ul>
+<h3 id="十六进制-gt-十进制"><a href="#十六进制-gt-十进制" class="headerlink" title="十六进制-&gt;十进制"></a>十六进制-&gt;十进制</h3><ul>
+<li>规则：从右边开始，将每个数依次提取，乘以16的（位数-1）次方</li>
+</ul>
+<h3 id="十进制-gt-二进制"><a href="#十进制-gt-二进制" class="headerlink" title="十进制-&gt;二进制"></a>十进制-&gt;二进制</h3><ul>
+<li>规则：将该数不断除以2，然后将每步得到的余数倒过来，就是对应的二进制。</li>
+</ul>
+<h3 id="十进制-gt-八进制"><a href="#十进制-gt-八进制" class="headerlink" title="十进制-&gt;八进制"></a>十进制-&gt;八进制</h3><ul>
+<li>规则：将该数不断除以8，然后将每步得到的余数倒过来，就是对应的二进制。</li>
+</ul>
+<h3 id="十进制-gt-十六进制"><a href="#十进制-gt-十六进制" class="headerlink" title="十进制-&gt;十六进制"></a>十进制-&gt;十六进制</h3><ul>
+<li>规则：将该数不断除以16，然后将每步得到的余数倒过来，就是对应的二进制。</li>
+</ul>
+<h3 id="二进制-gt-八进制"><a href="#二进制-gt-八进制" class="headerlink" title="二进制-&gt;八进制"></a>二进制-&gt;八进制</h3><ul>
+<li>规则：从低位开始，每三位一组，转成对应的八进制</li>
+</ul>
+<h3 id="二进制-gt-十六进制"><a href="#二进制-gt-十六进制" class="headerlink" title="二进制-&gt;十六进制"></a>二进制-&gt;十六进制</h3><ul>
+<li>规则：从低位开始，每四位一组，转成对应的十六进制</li>
+</ul>
+<h3 id="八进制-gt-二进制"><a href="#八进制-gt-二进制" class="headerlink" title="八进制-&gt;二进制"></a>八进制-&gt;二进制</h3><ul>
+<li>规则：把八进制每一位转为对应的3位二进制。</li>
+</ul>
+<h3 id="十六进制-gt-二进制"><a href="#十六进制-gt-二进制" class="headerlink" title="十六进制-&gt;二进制"></a>十六进制-&gt;二进制</h3><ul>
+<li>规则：把八进制每一位转为对应的3位二进制。</li>
+</ul>
+<h2 id="原码、反码、补码"><a href="#原码、反码、补码" class="headerlink" title="原码、反码、补码"></a>原码、反码、补码</h2><p>对于有符号的数值而言：</p>
+<ul>
+<li>整数的原码、反码、补码都一样</li>
+<li>负数的反码 &#x3D; 它的符号位不变，其他位取反</li>
+<li>负数的补码 &#x3D; 它的反码 + 1</li>
+<li>0的反码、补码都是0</li>
+<li>Java没有无符号数，所以<strong>Java的数都是有符号的</strong></li>
+<li>计算机运算时，都<strong>以补码的方式运算</strong></li>
+<li>当我们看运算结果的时候，要看它的原码</li>
+</ul>
+<h2 id="位运算"><a href="#位运算" class="headerlink" title="位运算"></a>位运算</h2><p>7个位运算符：按位与&amp; 按位或| 按位异或^ 按位取反~ 算术右移&gt;&gt; 算术左移&lt;&lt; 无符号右移（逻辑右移）&gt;&gt;&gt;</p>
+<p>&lt;&lt;：符号位不变，低位补零</p>
+<p>“&gt;&gt;”：低位溢出，符号位不变，用符号位补溢出的高位</p>
+<p>“&gt;&gt;&gt;”：低位溢出，高位补0</p>
+<h3 id="例题-amp-："><a href="#例题-amp-：" class="headerlink" title="例题&amp;："></a>例题&amp;：</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//1.得到2的补码，也就是2的原码：00000000 00000000 00000000 00000010 int类型的数值是4个字节，32bit</span></span><br><span class="line"><span class="comment">//2.得到3的补码，也就是3的原码：00000000 00000000 00000000 00000011</span></span><br><span class="line"><span class="comment">//3.运算后的补码 00000000 00000000 00000000 00000010</span></span><br><span class="line"><span class="comment">//4.得到运算后的原码，并返回结果 2</span></span><br><span class="line"><span class="number">2</span>&amp;<span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="例题-："><a href="#例题-：" class="headerlink" title="例题~："></a>例题~：</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//1.得到2的补码，也就是2的原码：00000000 00000000 00000000 00000010 int类型的数值是4个字节，32bit</span></span><br><span class="line"><span class="comment">//2.得到~2的补码：1111111 11111111 11111111 11111101</span></span><br><span class="line"><span class="comment">//3.因为是负数，所以先得到~2的反码 1111111 11111111 11111111 11111100</span></span><br><span class="line"><span class="comment">//4.得到运算后的原码10000000 00000000 00000000 00000011，并返回结果-3</span></span><br><span class="line">~<span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="例题-gt-gt-和-gt-gt-gt-：【存疑】"><a href="#例题-gt-gt-和-gt-gt-gt-：【存疑】" class="headerlink" title="例题&gt;&gt;和&gt;&gt;&gt;：【存疑】"></a>例题&gt;&gt;和&gt;&gt;&gt;：【存疑】</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> <span class="number">8</span>,b = -<span class="number">8</span>;</span><br><span class="line">System.out.println(a&gt;&gt;<span class="number">2</span>);<span class="comment">//2 00000000 00000000 00000000 00001000 -&gt;</span></span><br><span class="line"><span class="comment">//                           00000000 00000000 00000000 00000010</span></span><br><span class="line">System.out.println(a&gt;&gt;&gt;<span class="number">2</span>);<span class="comment">//2</span></span><br><span class="line">System.out.println(b&gt;&gt;<span class="number">2</span>);<span class="comment">//-2 10000000 00000000 00000000 00001000（原码） -&gt;</span></span><br><span class="line"><span class="comment">//                            11111111 11111111 11111111 11110111（反码） -&gt;</span></span><br><span class="line"><span class="comment">//                            11111111 11111111 11111111 11111000（补码） -&gt;</span></span><br><span class="line"><span class="comment">//                            11111111 11111111 11111111 11111110（右移以后得到的补码） -&gt;</span></span><br><span class="line"><span class="comment">//                            11111111 11111111 11111111 11111101（右移以后得到的反码） -&gt;</span></span><br><span class="line"><span class="comment">//                            10000000 00000000 00000000 00000010（右移以后得到的原码）-&gt; -2</span></span><br><span class="line">System.out.println(b&gt;&gt;&gt;<span class="number">2</span>);<span class="comment">//1073741823：00111111 11111111 11111111 11111111</span></span><br><span class="line"><span class="comment">//过程：</span></span><br><span class="line"><span class="comment">//                            10000000 00000000 00000000 00001000（原码） -&gt;</span></span><br><span class="line"><span class="comment">//                            11111111 11111111 11111111 11110111（反码） -&gt;</span></span><br><span class="line"><span class="comment">//                            11111111 11111111 11111111 11111000（补码） -&gt;</span></span><br><span class="line"><span class="comment">//                            00111111 11111111 11111111 11111110（右移以后得到的补码也就是结果的原码） -&gt;</span></span><br><span class="line"><span class="comment">//                            1073741822</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>问题1：右移以后的反码是无符号数吗？反码转为原码的时候，符号数是否需要改变</p>
+<p>个人思考：应当是不需要改变的，因为无符号数右移的意思仅是高位补零的意思，但是补完零就说明它是一个正数，因为Java的所有数值都是有符号数。因此反码转为原码的时候，符号数不应该改变</p>
+<p>问题2：得到的答案<strong>与正确答案相差4</strong>？</p>
+<p>我原本的过程如图：</p>
+<p><img src="D:\blog\source_posts\java学习.assets\image-20231009184900962.png" alt="image-20231009184900962"></p>
+<p>后来发现，当逻辑右移的时候得到补码，这个时候已经将负数变成正数了，因此得到的补码，就是结果的原码。之后得到结果：1073741823，<strong>还是和最终答案相差1</strong></p>
+</blockquote>
+<h1 id="控制结构"><a href="#控制结构" class="headerlink" title="控制结构"></a>控制结构</h1><h2 id="顺序控制"><a href="#顺序控制" class="headerlink" title="顺序控制"></a>顺序控制</h2><h2 id="分支控制"><a href="#分支控制" class="headerlink" title="分支控制"></a>分支控制</h2><h3 id="if-else"><a href="#if-else" class="headerlink" title="if-else"></a>if-else</h3><p>多分支可以没有else</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>()&#123;</span><br><span class="line"></span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>()&#123;</span><br><span class="line">    </span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="错题"><a href="#错题" class="headerlink" title="错题"></a>错题</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">boolean</span> <span class="variable">b</span> <span class="operator">=</span> <span class="literal">true</span>;</span><br><span class="line"><span class="keyword">if</span>(b = <span class="literal">false</span>)&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;a&quot;</span>);</span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>(b)&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;b&quot;</span>);</span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>(!b)&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;c&quot;</span>);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;d&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>原本的答案：a</p>
+<p>原本的思路：执行了if的语句，我认为是进入了if的执行入口，这也是<strong>我疑惑的地方</strong>，为什么没有进入第一个入口。</p>
+<p>思考以后，我认为应当是令b&#x3D;false，if(b)仍然是false，因此无法进入这个if入口</p>
+<p>标准答案：c</p>
+</blockquote>
+<h3 id="switch"><a href="#switch" class="headerlink" title="switch"></a>switch</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">switch</span>()&#123;</span><br><span class="line">    <span class="keyword">case</span> 常量<span class="number">1</span>:</span><br><span class="line">        <span class="comment">//语句;</span></span><br><span class="line">        <span class="keyword">break</span>;<span class="comment">//跳出switch语句，没有写break，会导致“穿透”</span></span><br><span class="line">    <span class="keyword">case</span> 常量<span class="number">2</span>:</span><br><span class="line">        <span class="comment">//语句;</span></span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">        <span class="comment">//语句;</span></span><br><span class="line">        <span class="keyword">break</span>;<span class="comment">//这一句可有可无</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="细节-2"><a href="#细节-2" class="headerlink" title="细节"></a>细节</h4><ol>
+<li>表达式的数据类型应当与case后面的常量类型一致，或者可以自动转换为可以相互比较的类型</li>
+<li>表达式的返回值必须是以下几种：byte，short，int，char，enum【枚举】，String</li>
+<li>case语句中的值不能是变量，只能是常量或者常量表达式</li>
+</ol>
+<h2 id="循环控制"><a href="#循环控制" class="headerlink" title="循环控制"></a>循环控制</h2><h3 id="for"><a href="#for" class="headerlink" title="for"></a>for</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(循环变量初始化;循环条件;循环变量迭代)&#123;</span><br><span class="line">	<span class="comment">//循环操作;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="细节：-3"><a href="#细节：-3" class="headerlink" title="细节："></a>细节：</h4><ol>
+<li>循环条件是返回布尔值的表达式</li>
+<li>初始化语句和变量迭代可以写到其他地方</li>
+<li>可以有多条初始化语句</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(;;)&#123;<span class="comment">//表示无限循环</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//多条初始化语句</span></span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>,j = <span class="number">0</span>;i &lt; <span class="number">10</span>; i++,j +=<span class="number">2</span>)&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="while"><a href="#while" class="headerlink" title="while"></a>while</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//循环条件初始化</span></span><br><span class="line"><span class="keyword">while</span>(循环条件)&#123;</span><br><span class="line">	<span class="comment">//循环体结构</span></span><br><span class="line">    <span class="comment">//迭代变量</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="细节-3"><a href="#细节-3" class="headerlink" title="细节"></a>细节</h4><ul>
+<li>循环条件返回的是一个布尔值</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">while</span>(<span class="number">1</span>)&#123;<span class="comment">//boolean不参与自动转换，因此报错，如下截图</span></span><br><span class="line">	System.out.println(<span class="string">&quot;a&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span>(<span class="literal">true</span>)&#123;<span class="comment">//正确</span></span><br><span class="line">	System.out.println(<span class="string">&quot;a&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="D:\blog\source_posts\java学习.assets\image-20231011124743529.png" alt="image-20231011124743529"></p>
+<ul>
+<li>while循环先判断再循环</li>
+</ul>
+<h3 id="do…while"><a href="#do…while" class="headerlink" title="do…while"></a>do…while</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">do</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;<span class="keyword">while</span>();</span><br></pre></td></tr></table></figure>
+
+<h4 id="细节-4"><a href="#细节-4" class="headerlink" title="细节"></a>细节</h4><ul>
+<li>循环条件返回的是一个布尔值</li>
+<li>先执行再判断，至少执行1次</li>
+<li>最后有一个分号</li>
+<li>应用场景，举例：菜单</li>
+</ul>
+<h2 id="break"><a href="#break" class="headerlink" title="break"></a>break</h2><h3 id="label标签"><a href="#label标签" class="headerlink" title="label标签"></a>label标签</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">label1:</span><br><span class="line"><span class="keyword">for</span>(;;)&#123;</span><br><span class="line">label2:	<span class="keyword">for</span>(;;)&#123;</span><br><span class="line">label3:		<span class="keyword">for</span>(;;)&#123;</span><br><span class="line">				...</span><br><span class="line">				<span class="keyword">break</span> label2;</span><br><span class="line">				...</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="细节-5"><a href="#细节-5" class="headerlink" title="细节"></a>细节</h4><ul>
+<li>break可以决定退出哪一层</li>
+<li>label1是标签名字，可指定其他名字</li>
+<li>指定哪层标签就退出哪一层</li>
+<li>在实际开发中尽量不使用</li>
+<li>如果不指定标签，默认退出最近的循环体</li>
+</ul>
+<h2 id="continue"><a href="#continue" class="headerlink" title="continue"></a>continue</h2><p>概念：结束本次循环，继续执行下一次循环</p>
+<h3 id="label标签-1"><a href="#label标签-1" class="headerlink" title="label标签"></a>label标签</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">label1:</span><br><span class="line"><span class="keyword">for</span>(;;)&#123;</span><br><span class="line">label2:</span><br><span class="line">	<span class="keyword">for</span>(;;)&#123;</span><br><span class="line">		<span class="keyword">if</span>()&#123;</span><br><span class="line">			<span class="keyword">continue</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="细节-6"><a href="#细节-6" class="headerlink" title="细节"></a>细节</h4><ul>
+<li>如果不指定标签，默认退出最近的循环体</li>
+</ul>
+<h2 id="return"><a href="#return" class="headerlink" title="return"></a>return</h2><p>跳出所在的方法，如果实在main方法中，会退出程序</p>
+<h1 id="数组-1"><a href="#数组-1" class="headerlink" title="数组"></a>数组</h1><p>存放多个同一数据类型的数据</p>
+<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">double</span>[] hen = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="长度"><a href="#长度" class="headerlink" title="长度"></a>长度</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">hen.length</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="String"><a href="#String" class="headerlink" title="String"></a>String</h1><h2 id="比较字符串的内容是否相等"><a href="#比较字符串的内容是否相等" class="headerlink" title="比较字符串的内容是否相等"></a>比较字符串的内容是否相等</h2><p>两种写法都对</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">name.equals(<span class="string">&quot;林黛玉&quot;</span>);</span><br><span class="line"><span class="string">&quot;林黛玉&quot;</span>.equals(name);<span class="comment">//这种更推荐，可以避免空指针</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ]]></content>
       <categories>
-        <category>java，后端</category>
+        <category>java</category>
       </categories>
       <tags>
-        <tag>java，后端</tag>
+        <tag>java,后端</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Redis</title>
+    <url>/2023/10/15/redis/</url>
+    <content><![CDATA[<h1 id="学习课程："><a href="#学习课程：" class="headerlink" title="学习课程："></a>学习课程：</h1><p><a href="https://www.bilibili.com/video/BV1cr4y1671t?p=145&vd_source=05b9305044517a2659100450096dfe80">https://www.bilibili.com/video/BV1cr4y1671t?p=145&amp;vd_source=05b9305044517a2659100450096dfe80</a></p>
+<h2 id="学习进度："><a href="#学习进度：" class="headerlink" title="学习进度："></a>学习进度：</h2><blockquote>
+<p>学习目标：145-175</p>
+<p>2023&#x2F;10&#x2F;14: -&#x2F;175</p>
+</blockquote>
+<h1 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h1><h2 id="动态字符串SDS"><a href="#动态字符串SDS" class="headerlink" title="动态字符串SDS"></a>动态字符串SDS</h2><ul>
+<li><p>key是字符串，value往往是字符串或是字符串的集合</p>
+</li>
+<li><p>底层是c语言，但是没有直接使用C语言的字符串</p>
+</li>
+<li><pre><code class="c">//声明字符串，hello字符串的字面值，无法修改
+char* s = &quot;hello&quot;
+//本质是字符数组：&#123;&#39;h&#39;,&#39;e&#39;,&#39;l&#39;,&#39;l&#39;,&#39;o&#39;,&#39;\0&#39;&#125;
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">  + 获取字符串长度需要通过运算</span><br><span class="line">  + 非二进制安全，要求字符串中不能出现&#x27;\0&#x27;</span><br><span class="line">  + 不可修改</span><br><span class="line"></span><br><span class="line">### 概念</span><br><span class="line"></span><br><span class="line">新构建 简单动态字符串 Simple Dynamic String，简称SDS</span><br><span class="line"></span><br><span class="line">### 命令</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+set name 虎哥
+</code></pre>
+</li>
+</ul>
+<pre><code>
+过程：redis会在底层创建两个SDS，一个存放name，一个存放虎哥
+
+### 底层结构
+
+
+
+## IntSet
+
+## Dict
+
+## ZipList
+
+## QuickList
+
+## SkipList
+
+## RedisObject
+
+## 五种数据结构
+
+
+
+
+
+# 网络模型
+
+
+
+
+
+
+
+
+
+# 通信协议
+
+
+
+
+
+
+
+
+
+# 内存策略
+</code></pre>
+]]></content>
+      <categories>
+        <category>Redis</category>
+      </categories>
+      <tags>
+        <tag>Redis</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>java苍穹外卖</title>
+    <url>/2023/10/14/java%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/</url>
+    <content><![CDATA[<h1 id="学习视频"><a href="#学习视频" class="headerlink" title="学习视频"></a>学习视频</h1><p>黑马程序员</p>
+<p><a href="https://www.bilibili.com/video/BV1TP411v7v6?p=1&vd_source=05b9305044517a2659100450096dfe80">https://www.bilibili.com/video/BV1TP411v7v6?p=1&amp;vd_source=05b9305044517a2659100450096dfe80</a></p>
+<h2 id="学习进度"><a href="#学习进度" class="headerlink" title="学习进度"></a>学习进度</h2><blockquote>
+<p>2023&#x2F;10&#x2F;14： 4&#x2F;150</p>
+<p>2023&#x2F;10&#x2F;15： 8&#x2F;150</p>
+<p>2023&#x2F;10&#x2F;16： 13&#x2F;150</p>
+</blockquote>
+<h1 id="DTO和DAO有什么区别【未解决】"><a href="#DTO和DAO有什么区别【未解决】" class="headerlink" title="DTO和DAO有什么区别【未解决】"></a>DTO和DAO有什么区别【未解决】</h1><h1 id="技术选型"><a href="#技术选型" class="headerlink" title="技术选型"></a>技术选型</h1><p>nginx：服务器</p>
+<p>spring task：spring提供的定时任务</p>
+<p>httpclient：发送http请求</p>
+<p>spring cache：缓存框架</p>
+<p>JWT：登录认证</p>
+<p>阿里云OSS：对象存储服务，存储项目中的图片</p>
+<p>Swagger：生成接口文档，并测试后端接口</p>
+<p>POI：操作excel表格</p>
+<p>WebSocket：一种网络协议，实现催单、来单提醒</p>
+<p>redis：缓存中间键</p>
+<p>pagehelper：帮助分页</p>
+<p>spring data redis：简化spring操作redis</p>
+<p><img src="D:\blog\source_posts\java苍穹外卖.assets\6581b197031ea3902c59c27a975768c.jpg" alt="6581b197031ea3902c59c27a975768c"></p>
+<p><img src="D:\blog\source_posts\java苍穹外卖.assets\image-20231015152723812.png" alt="image-20231015152723812"></p>
+<h1 id="运行前端"><a href="#运行前端" class="headerlink" title="运行前端"></a>运行前端</h1><p>进入<code>D:\day01\前端运行环境\nginx-1.20.2</code>目录，双击<strong>nginx.exe</strong>进行启动</p>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><blockquote>
+<p>原本一直打不卡，重启了很多次电脑以后，然后又重新拉去项目，直接把前端运行环境文件夹修改了名字，放在d盘，之后修改端口为8086，访问<code>localhost:8086</code>成功</p>
+</blockquote>
+<p><img src="D:\blog\source_posts\java苍穹外卖.assets\image-20231015165402320.png" alt="image-20231015165402320"></p>
+<p><img src="D:\blog\source_posts\java苍穹外卖.assets\image-20231015165430267.png" alt="image-20231015165430267"></p>
+<h3 id="再次报错"><a href="#再次报错" class="headerlink" title="再次报错"></a>再次报错</h3><p>昨天是建了两个文件夹存放相同的文件，运行第一个是错误的，第二个就是成功的</p>
+<p>目录：<code>D:\CangQiongWeb\nginx-1.20.2</code></p>
+<p>猜测：可能是之前的目录下面有其他的中文目录</p>
+<h1 id="后端环境搭建"><a href="#后端环境搭建" class="headerlink" title="后端环境搭建"></a>后端环境搭建</h1><h2 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h2><p><img src="D:\blog\source_posts\java苍穹外卖.assets\image-20231015165614587.png" alt="image-20231015165614587"></p>
+<p><img src="D:\blog\source_posts\java苍穹外卖.assets\image-20231015165602006.png" alt="image-20231015165602006"></p>
+<p><img src="D:\blog\source_posts\java苍穹外卖.assets\image-20231015165855713.png" alt="image-20231015165855713"></p>
+<p><img src="D:\blog\source_posts\java苍穹外卖.assets\image-20231015165921214.png" alt="image-20231015165921214"></p>
+<p><img src="D:\blog\source_posts\java苍穹外卖.assets\image-20231015170021251.png" alt="image-20231015170021251"></p>
+<p><img src="D:\blog\source_posts\java苍穹外卖.assets\image-20231015170157539.png" alt="image-20231015170157539"></p>
+<h2 id="git"><a href="#git" class="headerlink" title="git"></a>git</h2><h3 id="git忽略的目录"><a href="#git忽略的目录" class="headerlink" title="git忽略的目录"></a>git忽略的目录</h3><p><img src="D:\blog\source_posts\java苍穹外卖.assets\image-20231015170534742.png" alt="image-20231015170534742"></p>
+<h3 id="idea"><a href="#idea" class="headerlink" title="idea"></a>idea</h3><h4 id="创建本地仓库"><a href="#创建本地仓库" class="headerlink" title="创建本地仓库"></a>创建本地仓库</h4><p><img src="D:\blog\source_posts\java苍穹外卖.assets\image-20231015170646400.png" alt="image-20231015170646400"></p>
+<p><img src="D:\blog\source_posts\java苍穹外卖.assets\image-20231015170737587.png" alt="image-20231015170737587"></p>
+<h4 id="初次提交"><a href="#初次提交" class="headerlink" title="初次提交"></a>初次提交</h4><p>可以加上commit的message</p>
+<p><img src="D:\blog\source_posts\java苍穹外卖.assets\image-20231015171010250.png" alt="image-20231015171010250"></p>
+<h3 id="创建远程仓库"><a href="#创建远程仓库" class="headerlink" title="创建远程仓库"></a>创建远程仓库</h3><p><img src="D:\blog\source_posts\java苍穹外卖.assets\image-20231015171236739.png" alt="image-20231015171236739"></p>
+<h3 id="推送项目"><a href="#推送项目" class="headerlink" title="推送项目"></a>推送项目</h3><p><img src="D:\blog\source_posts\java苍穹外卖.assets\image-20231015171347456.png" alt="image-20231015171347456"></p>
+<p><img src="D:\blog\source_posts\java苍穹外卖.assets\image-20231015171422989.png" alt="image-20231015171422989"></p>
+<p><img src="D:\blog\source_posts\java苍穹外卖.assets\image-20231015171530145.png" alt="image-20231015171530145"></p>
+<h3 id="提交和推送的提醒"><a href="#提交和推送的提醒" class="headerlink" title="提交和推送的提醒"></a>提交和推送的提醒</h3><p><img src="D:\blog\source_posts\java苍穹外卖.assets\image-20231015171452673.png" alt="image-20231015171452673"></p>
+<h1 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h1><p><img src="D:\blog\source_posts\java苍穹外卖.assets\image-20231015171934574.png" alt="image-20231015171934574"></p>
+<h2 id="MySQL导入sql文件"><a href="#MySQL导入sql文件" class="headerlink" title="MySQL导入sql文件"></a>MySQL导入sql文件</h2><p><img src="D:\blog\source_posts\java苍穹外卖.assets\image-20231015172227382.png" alt="image-20231015172227382"></p>
+<p><img src="D:\blog\source_posts\java苍穹外卖.assets\image-20231015172330357.png" alt="image-20231015172330357"></p>
+<p><img src="D:\blog\source_posts\java苍穹外卖.assets\image-20231015172400199.png" alt="image-20231015172400199"></p>
+<p>点击刷新</p>
+<p><img src="D:\blog\source_posts\java苍穹外卖.assets\image-20231015172436013.png" alt="image-20231015172436013"></p>
+<h1 id="前后端联调测试"><a href="#前后端联调测试" class="headerlink" title="前后端联调测试"></a>前后端联调测试</h1><p>初始代码已实现登录功能</p>
+<p><img src="D:\blog\source_posts\java苍穹外卖.assets\image-20231015173825918.png" alt="image-20231015173825918"></p>
+<h2 id="后端编译项目"><a href="#后端编译项目" class="headerlink" title="后端编译项目"></a>后端编译项目</h2><ul>
+<li>先安装依赖包</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mvn clean install -U</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>重新加载</li>
+</ul>
+<p><img src="D:\blog\source_posts\java苍穹外卖.assets\image-20231015175408804.png" alt="image-20231015175408804"></p>
+<ul>
+<li>编译</li>
+</ul>
+<p><img src="D:\blog\source_posts\java苍穹外卖.assets\image-20231015174000558.png" alt="image-20231015174000558"></p>
+<ul>
+<li>结果：</li>
+</ul>
+<p>编译了四个模块，并且成功</p>
+<p><img src="D:\blog\source_posts\java苍穹外卖.assets\image-20231015175322390.png" alt="image-20231015175322390"></p>
+<ul>
+<li>启动</li>
+</ul>
+<p><img src="D:\blog\source_posts\java苍穹外卖.assets\image-20231015175700709.png" alt="image-20231015175700709"></p>
+<h2 id="前端访问"><a href="#前端访问" class="headerlink" title="前端访问"></a>前端访问</h2><ul>
+<li>账号：admin</li>
+<li>密码：123456（sql文件里面初始化的）</li>
+</ul>
+<p><img src="D:\blog\source_posts\java苍穹外卖.assets\image-20231015175749426.png" alt="image-20231015175749426"></p>
+<ul>
+<li>点击登录之后，发现连接失败，后端一直报错</li>
+<li>所以要先修改后端连接数据库的用户名和密码</li>
+</ul>
+<p><img src="D:\blog\source_posts\java苍穹外卖.assets\image-20231015192506760.png" alt="image-20231015192506760"></p>
+<h2 id="调试-看登录功能代码"><a href="#调试-看登录功能代码" class="headerlink" title="调试-看登录功能代码"></a>调试-看登录功能代码</h2><ul>
+<li>点击</li>
+</ul>
+<p><img src="D:\blog\source_posts\java苍穹外卖.assets\image-20231015192715223.png" alt="image-20231015192715223"></p>
+<ul>
+<li>放行，直至下一个断点之前</li>
+</ul>
+<p><img src="D:\blog\source_posts\java苍穹外卖.assets\image-20231015193655566.png" alt="image-20231015193655566"></p>
+<ul>
+<li>配置文件有效<ul>
+<li>active表示dev文件也有效</li>
+</ul>
+</li>
+</ul>
+<p><img src="D:\blog\source_posts\java苍穹外卖.assets\image-20231016142035459.png" alt="image-20231016142035459"></p>
+<ul>
+<li>配置项</li>
+</ul>
+<p><img src="D:\blog\source_posts\java苍穹外卖.assets\image-20231016142229850.png" alt="image-20231016142229850"></p>
+<p><img src="D:\blog\source_posts\java苍穹外卖.assets\image-20231016142214646.png" alt="image-20231016142214646"></p>
+<blockquote>
+<p>通过配置属性类这种方式将springboot配置文件里面的配置项封装成一个java对象，然后通过Autowired注解注入</p>
+</blockquote>
+<h2 id="前端发送的请求是如何请求到后端服务的？"><a href="#前端发送的请求是如何请求到后端服务的？" class="headerlink" title="前端发送的请求是如何请求到后端服务的？"></a>前端发送的请求是如何请求到后端服务的？</h2><h3 id="问题：前端请求地址与后端接口地址不同"><a href="#问题：前端请求地址与后端接口地址不同" class="headerlink" title="问题：前端请求地址与后端接口地址不同"></a>问题：前端请求地址与后端接口地址不同</h3><p>前端的请求是针对后端服务器tomcat某个接口的请求</p>
+<ul>
+<li>前端的请求地址URL：<code> http://localhost:8086/api/employee/login</code></li>
+</ul>
+<p><img src="D:\blog\source_posts\java苍穹外卖.assets\image-20231016143101911.png" alt="image-20231016143101911"></p>
+<ul>
+<li>后端的接口地址：<code> http://localhost:8080/admin/employee/login</code></li>
+</ul>
+<p>后端基于内嵌的tomcat服务器来执行</p>
+<p><img src="D:\blog\source_posts\java苍穹外卖.assets\image-20231016143204106.png" alt="image-20231016143204106"></p>
+<h3 id="解释"><a href="#解释" class="headerlink" title="解释"></a>解释</h3><p>nginx反向代理：将前端发送的动态请求由nginx转发到后端服务器</p>
+<p>为什么要用nginx反向代理</p>
+<ul>
+<li>提高访问速度，可以做缓存</li>
+<li>进行负载均衡</li>
+<li>保证后端服务安全，很多后端服务并不直接暴露在互联网上，大多数部署在公祠内部的局域网中，并不对外开放，前端无法直接请求后端</li>
+</ul>
+<p>负载均衡：将大量的请求按照我们指定的方式均衡地分配给集群中的每台服务器</p>
+<h2 id="配置nginx反向代理"><a href="#配置nginx反向代理" class="headerlink" title="配置nginx反向代理"></a>配置nginx反向代理</h2><p>文件：<code>nginx.conf</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">        listen       8086;</span><br><span class="line">        server_name  localhost;</span><br><span class="line">        # 反向代理,处理管理端发送的请求</span><br><span class="line">        location /api/ &#123;</span><br><span class="line">			proxy_pass   http://localhost:8080/admin/;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="负载均衡配置"><a href="#负载均衡配置" class="headerlink" title="负载均衡配置"></a>负载均衡配置</h2><p>webservers可以自定义</p>
+<p>server 127.0.0.1:8080 ： 后端服务的IP地址和端口号</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">upstream webservers&#123;</span><br><span class="line">		#两组服务器</span><br><span class="line">	  server 127.0.0.1:8080 weight=90 ;</span><br><span class="line">	  server 127.0.0.1:8088 weight=10 ;</span><br><span class="line">&#125;</span><br><span class="line">server &#123;</span><br><span class="line">        listen       8086;</span><br><span class="line">        server_name  localhost;</span><br><span class="line">        location /api/ &#123;</span><br><span class="line">			proxy_pass   http://webservers/admin/; #负载均衡</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="负载均衡策略"><a href="#负载均衡策略" class="headerlink" title="负载均衡策略"></a>负载均衡策略</h3><p><img src="D:\blog\source_posts\java苍穹外卖.assets\image-20231016145526086.png" alt="image-20231016145526086"></p>
+<h1 id="完善登录功能"><a href="#完善登录功能" class="headerlink" title="完善登录功能"></a>完善登录功能</h1><h2 id="问题-1"><a href="#问题-1" class="headerlink" title="问题"></a>问题</h2><ul>
+<li>用户密码明文存储安全性太低</li>
+</ul>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><ul>
+<li>加密以后再存储，提高安全性</li>
+<li>使用MD5加密对明文密码进行加密（不可逆）</li>
+</ul>
+<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><ol>
+<li>修改数据库中明文密码，将其修改为MD5加密后的密文</li>
+<li>修改代码，前端提交以后的密码进行加密以后与后端密码进行比对</li>
+</ol>
+]]></content>
+      <categories>
+        <category>java,外卖</category>
+      </categories>
+      <tags>
+        <tag>java,外卖</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>word2vec</title>
+    <url>/2023/07/24/word2vec/</url>
+    <content><![CDATA[<p>论文地址：[<a href="https://arxiv.org/abs/1701.06279">1701.06279] dna2vec：可变长度 k-mers 的一致向量表示 (arxiv.org)</a></p>
+<p>word文档：</p>
+<h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><p>NLP领域的技术，将词转化为“可计算”向量的过程</p>
+<h1 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h1><p>降低维度</p>
+<p>词语之间的相似性</p>
+<h1 id="实现方法"><a href="#实现方法" class="headerlink" title="实现方法"></a>实现方法</h1><p>CBOW模型：给定上下文，预测目标词</p>
+<h1 id="dna2vec：可变长度-k-mers-的一致向量表示"><a href="#dna2vec：可变长度-k-mers-的一致向量表示" class="headerlink" title="dna2vec：可变长度 k-mers 的一致向量表示"></a>dna2vec：可变长度 k-mers 的一致向量表示</h1>]]></content>
+      <tags>
+        <tag>NLP</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>一些总结的方法</title>
+    <url>/2023/10/15/%E4%B8%80%E4%BA%9B%E6%80%BB%E7%BB%93%E7%9A%84%E6%96%B9%E6%B3%95%E8%AE%BA/</url>
+    <content><![CDATA[<h1 id="数据库MySQL导入sql文件的多种方法"><a href="#数据库MySQL导入sql文件的多种方法" class="headerlink" title="数据库MySQL导入sql文件的多种方法"></a>数据库MySQL导入sql文件的多种方法</h1><h2 id="方法一：使用Data-Import"><a href="#方法一：使用Data-Import" class="headerlink" title="方法一：使用Data Import"></a>方法一：使用Data Import</h2><p><img src="D:\blog\source_posts\java苍穹外卖.assets\image-20231015172227382.png" alt="image-20231015172227382"></p>
+<p><img src="D:\blog\source_posts\java苍穹外卖.assets\image-20231015172330357.png" alt="image-20231015172330357"></p>
+<p><img src="D:\blog\source_posts\java苍穹外卖.assets\image-20231015172400199.png" alt="image-20231015172400199"></p>
+<p>点击刷新</p>
+<p><img src="D:\blog\source_posts\java苍穹外卖.assets\image-20231015172436013.png" alt="image-20231015172436013"></p>
+<h2 id="方法二：使用闪电"><a href="#方法二：使用闪电" class="headerlink" title="方法二：使用闪电"></a>方法二：使用闪电</h2><p><img src="D:\blog\source_posts\数据库MySQL导入sql文件的多种方法.assets\image-20231015173205571.png" alt="image-20231015173205571"></p>
+<p><img src="D:\blog\source_posts\数据库MySQL导入sql文件的多种方法.assets\image-20231015173224684.png" alt="image-20231015173224684"></p>
+<h1 id="git"><a href="#git" class="headerlink" title="git"></a>git</h1><h2 id="方法一：git-bash"><a href="#方法一：git-bash" class="headerlink" title="方法一：git bash"></a>方法一：git bash</h2><p>链接：</p>
+<h2 id="方法二：idea"><a href="#方法二：idea" class="headerlink" title="方法二：idea"></a>方法二：idea</h2><h3 id="git忽略的目录"><a href="#git忽略的目录" class="headerlink" title="git忽略的目录"></a>git忽略的目录</h3><p><img src="D:\blog\source_posts\一些总结的方法论.assets\image-20231015170534742.png" alt="image-20231015170534742"></p>
+<h3 id="创建本地仓库"><a href="#创建本地仓库" class="headerlink" title="创建本地仓库"></a>创建本地仓库</h3><p><img src="D:\blog\source_posts\一些总结的方法论.assets\image-20231015170646400.png" alt="image-20231015170646400"></p>
+<p><img src="D:\blog\source_posts\一些总结的方法论.assets\image-20231015170737587.png" alt="image-20231015170737587"></p>
+<h3 id="初次提交"><a href="#初次提交" class="headerlink" title="初次提交"></a>初次提交</h3><p>可以加上commit的message</p>
+<p><img src="D:\blog\source_posts\一些总结的方法论.assets\image-20231015171010250.png" alt="image-20231015171010250"></p>
+<h3 id="创建远程仓库"><a href="#创建远程仓库" class="headerlink" title="创建远程仓库"></a>创建远程仓库</h3><p><img src="D:\blog\source_posts\一些总结的方法论.assets\image-20231015171236739.png" alt="image-20231015171236739"></p>
+<h3 id="推送项目"><a href="#推送项目" class="headerlink" title="推送项目"></a>推送项目</h3><p><img src="D:\blog\source_posts\一些总结的方法论.assets\image-20231015171347456.png" alt="image-20231015171347456"></p>
+<p><img src="D:\blog\source_posts\一些总结的方法论.assets\image-20231015171422989.png" alt="image-20231015171422989"></p>
+<p><img src="D:\blog\source_posts\一些总结的方法论.assets\image-20231015171530145.png" alt="image-20231015171530145"></p>
+<h3 id="提交和推送的提醒"><a href="#提交和推送的提醒" class="headerlink" title="提交和推送的提醒"></a>提交和推送的提醒</h3><p><img src="D:\blog\source_posts\一些总结的方法论.assets\image-20231015171452673.png" alt="image-20231015171452673"></p>
+<h1 id="Idea调试"><a href="#Idea调试" class="headerlink" title="Idea调试"></a>Idea调试</h1><ul>
+<li>跳到下一个断点处</li>
+</ul>
+<p><img src="D:\blog\source_posts\一些总结的方法论.assets\image-20231016151525162.png" alt="image-20231016151525162"></p>
+<ul>
+<li>最左边：跳到下一条语句</li>
+<li>中间：进入该语句</li>
+<li>右边：跳出该语句</li>
+</ul>
+<p><img src="D:\blog\source_posts\一些总结的方法论.assets\image-20231016141652764.png" alt="image-20231016141652764"></p>
+<ul>
+<li>左边：运行</li>
+<li>右边：调试</li>
+</ul>
+<p><img src="D:\blog\source_posts\一些总结的方法论.assets\image-20231016141803526.png" alt="image-20231016141803526"></p>
+<ul>
+<li>打开一个文件以后，快速定位该文件的位置</li>
+</ul>
+<p><img src="D:\blog\source_posts\一些总结的方法论.assets\image-20231016141838703.png" alt="image-20231016141838703"></p>
+<h1 id="Idea的TODO"><a href="#Idea的TODO" class="headerlink" title="Idea的TODO"></a>Idea的TODO</h1><p><img src="D:\blog\source_posts\一些总结的方法论.assets\image-20231016152553095.png" alt="image-20231016152553095"></p>
+<h1 id="使用DataGrip连接虚拟机中的MySQL"><a href="#使用DataGrip连接虚拟机中的MySQL" class="headerlink" title="使用DataGrip连接虚拟机中的MySQL"></a>使用DataGrip连接虚拟机中的MySQL</h1><p>链接：</p>
+<h1 id="部署项目"><a href="#部署项目" class="headerlink" title="部署项目"></a>部署项目</h1><p>链接：</p>
+]]></content>
+      <categories>
+        <category>MySQL,sql文件</category>
+      </categories>
+      <tags>
+        <tag>MySQL,sql文件</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>刷题系统项目详细介绍文档</title>
+    <url>/2023/10/11/%E5%88%B7%E9%A2%98%E7%B3%BB%E7%BB%9F%E9%A1%B9%E7%9B%AE%E8%AF%A6%E7%BB%86%E4%BB%8B%E7%BB%8D/</url>
+    <content><![CDATA[<h1 id="目标及需求"><a href="#目标及需求" class="headerlink" title="目标及需求"></a>目标及需求</h1><h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><p>熟练掌握项目中出现的所有问题及解决方案，以及所用技术栈的具体知识</p>
+<p>进行面试演练</p>
+<h2 id="toDolist"><a href="#toDolist" class="headerlink" title="toDolist"></a>toDolist</h2><h3 id="重新运行项目"><a href="#重新运行项目" class="headerlink" title="重新运行项目"></a>重新运行项目</h3><h3 id="上传至gitee和github上"><a href="#上传至gitee和github上" class="headerlink" title="上传至gitee和github上"></a>上传至gitee和github上</h3><h3 id="将项目部署至tomcat服务器"><a href="#将项目部署至tomcat服务器" class="headerlink" title="将项目部署至tomcat服务器"></a>将项目部署至tomcat服务器</h3><h3 id="将项目构建的大致流程进行文字版梳理"><a href="#将项目构建的大致流程进行文字版梳理" class="headerlink" title="将项目构建的大致流程进行文字版梳理"></a>将项目构建的大致流程进行文字版梳理</h3><h3 id="搜集网上面试官可能会问的问题，并逐个进行分析解答，尽量做到全面"><a href="#搜集网上面试官可能会问的问题，并逐个进行分析解答，尽量做到全面" class="headerlink" title="搜集网上面试官可能会问的问题，并逐个进行分析解答，尽量做到全面"></a>搜集网上面试官可能会问的问题，并逐个进行分析解答，尽量做到全面</h3><h3 id="对技术栈的知识进行全面学习"><a href="#对技术栈的知识进行全面学习" class="headerlink" title="对技术栈的知识进行全面学习"></a>对技术栈的知识进行全面学习</h3><h3 id="搜集技术栈相关的问题，记录并且分析解答背诵"><a href="#搜集技术栈相关的问题，记录并且分析解答背诵" class="headerlink" title="搜集技术栈相关的问题，记录并且分析解答背诵"></a>搜集技术栈相关的问题，记录并且分析解答背诵</h3><h3 id="根据面试官可能会问的问题演练一遍"><a href="#根据面试官可能会问的问题演练一遍" class="headerlink" title="根据面试官可能会问的问题演练一遍"></a>根据面试官可能会问的问题演练一遍</h3><h3 id="更新完善简历"><a href="#更新完善简历" class="headerlink" title="更新完善简历"></a>更新完善简历</h3><h3 id="反问面试官的问题"><a href="#反问面试官的问题" class="headerlink" title="反问面试官的问题"></a>反问面试官的问题</h3><h1 id="行动"><a href="#行动" class="headerlink" title="行动"></a>行动</h1><h2 id="重新运行项目-1"><a href="#重新运行项目-1" class="headerlink" title="重新运行项目"></a>重新运行项目</h2><h2 id="上传至gitee和github上-1"><a href="#上传至gitee和github上-1" class="headerlink" title="上传至gitee和github上"></a>上传至gitee和github上</h2><h2 id="将项目部署至tomcat服务器-1"><a href="#将项目部署至tomcat服务器-1" class="headerlink" title="将项目部署至tomcat服务器"></a>将项目部署至tomcat服务器</h2><h2 id="将项目构建的大致流程进行文字版梳理-1"><a href="#将项目构建的大致流程进行文字版梳理-1" class="headerlink" title="将项目构建的大致流程进行文字版梳理"></a>将项目构建的大致流程进行文字版梳理</h2><h2 id="搜集网上面试官可能会问的问题，并逐个进行分析解答，尽量做到全面-1"><a href="#搜集网上面试官可能会问的问题，并逐个进行分析解答，尽量做到全面-1" class="headerlink" title="搜集网上面试官可能会问的问题，并逐个进行分析解答，尽量做到全面"></a>搜集网上面试官可能会问的问题，并逐个进行分析解答，尽量做到全面</h2><h3 id="在这个项目里，你用到了什么技术，做了什么事情，以及遇到什么困难，如何解决的"><a href="#在这个项目里，你用到了什么技术，做了什么事情，以及遇到什么困难，如何解决的" class="headerlink" title="在这个项目里，你用到了什么技术，做了什么事情，以及遇到什么困难，如何解决的"></a>在这个项目里，你用到了什么技术，做了什么事情，以及遇到什么困难，如何解决的</h3><h2 id="对技术栈的知识进行全面学习-1"><a href="#对技术栈的知识进行全面学习-1" class="headerlink" title="对技术栈的知识进行全面学习"></a>对技术栈的知识进行全面学习</h2><h2 id="搜集技术栈相关的问题，记录并且分析解答背诵-1"><a href="#搜集技术栈相关的问题，记录并且分析解答背诵-1" class="headerlink" title="搜集技术栈相关的问题，记录并且分析解答背诵"></a>搜集技术栈相关的问题，记录并且分析解答背诵</h2><h3 id="Springboot的事务管理"><a href="#Springboot的事务管理" class="headerlink" title="Springboot的事务管理"></a>Springboot的事务管理</h3><h3 id="Mysql走索引和不走索引的区别"><a href="#Mysql走索引和不走索引的区别" class="headerlink" title="Mysql走索引和不走索引的区别"></a>Mysql走索引和不走索引的区别</h3><h3 id="Mysql的in是否会触发全表查询"><a href="#Mysql的in是否会触发全表查询" class="headerlink" title="Mysql的in是否会触发全表查询"></a>Mysql的in是否会触发全表查询</h3><h3 id="大规模的数据如何解决"><a href="#大规模的数据如何解决" class="headerlink" title="大规模的数据如何解决"></a>大规模的数据如何解决</h3><h3 id="Mysql联合索引，where的其中一个，能否查到"><a href="#Mysql联合索引，where的其中一个，能否查到" class="headerlink" title="Mysql联合索引，where的其中一个，能否查到"></a>Mysql联合索引，where的其中一个，能否查到</h3><h3 id="String是基本数据类型吗"><a href="#String是基本数据类型吗" class="headerlink" title="String是基本数据类型吗"></a>String是基本数据类型吗</h3><p>不是，java的基础数据类型有八种，byte，short，char，int，long，float，double，boolean。而String属于一种特殊的对象类型，不属于基本数据类型</p>
+<h3 id="Int可以转byte吗，有什么缺点？"><a href="#Int可以转byte吗，有什么缺点？" class="headerlink" title="Int可以转byte吗，有什么缺点？"></a>Int可以转byte吗，有什么缺点？</h3><p>Int不可以自动转成byte类型，但是可以强制转换，但是强制转换后带来的缺点是精度的损失。因为在java的运算中，所有的数字都会以二进制的补码形式进行运算，int类型是4字节，32bit，而byte类型是1字节，8bit，在转换的过程中，会造成尾数的损失，从而导致精度损失。所以，一般不建议int强转为byte，除非有特殊需求。</p>
+<h3 id="三次握手四次挥手"><a href="#三次握手四次挥手" class="headerlink" title="三次握手四次挥手"></a>三次握手四次挥手</h3><h3 id="Int和Integer的区别？"><a href="#Int和Integer的区别？" class="headerlink" title="Int和Integer的区别？"></a>Int和Integer的区别？</h3><h3 id="LinkedList在第十个位置插入元素的过程"><a href="#LinkedList在第十个位置插入元素的过程" class="headerlink" title="LinkedList在第十个位置插入元素的过程"></a>LinkedList在第十个位置插入元素的过程</h3><h3 id="LinkedList和ArrayList的区别"><a href="#LinkedList和ArrayList的区别" class="headerlink" title="LinkedList和ArrayList的区别"></a>LinkedList和ArrayList的区别</h3><h3 id="创建多线程的方法"><a href="#创建多线程的方法" class="headerlink" title="创建多线程的方法"></a>创建多线程的方法</h3><h3 id="Sleep和wait的区别"><a href="#Sleep和wait的区别" class="headerlink" title="Sleep和wait的区别"></a>Sleep和wait的区别</h3><h3 id="类的加载过程（静态变量初始化是在哪个步骤里面）"><a href="#类的加载过程（静态变量初始化是在哪个步骤里面）" class="headerlink" title="类的加载过程（静态变量初始化是在哪个步骤里面）"></a>类的加载过程（静态变量初始化是在哪个步骤里面）</h3><h3 id="JVM中堆包含哪两个部分"><a href="#JVM中堆包含哪两个部分" class="headerlink" title="JVM中堆包含哪两个部分"></a>JVM中堆包含哪两个部分</h3><h3 id="为什么使用Springboot框架？"><a href="#为什么使用Springboot框架？" class="headerlink" title="为什么使用Springboot框架？"></a>为什么使用Springboot框架？</h3><h3 id="什么是死锁？怎么解决死锁？"><a href="#什么是死锁？怎么解决死锁？" class="headerlink" title="什么是死锁？怎么解决死锁？"></a>什么是死锁？怎么解决死锁？</h3><h3 id="Jvm内存模型"><a href="#Jvm内存模型" class="headerlink" title="Jvm内存模型"></a>Jvm内存模型</h3><h3 id="GC垃圾回收机制"><a href="#GC垃圾回收机制" class="headerlink" title="GC垃圾回收机制"></a>GC垃圾回收机制</h3><h3 id="类加载过程"><a href="#类加载过程" class="headerlink" title="类加载过程"></a>类加载过程</h3><h3 id="Mysql的优化"><a href="#Mysql的优化" class="headerlink" title="Mysql的优化"></a>Mysql的优化</h3><h2 id="根据面试官可能会问的问题演练一遍-1"><a href="#根据面试官可能会问的问题演练一遍-1" class="headerlink" title="根据面试官可能会问的问题演练一遍"></a>根据面试官可能会问的问题演练一遍</h2><h3 id="在团队合作的过程中，出现哪些问题，如何解决的？"><a href="#在团队合作的过程中，出现哪些问题，如何解决的？" class="headerlink" title="在团队合作的过程中，出现哪些问题，如何解决的？"></a>在团队合作的过程中，出现哪些问题，如何解决的？</h3><h3 id="说说自己的缺点"><a href="#说说自己的缺点" class="headerlink" title="说说自己的缺点"></a>说说自己的缺点</h3><h3 id="自我介绍"><a href="#自我介绍" class="headerlink" title="自我介绍"></a>自我介绍</h3><h3 id="对公司的了解"><a href="#对公司的了解" class="headerlink" title="对公司的了解"></a>对公司的了解</h3><h3 id="选择这家企业的原因"><a href="#选择这家企业的原因" class="headerlink" title="选择这家企业的原因"></a>选择这家企业的原因</h3><h3 id="选择深圳这座城市的原因"><a href="#选择深圳这座城市的原因" class="headerlink" title="选择深圳这座城市的原因"></a>选择深圳这座城市的原因</h3><h3 id="对自己的职业规划"><a href="#对自己的职业规划" class="headerlink" title="对自己的职业规划"></a>对自己的职业规划</h3><h3 id="如果有时间希望提升自己哪一方面"><a href="#如果有时间希望提升自己哪一方面" class="headerlink" title="如果有时间希望提升自己哪一方面"></a>如果有时间希望提升自己哪一方面</h3><h3 id="觉得相比同学自己的优势在哪里"><a href="#觉得相比同学自己的优势在哪里" class="headerlink" title="觉得相比同学自己的优势在哪里"></a>觉得相比同学自己的优势在哪里</h3><h2 id="反问面试官的问题-1"><a href="#反问面试官的问题-1" class="headerlink" title="反问面试官的问题"></a>反问面试官的问题</h2><h3 id="公司有几个项目开发小组，一个组里面有多少人"><a href="#公司有几个项目开发小组，一个组里面有多少人" class="headerlink" title="公司有几个项目开发小组，一个组里面有多少人"></a>公司有几个项目开发小组，一个组里面有多少人</h3><h3 id="公司常用技术栈有哪些"><a href="#公司常用技术栈有哪些" class="headerlink" title="公司常用技术栈有哪些"></a>公司常用技术栈有哪些</h3>]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>java,后端,项目</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/2023/08/11/%E5%89%8D%E7%AB%AF%E7%A4%BE%E6%8B%9B%E7%AC%94%E8%AF%95%E9%A2%98/</url>
+    <content><![CDATA[<h1 id="百度"><a href="#百度" class="headerlink" title="百度"></a>百度</h1><h2 id="百度2020校招Web前端工程师笔试卷（第三批）"><a href="#百度2020校招Web前端工程师笔试卷（第三批）" class="headerlink" title="百度2020校招Web前端工程师笔试卷（第三批）"></a>百度2020校招Web前端工程师笔试卷（第三批）</h2><p>链接：<a href="https://zhuanlan.zhihu.com/p/544331738">请点这里</a></p>
+<h3 id="1请选出3的颜色"><a href="#1请选出3的颜色" class="headerlink" title="1请选出3的颜色"></a>1请选出3的颜色</h3><p>a 蓝色 b绿色 c红色 d黄色</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">  <span class="selector-tag">ul</span> &#123; <span class="attribute">color</span>: blue <span class="meta">!important</span>; &#125;     <span class="comment">/* 设置无序列表（ul）的文本颜色为蓝色，并使用 !important 标记，表示该样式优先级高于其他样式。 */</span></span></span><br><span class="line"><span class="language-css">  <span class="selector-tag">ul</span> &gt; <span class="selector-tag">li</span> &#123;  <span class="attribute">color</span>: green; &#125;          <span class="comment">/* 设置直接子级列表项（li）的文本颜色为绿色。 */</span></span></span><br><span class="line"><span class="language-css">  <span class="selector-tag">ul</span> <span class="selector-tag">li</span> + <span class="selector-tag">li</span> &#123; <span class="attribute">color</span>: red;  &#125;         <span class="comment">/* 设置列表项（li）中，紧邻前一个列表项的文本颜色为红色。 */</span></span></span><br><span class="line"><span class="language-css">  <span class="selector-tag">li</span> &#123;  <span class="attribute">color</span>: yellow;  &#125;             <span class="comment">/* 设置所有列表项（li）的文本颜色为黄色。 */</span></span></span><br><span class="line"><span class="language-css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>选择c</p>
+<p>代码运行结果：</p>
+<p><img src="D:\blog\source_posts\前端社招笔试题.assets\image-20230811165409052.png" alt="image-20230811165409052"></p>
+<p>！important优先级最高，但被后面的继承覆盖掉了<br>        ul&gt; li选择父元素是 <ul> 的所有 <li> 元素<br>        ul li+li <strong>相邻兄弟选择器</strong> (+) 介于两个选择器之间，当第二个元素<em>紧跟在</em>第一个元素之后，并且两个元素都是属于同一个父元素的子元素，则第二个元素将被选中。而这里并没有指明第一个元素就是最前面的哪一个li，所以每一个li都会找自己的兄弟，结果就是除了第一个li以外的所有li都被选中。<br>        li 单个元素选择器<br>        对比优先级：3个元素选择器&gt;2个&gt;1个 所以，1、2、3三个元素的颜色分别为green、red、red</p>
+</blockquote>
+<h3 id="2"><a href="#2" class="headerlink" title="2"></a>2</h3><p>下列哪项transform属性可以对元素进行旋转（）</p>
+<p>A translate                                 B scale</p>
+<p>C rotate                                      D skew</p>
+<blockquote>
+<p>选a</p>
+<p>transform 属性向元素应用 2D 或 3D 转换。该属性允许我们对元素进行旋转、缩放、移动或倾斜。</p>
+</blockquote>
+<h3 id="3"><a href="#3" class="headerlink" title="3"></a>3</h3>]]></content>
+  </entry>
+  <entry>
+    <title>找工作历程</title>
+    <url>/2023/10/10/%E6%89%BE%E5%B7%A5%E4%BD%9C%E5%8E%86%E7%A8%8B/</url>
+    <content><![CDATA[<h1 id="第一次投简历-java后端"><a href="#第一次投简历-java后端" class="headerlink" title="第一次投简历-java后端"></a>第一次投简历-java后端</h1><h2 id="时间"><a href="#时间" class="headerlink" title="时间"></a>时间</h2><ul>
+<li>2023&#x2F;10&#x2F;10</li>
+</ul>
+<h2 id="招聘信息"><a href="#招聘信息" class="headerlink" title="招聘信息"></a>招聘信息</h2><ul>
+<li><p>老师群里发布一个招聘信息</p>
+<p><img src="D:\blog\source_posts\找工作历程.assets\image-20231010222641486.png" alt="image-20231010222641486"></p>
+</li>
+</ul>
+<h2 id="思想历程"><a href="#思想历程" class="headerlink" title="思想历程"></a>思想历程</h2><blockquote>
+<p>我的思想历程：</p>
+<p>这次我还没有准备好，而且我的技术知识还不够完备，投这次简历主要是为了判断我的简历的水准，以及可以的话，想了解下面试的流程。</p>
+</blockquote>
+<h2 id="简历"><a href="#简历" class="headerlink" title="简历"></a>简历</h2><p> <a href="%E6%89%BE%E5%B7%A5%E4%BD%9C%E5%8E%86%E7%A8%8B.assets%5C%E7%AC%AC%E4%B8%80%E6%AC%A1%E6%8A%95%E5%AE%9E%E4%B9%A0%E7%AE%80%E5%8E%86-%E5%90%8E%E7%AB%AF.pdf">第一次投实习简历-后端.pdf</a>  </p>
+<h2 id="发送过程（留念）"><a href="#发送过程（留念）" class="headerlink" title="发送过程（留念）"></a>发送过程（留念）</h2><p><img src="D:\blog\source_posts\找工作历程.assets\6273a4426311a165a01625375310bb7.png" alt="6273a4426311a165a01625375310bb7"></p>
+<h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2>]]></content>
+      <tags>
+        <tag>找工作</tag>
       </tags>
   </entry>
   <entry>
@@ -457,26 +1858,30 @@
       </tags>
   </entry>
   <entry>
-    <title></title>
-    <url>/2023/08/11/%E5%89%8D%E7%AB%AF%E7%A4%BE%E6%8B%9B%E7%AC%94%E8%AF%95%E9%A2%98/</url>
-    <content><![CDATA[<h1 id="百度"><a href="#百度" class="headerlink" title="百度"></a>百度</h1><h2 id="百度2020校招Web前端工程师笔试卷（第三批）"><a href="#百度2020校招Web前端工程师笔试卷（第三批）" class="headerlink" title="百度2020校招Web前端工程师笔试卷（第三批）"></a>百度2020校招Web前端工程师笔试卷（第三批）</h2><p>链接：<a href="https://zhuanlan.zhihu.com/p/544331738">请点这里</a></p>
-<h3 id="1请选出3的颜色"><a href="#1请选出3的颜色" class="headerlink" title="1请选出3的颜色"></a>1请选出3的颜色</h3><p>a 蓝色 b绿色 c红色 d黄色</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">  <span class="selector-tag">ul</span> &#123; <span class="attribute">color</span>: blue <span class="meta">!important</span>; &#125;     <span class="comment">/* 设置无序列表（ul）的文本颜色为蓝色，并使用 !important 标记，表示该样式优先级高于其他样式。 */</span></span></span><br><span class="line"><span class="language-css">  <span class="selector-tag">ul</span> &gt; <span class="selector-tag">li</span> &#123;  <span class="attribute">color</span>: green; &#125;          <span class="comment">/* 设置直接子级列表项（li）的文本颜色为绿色。 */</span></span></span><br><span class="line"><span class="language-css">  <span class="selector-tag">ul</span> <span class="selector-tag">li</span> + <span class="selector-tag">li</span> &#123; <span class="attribute">color</span>: red;  &#125;         <span class="comment">/* 设置列表项（li）中，紧邻前一个列表项的文本颜色为红色。 */</span></span></span><br><span class="line"><span class="language-css">  <span class="selector-tag">li</span> &#123;  <span class="attribute">color</span>: yellow;  &#125;             <span class="comment">/* 设置所有列表项（li）的文本颜色为黄色。 */</span></span></span><br><span class="line"><span class="language-css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+    <title>网站搭建</title>
+    <url>/2023/08/30/%E6%90%AD%E5%BB%BA%E7%BD%91%E7%AB%99/</url>
+    <content><![CDATA[<h1 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h1><figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 添加全局前置守卫</span></span><br><span class="line">router.<span class="title function_">beforeEach</span>(<span class="function">(<span class="params">to, <span class="keyword">from</span>, next</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// const requiresAuth = to.matched.some(record =&gt; record.meta.requiresAuth);</span></span><br><span class="line">    <span class="keyword">const</span> isCookieValid = <span class="title function_">validateCookie</span>(); <span class="comment">// 调用验证 cookie 的函数</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 如果目标为登录页面，则直接放行导航</span></span><br><span class="line">    <span class="keyword">if</span> (to.<span class="property">path</span> === <span class="string">&#x27;/login&#x27;</span> || to.<span class="property">path</span> === <span class="string">&#x27;/admin&#x27;</span>) &#123;</span><br><span class="line">        <span class="title function_">next</span>(); <span class="comment">// 如果目标路径已经是登录路径，则直接放行导航</span></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (isCookieValid) &#123;</span><br><span class="line">        <span class="comment">// cookie 有效，或者不需要验证，继续导航到目标页面</span></span><br><span class="line">        <span class="title function_">next</span>();</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// 如果需要验证且 cookie 无效，重定向到登录页面</span></span><br><span class="line">        <span class="title function_">next</span>(<span class="string">&#x27;/login&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 解密 DES 函数</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">decryptDES</span>(<span class="params">ciphertext: <span class="built_in">string</span>, key: <span class="built_in">string</span>, iv: <span class="built_in">string</span></span>): <span class="built_in">string</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> decrypted = <span class="title class_">CryptoJS</span>.<span class="property">DES</span>.<span class="title function_">decrypt</span>(&#123;</span><br><span class="line">        <span class="attr">ciphertext</span>: <span class="title class_">CryptoJS</span>.<span class="property">enc</span>.<span class="property">Hex</span>.<span class="title function_">parse</span>(ciphertext),</span><br><span class="line">    &#125;, <span class="title class_">CryptoJS</span>.<span class="property">enc</span>.<span class="property">Utf8</span>.<span class="title function_">parse</span>(key), &#123;</span><br><span class="line">        <span class="attr">iv</span>: <span class="title class_">CryptoJS</span>.<span class="property">enc</span>.<span class="property">Hex</span>.<span class="title function_">parse</span>(iv),</span><br><span class="line">        <span class="attr">mode</span>: <span class="title class_">CryptoJS</span>.<span class="property">mode</span>.<span class="property">CBC</span>,</span><br><span class="line">        <span class="attr">padding</span>: <span class="title class_">CryptoJS</span>.<span class="property">pad</span>.<span class="property">Pkcs7</span>,</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> decrypted.<span class="title function_">toString</span>(<span class="title class_">CryptoJS</span>.<span class="property">enc</span>.<span class="property">Utf8</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 验证 cookie 的函数</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">validateCookie</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> cookies = <span class="variable language_">document</span>.<span class="property">cookie</span>.<span class="title function_">split</span>(<span class="string">&#x27;;&#x27;</span>); <span class="comment">// 将所有 Cookie 拆分成数组</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; cookies.<span class="property">length</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">const</span> cookie = cookies[i].<span class="title function_">trim</span>().<span class="title function_">split</span>(<span class="string">&#x27;=&#x27;</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> (cookie[<span class="number">0</span>] == <span class="string">&#x27;expiration_time&#x27;</span>) &#123;</span><br><span class="line">            <span class="keyword">const</span> ciphertext = cookie[<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">const</span> key = <span class="string">&#x27;88888888&#x27;</span>;</span><br><span class="line">            <span class="keyword">const</span> iv = <span class="string">&#x27;0000000000000000&#x27;</span>;</span><br><span class="line">            <span class="keyword">const</span> plaintext = <span class="title function_">decryptDES</span>(ciphertext, key, iv);</span><br><span class="line">            <span class="comment">// 将 plaintext 转换为数字</span></span><br><span class="line">            <span class="keyword">const</span> expiration_time = <span class="built_in">parseInt</span>(plaintext);</span><br><span class="line">            <span class="comment">// 获取当前时间戳</span></span><br><span class="line">            <span class="keyword">const</span> timestamp = <span class="title class_">Date</span>.<span class="title function_">parse</span>(<span class="keyword">new</span> <span class="title class_">Date</span>().<span class="title function_">toString</span>()) / <span class="number">1000</span>;</span><br><span class="line">            <span class="keyword">if</span> (expiration_time &gt; timestamp) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>; <span class="comment">// 如果 cookie 有效，返回 true</span></span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>; <span class="comment">// 如果 cookie 无效，返回 false</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>; <span class="comment">// 如果未找到 expiration_time，返回 false</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> router;</span><br></pre></td></tr></table></figure>
 
-<blockquote>
-<p>选择c</p>
-<p>代码运行结果：</p>
-<p><img src="D:\blog\source_posts\前端社招笔试题.assets\image-20230811165409052.png" alt="image-20230811165409052"></p>
-<p>！important优先级最高，但被后面的继承覆盖掉了<br>        ul&gt; li选择父元素是 <ul> 的所有 <li> 元素<br>        ul li+li <strong>相邻兄弟选择器</strong> (+) 介于两个选择器之间，当第二个元素<em>紧跟在</em>第一个元素之后，并且两个元素都是属于同一个父元素的子元素，则第二个元素将被选中。而这里并没有指明第一个元素就是最前面的哪一个li，所以每一个li都会找自己的兄弟，结果就是除了第一个li以外的所有li都被选中。<br>        li 单个元素选择器<br>        对比优先级：3个元素选择器&gt;2个&gt;1个 所以，1、2、3三个元素的颜色分别为green、red、red</p>
+
+
+<h2 id="to-from-next"><a href="#to-from-next" class="headerlink" title="(to, from, next)"></a>(to, from, next)</h2><blockquote>
+<p><code>(to, from, next)</code> 是 Vue Router 中全局前置守卫函数的参数，用于控制路由导航的流程。这三个参数分别代表了：</p>
+<ol>
+<li><code>to</code>：即将进入的目标路由对象，表示用户要导航到的路由。</li>
+<li><code>from</code>：即将离开的当前路由对象，表示用户要离开的路由。</li>
+<li><code>next</code>：一个回调函数，用于控制路由导航是否继续进行。它可以接受一个参数，用于指定导航的下一个步骤，如继续导航到目标路由、中断导航或重定向到其他路由。</li>
+</ol>
+<p>在全局前置守卫函数内部，你可以根据 <code>to</code> 和 <code>from</code> 的信息，来进行路由导航的控制和判断。<code>next</code> 函数则决定了路由是否继续进行，有以下用法：</p>
+<ul>
+<li><code>next()</code>：继续导航到目标路由，相当于放行。</li>
+<li><code>next(false)</code>：中断导航，不进行路由切换。</li>
+<li><code>next(&#39;/path&#39;)</code>：重定向到其他路径，相当于进行路由跳转。</li>
+</ul>
 </blockquote>
-<h3 id="2"><a href="#2" class="headerlink" title="2"></a>2</h3><p>下列哪项transform属性可以对元素进行旋转（）</p>
-<p>A translate                                 B scale</p>
-<p>C rotate                                      D skew</p>
-<blockquote>
-<p>选a</p>
-<p>transform 属性向元素应用 2D 或 3D 转换。该属性允许我们对元素进行旋转、缩放、移动或倾斜。</p>
-</blockquote>
-<h3 id="3"><a href="#3" class="headerlink" title="3"></a>3</h3>]]></content>
+]]></content>
+      <tags>
+        <tag>router,部署,前端</tag>
+      </tags>
   </entry>
   <entry>
     <title>web前端</title>
@@ -1912,6 +3317,82 @@
       </tags>
   </entry>
   <entry>
+    <title>一些常用的数学模型</title>
+    <url>/2023/07/31/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E6%A8%A1%E5%9E%8B/</url>
+    <content><![CDATA[<p>代码来源：<a href="https://zhuanlan.zhihu.com/p/618061990?utm_id=0">https://zhuanlan.zhihu.com/p/618061990?utm_id=0</a></p>
+<h1 id="线性规划"><a href="#线性规划" class="headerlink" title="线性规划"></a>线性规划</h1><p>导入代码模块</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> scipy</span><br><span class="line"><span class="keyword">import</span> sympy</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> matplotlib</span><br><span class="line"><span class="keyword">import</span> numpy</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="简单线性规划"><a href="#简单线性规划" class="headerlink" title="简单线性规划"></a>简单线性规划</h2><h3 id="例一（linprog）"><a href="#例一（linprog）" class="headerlink" title="例一（linprog）"></a>例一（linprog）</h3><p><img src="https://pic2.zhimg.com/80/v2-c6f90939bd931458d35d950cea8f2d59_1440w.webp" alt="img"></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 简单线性规划</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> scipy.optimize <span class="keyword">import</span> linprog</span><br><span class="line"></span><br><span class="line"><span class="comment"># 目标函数</span></span><br><span class="line">f=[-<span class="number">2</span>,-<span class="number">3</span>,<span class="number">5</span>]</span><br><span class="line"><span class="comment"># 小于等于约束</span></span><br><span class="line">aub=[[-<span class="number">2</span>,<span class="number">5</span>,-<span class="number">1</span>],[<span class="number">1</span>,<span class="number">3</span>,<span class="number">1</span>]]</span><br><span class="line">bub=[-<span class="number">10</span>,<span class="number">12</span>]</span><br><span class="line"><span class="comment"># 等式约束</span></span><br><span class="line">aeq=[[<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>]]</span><br><span class="line">beq=[<span class="number">7</span>]</span><br><span class="line"><span class="comment"># 非零约束</span></span><br><span class="line">x0bounds=(<span class="number">0</span>,<span class="literal">None</span>)</span><br><span class="line">x1bounds=(<span class="number">0</span>,<span class="literal">None</span>)</span><br><span class="line">x3bounds=(<span class="number">0</span>,<span class="literal">None</span>)</span><br><span class="line"><span class="comment"># 标准型线性规划：最小值、小于等于约束、等输约束、非零约束</span></span><br><span class="line"><span class="comment"># simplex单纯形法；interior-point内点法;highs使用HIPS求解器</span></span><br><span class="line">res = linprog(f, A_ub=aub, b_ub=bub,A_eq=aeq,b_eq=beq ,bounds=[x0bounds, x1bounds,x3bounds], method=<span class="string">&#x27;highs&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(res)</span><br></pre></td></tr></table></figure>
+
+<p>运行时结果：</p>
+<p><img src="D:\blog\source_posts\数学建模模型.assets\image-20230731183116746.png" alt="image-20230731183116746"></p>
+<blockquote>
+<p>这段代码是关于数学线性规划的Python代码运行后得出的结果。让我逐步解释一下每一部分的含义：</p>
+<ol>
+<li><code>con</code>: 这是一个数组，值为 <code>[0.]</code>。通常在线性规划中，这个数组表示约束条件（constraints）。这里只有一个约束条件，即等式约束条件。</li>
+<li><code>crossover_nit</code>: 这个值为 <code>0</code>，表示交叉（crossover）的迭代次数。</li>
+<li><code>eqlin</code>: 这是一个包含 <code>marginals</code> 和 <code>residual</code> 两个部分的等式约束信息。<code>marginals</code> 表示等式约束条件的边际值，值为 <code>[-2.28571429]</code>。而 <code>residual</code> 表示等式约束条件的残差，值为 <code>[0.]</code>。</li>
+<li><code>fun</code>: 这个值为 <code>-14.571428571428573</code>，表示线性规划的目标函数值（objective function value）。目标是最大化或最小化此值。</li>
+<li><code>ineqlin</code>: 这是一个包含 <code>marginals</code> 和 <code>residual</code> 两个部分的不等式约束信息。<code>marginals</code> 表示不等式约束条件的边际值，值为 <code>[-0.14285714, -0. ]</code>。而 <code>residual</code> 表示不等式约束条件的残差，值为 <code>[0., 3.85714286]</code>。这里有两个不等式约束条件。</li>
+<li><code>lower</code>: 这是一个包含 <code>marginals</code> 和 <code>residual</code> 两个部分的下界信息。<code>marginals</code> 表示变量的下界（lower bound）边际值，但该值由一个内存视图（MemoryView）来表示。而 <code>residual</code> 表示下界条件的残差，值为 <code>[6.42857143, 0.57142857, 0.]</code>。</li>
+<li><code>message</code>: 这是一个字符串，值为 <code>&#39;Optimization terminated successfully.&#39;</code>，表示优化过程成功终止。</li>
+<li><code>nit</code>: 这个值为 <code>3</code>，表示迭代次数（iterations）。</li>
+<li><code>slack</code>: 这是一个数组，值为 <code>[0., 3.85714286]</code>。在线性规划中，这个数组表示松弛变量（slack variables），它们用于衡量不等式约束条件是否被满足。</li>
+<li><code>status</code>: 这个值为 <code>0</code>，表示优化的状态。在大多数优化库中，状态为 <code>0</code> 表示成功找到最优解。</li>
+<li><code>success</code>: 这个值为 <code>True</code>，表示优化是否成功。</li>
+<li><code>upper</code>: 这是一个包含 <code>marginals</code> 和 <code>residual</code> 两个部分的上界信息。<code>marginals</code> 表示变量的上界（upper bound）边际值，但该值由一个内存视图（MemoryView）来表示。而 <code>residual</code> 表示上界条件的残差，值为 <code>[inf, inf, inf]</code>。这里 <code>inf</code> 表示正无穷大，说明部分变量可能没有上界。</li>
+<li><code>x</code>: 这是一个数组，值为 <code>[6.42857143, 0.57142857, 0.]</code>。这是线性规划得出的最优解，表示使目标函数达到最大或最小值时的变量取值。</li>
+</ol>
+<p>综上所述，这段数学线性规划代码的运行结果表明优化成功，得出的最优解为 <code>x = [6.42857143, 0.57142857, 0.]</code>，在这个解下，目标函数的值为 <code>-14.571428571428573</code>。同时，满足了等式约束条件以及不等式约束条件，并且部分变量可能没有上界。</p>
+</blockquote>
+<h3 id="例二（linprog）"><a href="#例二（linprog）" class="headerlink" title="例二（linprog）"></a>例二（linprog）</h3><p><img src="https://pic2.zhimg.com/80/v2-8b7ba11e726c91025155a9f073fda695_1440w.webp" alt="img"></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 简单线性规划</span></span><br><span class="line"><span class="keyword">from</span> scipy.optimize <span class="keyword">import</span> linprog</span><br><span class="line"><span class="comment"># 目标函数</span></span><br><span class="line">f=[-<span class="number">4</span>,-<span class="number">3</span>]</span><br><span class="line"><span class="comment"># 小于等于约束</span></span><br><span class="line">aub=[[<span class="number">2</span>,<span class="number">1</span>],[<span class="number">1</span>,<span class="number">1</span>],[<span class="number">0</span>,<span class="number">1</span>]]</span><br><span class="line">bub=[<span class="number">10</span>,<span class="number">8</span>,<span class="number">7</span>]</span><br><span class="line"><span class="comment"># 等式约束</span></span><br><span class="line">aeq=<span class="literal">None</span></span><br><span class="line">beq=<span class="literal">None</span></span><br><span class="line"><span class="comment"># 非零约束</span></span><br><span class="line">x0bounds=(<span class="number">0</span>,<span class="literal">None</span>)</span><br><span class="line">x1bounds=(<span class="number">0</span>,<span class="literal">None</span>)</span><br><span class="line">x=[x0bounds, x1bounds]</span><br><span class="line"><span class="comment"># 标准型线性规划：最小值、小于等于约束、等输约束、非零约束</span></span><br><span class="line"><span class="comment"># simplex单纯形法；interior-point内点法;highs使用HIPS求解器</span></span><br><span class="line">res = linprog(f, A_ub=aub, b_ub=bub,A_eq=aeq,b_eq=beq ,bounds=x, method=<span class="string">&#x27;simplex&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(res)</span><br></pre></td></tr></table></figure>
+
+<p><img src="D:\blog\source_posts\数学建模模型.assets\image-20230731183904084.png" alt="image-20230731183904084"></p>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>其他的方法有：</p>
+<ul>
+<li><a href="https://blog.csdn.net/m0_54510474/article/details/127849897#minimize_51">minimize()函数</a></li>
+<li><a href="https://blog.csdn.net/m0_54510474/article/details/127849897#cvxpy_96">cvxpy库</a></li>
+<li><a href="https://blog.csdn.net/m0_54510474/article/details/127849897#cvxopt_130">cvxopt库</a></li>
+</ul>
+<p>可查看：<a href="https://blog.csdn.net/m0_54510474/article/details/127849897">https://blog.csdn.net/m0_54510474/article/details/127849897</a></p>
+<h2 id="简单整数规划"><a href="#简单整数规划" class="headerlink" title="简单整数规划"></a>简单整数规划</h2><p><img src="https://pic3.zhimg.com/80/v2-b68d4e5869618c8b0c3a38088d27de7a_1440w.webp" alt="img"></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 简单整数规划</span><br><span class="line"></span><br><span class="line">import pulp as pp</span><br><span class="line"># 参数设置</span><br><span class="line">c = [3,4,1]        #目标函数未知数前的系数</span><br><span class="line"># 约束1</span><br><span class="line">A_gq = [[1,6,2],[2,0,0]]   # 大于等于式子 未知数前的系数集合 二维数组</span><br><span class="line">b_gq = [5,3]         # 大于等于式子右边的数值 一维数组</span><br><span class="line"># 确定最大最小化问题，当前确定的是最小化问题</span><br><span class="line">m = pp.LpProblem(sense=pp.LpMinimize)</span><br><span class="line"># 定义三个变量放到列表中 生成x1 x2 x3</span><br><span class="line">x = [pp.LpVariable(f&#x27;x&#123;i&#125;&#x27;,lowBound=0,cat=&#x27;Integer&#x27;) for i in [1,2,3]]</span><br><span class="line"># 定义目标函数，并将目标函数加入求解的问题中</span><br><span class="line">m += pp.lpDot(c,x) # lpDot 用于计算点积</span><br><span class="line"># 设置比较条件</span><br><span class="line">for i in range(len(A_gq)):# 大于等于</span><br><span class="line">    m += (pp.lpDot(A_gq[i],x) &gt;= b_gq[i])</span><br><span class="line"># 求解</span><br><span class="line">m.solve()</span><br><span class="line"># 输出结果</span><br><span class="line">print(f&#x27;优化结果：&#123;pp.value(m.objective)&#125;&#x27;)</span><br><span class="line">print(f&#x27;参数取值：&#123;[pp.value(var) for var in x]&#125;&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p>代码运行结果：</p>
+<p><img src="D:\blog\source_posts\数学建模模型.assets\image-20230731184740251.png" alt="image-20230731184740251"></p>
+<h1 id="人口模型"><a href="#人口模型" class="headerlink" title="人口模型"></a>人口模型</h1><h2 id="马尔萨斯模型"><a href="#马尔萨斯模型" class="headerlink" title="马尔萨斯模型"></a>马尔萨斯模型</h2><h3 id="模型过程"><a href="#模型过程" class="headerlink" title="模型过程"></a>模型过程</h3><p>人口增长与人口基数和增长率有关，这两项为主要因素。假设人口的增长过程可用微分方程来描述。初看起来，人口增长不能用微分方程来描述，因为人口总数是按整数变化的而不是时间的可微函数。然而人口总数很大时，可以近似认为它是时间的连续函数，甚至是可微函数。</p>
+<blockquote>
+<p>N（t）表示t时刻人口总数</p>
+<p>r（t，N（t））表示t时刻的人口增长率，它与时间t和t时刻的人口总数N（t）有关。</p>
+</blockquote>
+<p>模型建立：</p>
+<p>根据假设只考虑人口的基数和增长率，则在t到t+△t这段时间内人口总数增长为<br>$$<br>N（t+△t）-N（t）&#x3D;r（t，N（t））<em>N（t）</em>△t<br>$$<br>两端同除△t，并令△t-&gt;0，则<br>$$<br>\frac{dN（t）}{dt}&#x3D;r[t，N（t）]<em>N（t）<br>$$<br>令r[t，N（t）]&#x3D;r（一个常数）就是马尔萨斯模型（Malthus模型）<br>$$<br>\frac{dN（t）}{dt}&#x3D;r</em>N（t）<br>$$</p>
+<p>$$<br>N（t）|（ t&#x3D;t0） &#x3D;N0<br>$$</p>
+<p>求解得到<br>$$<br>N（t）&#x3D;N0<em>e^{r</em>(t-t0)}<br>$$</p>
+<h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><p>只符合过去的人口总数而不能用来预测未来人口总数</p>
+<p>原因人口总数不太大时，人口总数增长的线性数学模型是正确的，但当人口总数非常大时，地球上的资源，环境等因素对人口增长的限制作用越来越显著</p>
+<h2 id="逻辑斯蒂模型"><a href="#逻辑斯蒂模型" class="headerlink" title="逻辑斯蒂模型"></a>逻辑斯蒂模型</h2><p>当人口总数较小时，人口增长率可看作常数，当人口增长到一定数量后，这个增长率就要随人口的增加而减小。该模型考虑到自然资源、环境条件等因素对人口增长起着阻滞作用，并随人口增加，阻滞作用越来越大，该模型又称为阻滞增长模型，它是一种伯努利方程。</p>
+<blockquote>
+<p>k为生命系数</p>
+<p>N为单位时间内两个成员相遇次数的统计平均值</p>
+</blockquote>
+<p>$$<br>\frac{dN（t）}{dt}&#x3D;r<em>N（t）-K</em>N^2<br>$$</p>
+<p>$$<br>N（t）| （t&#x3D;t0） &#x3D;N0<br>$$</p>
+<p>可以查到：r&#x3D;0.029，K&#x3D;2.941*10^(-12)</p>
+]]></content>
+      <categories>
+        <category>模型</category>
+      </categories>
+      <tags>
+        <tag>数学建模</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>气候变化增加了跨物种病毒传播的风险</title>
     <url>/2023/07/22/%E6%B0%94%E5%80%99%E5%8F%98%E5%8C%96%E5%A2%9E%E5%8A%A0%E4%BA%86%E8%B7%A8%E7%89%A9%E7%A7%8D%E7%97%85%E6%AF%92%E4%BC%A0%E6%92%AD%E7%9A%84%E9%A3%8E%E9%99%A9/</url>
     <content><![CDATA[<p>网页地址：<a href="https://www.nature.com/articles/s41586-022-04788-w">气候变化增加跨物种病毒传播风险 |自然界 (nature.com)</a></p>
@@ -1989,79 +3470,26 @@
       </tags>
   </entry>
   <entry>
-    <title>一些常用的数学模型</title>
-    <url>/2023/07/31/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E6%A8%A1%E5%9E%8B/</url>
-    <content><![CDATA[<p>代码来源：<a href="https://zhuanlan.zhihu.com/p/618061990?utm_id=0">https://zhuanlan.zhihu.com/p/618061990?utm_id=0</a></p>
-<h1 id="线性规划"><a href="#线性规划" class="headerlink" title="线性规划"></a>线性规划</h1><p>导入代码模块</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> scipy</span><br><span class="line"><span class="keyword">import</span> sympy</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> matplotlib</span><br><span class="line"><span class="keyword">import</span> numpy</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="简单线性规划"><a href="#简单线性规划" class="headerlink" title="简单线性规划"></a>简单线性规划</h2><h3 id="例一（linprog）"><a href="#例一（linprog）" class="headerlink" title="例一（linprog）"></a>例一（linprog）</h3><p><img src="https://pic2.zhimg.com/80/v2-c6f90939bd931458d35d950cea8f2d59_1440w.webp" alt="img"></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 简单线性规划</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> scipy.optimize <span class="keyword">import</span> linprog</span><br><span class="line"></span><br><span class="line"><span class="comment"># 目标函数</span></span><br><span class="line">f=[-<span class="number">2</span>,-<span class="number">3</span>,<span class="number">5</span>]</span><br><span class="line"><span class="comment"># 小于等于约束</span></span><br><span class="line">aub=[[-<span class="number">2</span>,<span class="number">5</span>,-<span class="number">1</span>],[<span class="number">1</span>,<span class="number">3</span>,<span class="number">1</span>]]</span><br><span class="line">bub=[-<span class="number">10</span>,<span class="number">12</span>]</span><br><span class="line"><span class="comment"># 等式约束</span></span><br><span class="line">aeq=[[<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>]]</span><br><span class="line">beq=[<span class="number">7</span>]</span><br><span class="line"><span class="comment"># 非零约束</span></span><br><span class="line">x0bounds=(<span class="number">0</span>,<span class="literal">None</span>)</span><br><span class="line">x1bounds=(<span class="number">0</span>,<span class="literal">None</span>)</span><br><span class="line">x3bounds=(<span class="number">0</span>,<span class="literal">None</span>)</span><br><span class="line"><span class="comment"># 标准型线性规划：最小值、小于等于约束、等输约束、非零约束</span></span><br><span class="line"><span class="comment"># simplex单纯形法；interior-point内点法;highs使用HIPS求解器</span></span><br><span class="line">res = linprog(f, A_ub=aub, b_ub=bub,A_eq=aeq,b_eq=beq ,bounds=[x0bounds, x1bounds,x3bounds], method=<span class="string">&#x27;highs&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(res)</span><br></pre></td></tr></table></figure>
-
-<p>运行时结果：</p>
-<p><img src="D:\blog\source_posts\数学建模模型.assets\image-20230731183116746.png" alt="image-20230731183116746"></p>
+    <title>算法</title>
+    <url>/2023/10/08/%E7%AE%97%E6%B3%95/</url>
+    <content><![CDATA[<h1 id="学习进度"><a href="#学习进度" class="headerlink" title="学习进度"></a>学习进度</h1><p>课程学习：<a href="https://www.bilibili.com/video/BV1wh4y1m7CC/?spm_id_from=333.999.0.0&vd_source=05b9305044517a2659100450096dfe80">算法入门教程】终于找到了！这绝对是全B站最详细（没有之一）教程</a></p>
 <blockquote>
-<p>这段代码是关于数学线性规划的Python代码运行后得出的结果。让我逐步解释一下每一部分的含义：</p>
-<ol>
-<li><code>con</code>: 这是一个数组，值为 <code>[0.]</code>。通常在线性规划中，这个数组表示约束条件（constraints）。这里只有一个约束条件，即等式约束条件。</li>
-<li><code>crossover_nit</code>: 这个值为 <code>0</code>，表示交叉（crossover）的迭代次数。</li>
-<li><code>eqlin</code>: 这是一个包含 <code>marginals</code> 和 <code>residual</code> 两个部分的等式约束信息。<code>marginals</code> 表示等式约束条件的边际值，值为 <code>[-2.28571429]</code>。而 <code>residual</code> 表示等式约束条件的残差，值为 <code>[0.]</code>。</li>
-<li><code>fun</code>: 这个值为 <code>-14.571428571428573</code>，表示线性规划的目标函数值（objective function value）。目标是最大化或最小化此值。</li>
-<li><code>ineqlin</code>: 这是一个包含 <code>marginals</code> 和 <code>residual</code> 两个部分的不等式约束信息。<code>marginals</code> 表示不等式约束条件的边际值，值为 <code>[-0.14285714, -0. ]</code>。而 <code>residual</code> 表示不等式约束条件的残差，值为 <code>[0., 3.85714286]</code>。这里有两个不等式约束条件。</li>
-<li><code>lower</code>: 这是一个包含 <code>marginals</code> 和 <code>residual</code> 两个部分的下界信息。<code>marginals</code> 表示变量的下界（lower bound）边际值，但该值由一个内存视图（MemoryView）来表示。而 <code>residual</code> 表示下界条件的残差，值为 <code>[6.42857143, 0.57142857, 0.]</code>。</li>
-<li><code>message</code>: 这是一个字符串，值为 <code>&#39;Optimization terminated successfully.&#39;</code>，表示优化过程成功终止。</li>
-<li><code>nit</code>: 这个值为 <code>3</code>，表示迭代次数（iterations）。</li>
-<li><code>slack</code>: 这是一个数组，值为 <code>[0., 3.85714286]</code>。在线性规划中，这个数组表示松弛变量（slack variables），它们用于衡量不等式约束条件是否被满足。</li>
-<li><code>status</code>: 这个值为 <code>0</code>，表示优化的状态。在大多数优化库中，状态为 <code>0</code> 表示成功找到最优解。</li>
-<li><code>success</code>: 这个值为 <code>True</code>，表示优化是否成功。</li>
-<li><code>upper</code>: 这是一个包含 <code>marginals</code> 和 <code>residual</code> 两个部分的上界信息。<code>marginals</code> 表示变量的上界（upper bound）边际值，但该值由一个内存视图（MemoryView）来表示。而 <code>residual</code> 表示上界条件的残差，值为 <code>[inf, inf, inf]</code>。这里 <code>inf</code> 表示正无穷大，说明部分变量可能没有上界。</li>
-<li><code>x</code>: 这是一个数组，值为 <code>[6.42857143, 0.57142857, 0.]</code>。这是线性规划得出的最优解，表示使目标函数达到最大或最小值时的变量取值。</li>
-</ol>
-<p>综上所述，这段数学线性规划代码的运行结果表明优化成功，得出的最优解为 <code>x = [6.42857143, 0.57142857, 0.]</code>，在这个解下，目标函数的值为 <code>-14.571428571428573</code>。同时，满足了等式约束条件以及不等式约束条件，并且部分变量可能没有上界。</p>
+<p>学习进度：</p>
+<p>2023&#x2F;10&#x2F;10： 3&#x2F;30</p>
+<p>2023&#x2F;10&#x2F;11： 无</p>
+<p>2023&#x2F;10&#x2F;12： 无</p>
+<p>2023&#x2F;10&#x2F;13： 5&#x2F;30</p>
+<p>2023&#x2F;10&#x2F;14： </p>
+<p>2023&#x2F;10&#x2F;15： </p>
+<p>2023&#x2F;10&#x2F;16： </p>
+<p>2023&#x2F;10&#x2F;17： </p>
 </blockquote>
-<h3 id="例二（linprog）"><a href="#例二（linprog）" class="headerlink" title="例二（linprog）"></a>例二（linprog）</h3><p><img src="https://pic2.zhimg.com/80/v2-8b7ba11e726c91025155a9f073fda695_1440w.webp" alt="img"></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 简单线性规划</span></span><br><span class="line"><span class="keyword">from</span> scipy.optimize <span class="keyword">import</span> linprog</span><br><span class="line"><span class="comment"># 目标函数</span></span><br><span class="line">f=[-<span class="number">4</span>,-<span class="number">3</span>]</span><br><span class="line"><span class="comment"># 小于等于约束</span></span><br><span class="line">aub=[[<span class="number">2</span>,<span class="number">1</span>],[<span class="number">1</span>,<span class="number">1</span>],[<span class="number">0</span>,<span class="number">1</span>]]</span><br><span class="line">bub=[<span class="number">10</span>,<span class="number">8</span>,<span class="number">7</span>]</span><br><span class="line"><span class="comment"># 等式约束</span></span><br><span class="line">aeq=<span class="literal">None</span></span><br><span class="line">beq=<span class="literal">None</span></span><br><span class="line"><span class="comment"># 非零约束</span></span><br><span class="line">x0bounds=(<span class="number">0</span>,<span class="literal">None</span>)</span><br><span class="line">x1bounds=(<span class="number">0</span>,<span class="literal">None</span>)</span><br><span class="line">x=[x0bounds, x1bounds]</span><br><span class="line"><span class="comment"># 标准型线性规划：最小值、小于等于约束、等输约束、非零约束</span></span><br><span class="line"><span class="comment"># simplex单纯形法；interior-point内点法;highs使用HIPS求解器</span></span><br><span class="line">res = linprog(f, A_ub=aub, b_ub=bub,A_eq=aeq,b_eq=beq ,bounds=x, method=<span class="string">&#x27;simplex&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(res)</span><br></pre></td></tr></table></figure>
-
-<p><img src="D:\blog\source_posts\数学建模模型.assets\image-20230731183904084.png" alt="image-20230731183904084"></p>
-<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>其他的方法有：</p>
-<ul>
-<li><a href="https://blog.csdn.net/m0_54510474/article/details/127849897#minimize_51">minimize()函数</a></li>
-<li><a href="https://blog.csdn.net/m0_54510474/article/details/127849897#cvxpy_96">cvxpy库</a></li>
-<li><a href="https://blog.csdn.net/m0_54510474/article/details/127849897#cvxopt_130">cvxopt库</a></li>
-</ul>
-<p>可查看：<a href="https://blog.csdn.net/m0_54510474/article/details/127849897">https://blog.csdn.net/m0_54510474/article/details/127849897</a></p>
-<h2 id="简单整数规划"><a href="#简单整数规划" class="headerlink" title="简单整数规划"></a>简单整数规划</h2><p><img src="https://pic3.zhimg.com/80/v2-b68d4e5869618c8b0c3a38088d27de7a_1440w.webp" alt="img"></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 简单整数规划</span><br><span class="line"></span><br><span class="line">import pulp as pp</span><br><span class="line"># 参数设置</span><br><span class="line">c = [3,4,1]        #目标函数未知数前的系数</span><br><span class="line"># 约束1</span><br><span class="line">A_gq = [[1,6,2],[2,0,0]]   # 大于等于式子 未知数前的系数集合 二维数组</span><br><span class="line">b_gq = [5,3]         # 大于等于式子右边的数值 一维数组</span><br><span class="line"># 确定最大最小化问题，当前确定的是最小化问题</span><br><span class="line">m = pp.LpProblem(sense=pp.LpMinimize)</span><br><span class="line"># 定义三个变量放到列表中 生成x1 x2 x3</span><br><span class="line">x = [pp.LpVariable(f&#x27;x&#123;i&#125;&#x27;,lowBound=0,cat=&#x27;Integer&#x27;) for i in [1,2,3]]</span><br><span class="line"># 定义目标函数，并将目标函数加入求解的问题中</span><br><span class="line">m += pp.lpDot(c,x) # lpDot 用于计算点积</span><br><span class="line"># 设置比较条件</span><br><span class="line">for i in range(len(A_gq)):# 大于等于</span><br><span class="line">    m += (pp.lpDot(A_gq[i],x) &gt;= b_gq[i])</span><br><span class="line"># 求解</span><br><span class="line">m.solve()</span><br><span class="line"># 输出结果</span><br><span class="line">print(f&#x27;优化结果：&#123;pp.value(m.objective)&#125;&#x27;)</span><br><span class="line">print(f&#x27;参数取值：&#123;[pp.value(var) for var in x]&#125;&#x27;)</span><br></pre></td></tr></table></figure>
-
-<p>代码运行结果：</p>
-<p><img src="D:\blog\source_posts\数学建模模型.assets\image-20230731184740251.png" alt="image-20230731184740251"></p>
-<h1 id="人口模型"><a href="#人口模型" class="headerlink" title="人口模型"></a>人口模型</h1><h2 id="马尔萨斯模型"><a href="#马尔萨斯模型" class="headerlink" title="马尔萨斯模型"></a>马尔萨斯模型</h2><h3 id="模型过程"><a href="#模型过程" class="headerlink" title="模型过程"></a>模型过程</h3><p>人口增长与人口基数和增长率有关，这两项为主要因素。假设人口的增长过程可用微分方程来描述。初看起来，人口增长不能用微分方程来描述，因为人口总数是按整数变化的而不是时间的可微函数。然而人口总数很大时，可以近似认为它是时间的连续函数，甚至是可微函数。</p>
-<blockquote>
-<p>N（t）表示t时刻人口总数</p>
-<p>r（t，N（t））表示t时刻的人口增长率，它与时间t和t时刻的人口总数N（t）有关。</p>
-</blockquote>
-<p>模型建立：</p>
-<p>根据假设只考虑人口的基数和增长率，则在t到t+△t这段时间内人口总数增长为<br>$$<br>N（t+△t）-N（t）&#x3D;r（t，N（t））<em>N（t）</em>△t<br>$$<br>两端同除△t，并令△t-&gt;0，则<br>$$<br>\frac{dN（t）}{dt}&#x3D;r[t，N（t）]<em>N（t）<br>$$<br>令r[t，N（t）]&#x3D;r（一个常数）就是马尔萨斯模型（Malthus模型）<br>$$<br>\frac{dN（t）}{dt}&#x3D;r</em>N（t）<br>$$</p>
-<p>$$<br>N（t）|（ t&#x3D;t0） &#x3D;N0<br>$$</p>
-<p>求解得到<br>$$<br>N（t）&#x3D;N0<em>e^{r</em>(t-t0)}<br>$$</p>
-<h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><p>只符合过去的人口总数而不能用来预测未来人口总数</p>
-<p>原因人口总数不太大时，人口总数增长的线性数学模型是正确的，但当人口总数非常大时，地球上的资源，环境等因素对人口增长的限制作用越来越显著</p>
-<h2 id="逻辑斯蒂模型"><a href="#逻辑斯蒂模型" class="headerlink" title="逻辑斯蒂模型"></a>逻辑斯蒂模型</h2><p>当人口总数较小时，人口增长率可看作常数，当人口增长到一定数量后，这个增长率就要随人口的增加而减小。该模型考虑到自然资源、环境条件等因素对人口增长起着阻滞作用，并随人口增加，阻滞作用越来越大，该模型又称为阻滞增长模型，它是一种伯努利方程。</p>
-<blockquote>
-<p>k为生命系数</p>
-<p>N为单位时间内两个成员相遇次数的统计平均值</p>
-</blockquote>
-<p>$$<br>\frac{dN（t）}{dt}&#x3D;r<em>N（t）-K</em>N^2<br>$$</p>
-<p>$$<br>N（t）| （t&#x3D;t0） &#x3D;N0<br>$$</p>
-<p>可以查到：r&#x3D;0.029，K&#x3D;2.941*10^(-12)</p>
 ]]></content>
       <categories>
-        <category>模型</category>
+        <category>算法,leetcode</category>
       </categories>
       <tags>
-        <tag>数学建模</tag>
+        <tag>算法,leetcode</tag>
       </tags>
   </entry>
   <entry>
@@ -2095,20 +3523,122 @@
       </tags>
   </entry>
   <entry>
-    <title></title>
-    <url>/2023/08/08/%E9%A1%B9%E7%9B%AE%E6%A0%87%E4%B9%A6/</url>
-    <content><![CDATA[<hr>
-<h2 id="title-项目标书date-’2023-8-16’updated-’2023-8-16’tags-项目标书categories-项目标书keywords-项目标书description-准备大三的暑假回到实验室中和老师同学一起写项目标书，以下就是项目标书的大纲，特此记录。"><a href="#title-项目标书date-’2023-8-16’updated-’2023-8-16’tags-项目标书categories-项目标书keywords-项目标书description-准备大三的暑假回到实验室中和老师同学一起写项目标书，以下就是项目标书的大纲，特此记录。" class="headerlink" title="title:项目标书date:’2023-8-16’updated:’2023-8-16’tags:项目标书categories:项目标书keywords:项目标书description:准备大三的暑假回到实验室中和老师同学一起写项目标书，以下就是项目标书的大纲，特此记录。"></a>title:项目标书<br>date:’2023-8-16’<br>updated:’2023-8-16’<br>tags:项目标书<br>categories:项目标书<br>keywords:项目标书<br>description:准备大三的暑假回到实验室中和老师同学一起写项目标书，以下就是项目标书的大纲，特此记录。</h2><h1 id="报告正文"><a href="#报告正文" class="headerlink" title="报告正文"></a>报告正文</h1><h2 id="（一）立项依据与研究内容"><a href="#（一）立项依据与研究内容" class="headerlink" title="（一）立项依据与研究内容"></a>（一）立项依据与研究内容</h2><h3 id="项目的立项依据"><a href="#项目的立项依据" class="headerlink" title="项目的立项依据"></a>项目的立项依据</h3><h4 id="研究意义"><a href="#研究意义" class="headerlink" title="研究意义"></a>研究意义</h4><h5 id="必要和意义"><a href="#必要和意义" class="headerlink" title="必要和意义"></a>必要和意义</h5><h5 id="创新和价值"><a href="#创新和价值" class="headerlink" title="创新和价值"></a>创新和价值</h5><h4 id="国内外研究现状及发展动态分析"><a href="#国内外研究现状及发展动态分析" class="headerlink" title="国内外研究现状及发展动态分析"></a>国内外研究现状及发展动态分析</h4><h5 id="研究方案"><a href="#研究方案" class="headerlink" title="研究方案"></a>研究方案</h5><h5 id="技术分析"><a href="#技术分析" class="headerlink" title="技术分析"></a>技术分析</h5><h4 id="需结合科学研究发展趋势来论述科学意义"><a href="#需结合科学研究发展趋势来论述科学意义" class="headerlink" title="需结合科学研究发展趋势来论述科学意义"></a>需结合科学研究发展趋势来论述科学意义</h4><h4 id="结合国民经济和社会发展中迫切需要解决的关键科技问题来论述其应用前景"><a href="#结合国民经济和社会发展中迫切需要解决的关键科技问题来论述其应用前景" class="headerlink" title="结合国民经济和社会发展中迫切需要解决的关键科技问题来论述其应用前景"></a>结合国民经济和社会发展中迫切需要解决的关键科技问题来论述其应用前景</h4><h4 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h4><h3 id="研究内容"><a href="#研究内容" class="headerlink" title="研究内容"></a>研究内容</h3><h4 id="研究的仪器"><a href="#研究的仪器" class="headerlink" title="研究的仪器"></a>研究的仪器</h4><h4 id="研究目标"><a href="#研究目标" class="headerlink" title="研究目标"></a>研究目标</h4><h4 id="拟解决的关键科学问题及解决方案"><a href="#拟解决的关键科学问题及解决方案" class="headerlink" title="拟解决的关键科学问题及解决方案"></a>拟解决的关键科学问题及解决方案</h4><h5 id="检测问题"><a href="#检测问题" class="headerlink" title="检测问题"></a>检测问题</h5><h5 id="预测和分析问题"><a href="#预测和分析问题" class="headerlink" title="预测和分析问题"></a>预测和分析问题</h5><h1 id="拟采取的研究方案及可行性分析"><a href="#拟采取的研究方案及可行性分析" class="headerlink" title="拟采取的研究方案及可行性分析"></a>拟采取的研究方案及可行性分析</h1><h3 id="研究方法"><a href="#研究方法" class="headerlink" title="研究方法"></a>研究方法</h3><h3 id="技术路线"><a href="#技术路线" class="headerlink" title="技术路线"></a>技术路线</h3><h3 id="实验手段"><a href="#实验手段" class="headerlink" title="实验手段"></a>实验手段</h3><h3 id="关键技术"><a href="#关键技术" class="headerlink" title="关键技术"></a>关键技术</h3><h3 id="研究内容-1"><a href="#研究内容-1" class="headerlink" title="研究内容"></a>研究内容</h3><h4 id="产物介绍"><a href="#产物介绍" class="headerlink" title="产物介绍"></a>产物介绍</h4><h4 id="模型介绍"><a href="#模型介绍" class="headerlink" title="模型介绍"></a>模型介绍</h4><h1 id="本项目的特色与创新之处"><a href="#本项目的特色与创新之处" class="headerlink" title="本项目的特色与创新之处"></a>本项目的特色与创新之处</h1><h3 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h3><h1 id="年度研究计划及预期研究结果"><a href="#年度研究计划及预期研究结果" class="headerlink" title="年度研究计划及预期研究结果"></a>年度研究计划及预期研究结果</h1><h3 id="拟组织的重要学术交流活动"><a href="#拟组织的重要学术交流活动" class="headerlink" title="拟组织的重要学术交流活动"></a>拟组织的重要学术交流活动</h3><h3 id="国际合作与交流计划"><a href="#国际合作与交流计划" class="headerlink" title="国际合作与交流计划"></a>国际合作与交流计划</h3><h3 id="预期研究成果"><a href="#预期研究成果" class="headerlink" title="预期研究成果"></a>预期研究成果</h3><h2 id="（二）研究基础与工作条件"><a href="#（二）研究基础与工作条件" class="headerlink" title="（二）研究基础与工作条件"></a>（二）研究基础与工作条件</h2><h2 id="研究基础"><a href="#研究基础" class="headerlink" title="研究基础"></a>研究基础</h2><h3 id="与本项目相关的研究工作积累"><a href="#与本项目相关的研究工作积累" class="headerlink" title="与本项目相关的研究工作积累"></a>与本项目相关的研究工作积累</h3><h3 id="已取得的研究工作成绩"><a href="#已取得的研究工作成绩" class="headerlink" title="已取得的研究工作成绩"></a>已取得的研究工作成绩</h3><h2 id="工作条件"><a href="#工作条件" class="headerlink" title="工作条件"></a>工作条件</h2><h3 id="已具备的实验条件"><a href="#已具备的实验条件" class="headerlink" title="已具备的实验条件"></a>已具备的实验条件</h3><h3 id="尚缺少的实验条件和拟解决的途径"><a href="#尚缺少的实验条件和拟解决的途径" class="headerlink" title="尚缺少的实验条件和拟解决的途径"></a>尚缺少的实验条件和拟解决的途径</h3><h3 id="利用国家实验室、国家重点实验室和部门重点实验室等研究基地的计划与落实情况"><a href="#利用国家实验室、国家重点实验室和部门重点实验室等研究基地的计划与落实情况" class="headerlink" title="利用国家实验室、国家重点实验室和部门重点实验室等研究基地的计划与落实情况"></a>利用国家实验室、国家重点实验室和部门重点实验室等研究基地的计划与落实情况</h3><h2 id="正在承担的与本项目相关的科研项目情况"><a href="#正在承担的与本项目相关的科研项目情况" class="headerlink" title="正在承担的与本项目相关的科研项目情况"></a>正在承担的与本项目相关的科研项目情况</h2><h3 id="申请人和主要参与者正在承担的与本项目相关的科研项目情况"><a href="#申请人和主要参与者正在承担的与本项目相关的科研项目情况" class="headerlink" title="申请人和主要参与者正在承担的与本项目相关的科研项目情况"></a>申请人和主要参与者正在承担的与本项目相关的科研项目情况</h3><p>包括国家自然科学基金的项目和国家其他科技计划项目，要注明项目的资助机构、项目类别、批准号、项目名称、获资助金额、起止年月、与本项目的关系及负责的内容等</p>
-<h2 id="完成国家自然科学基金项目情况"><a href="#完成国家自然科学基金项目情况" class="headerlink" title="完成国家自然科学基金项目情况"></a>完成国家自然科学基金项目情况</h2><p>对申请人负责的前一个已资助期满的科学基金项目（项目名称及批准号）完成情况、后续研究进展及与本申请项目的关系加以详细说明。另附该项目的研究工作总结摘要（限500字）和相关成果详细目录</p>
-<h2 id="（三）其他需要说明的情况"><a href="#（三）其他需要说明的情况" class="headerlink" title="（三）其他需要说明的情况"></a>（三）其他需要说明的情况</h2><p>\1. 申请人同年申请不同类型的国家自然科学基金项目情况（列明同年申请的其他项目的项目类型、项目名称信息，并说明与本项目之间的区别与联系）。</p>
-<p>无</p>
-<p>\2. 具有高级专业技术职务（职称）的申请人或者主要参与者是否存在同年申请或者参与申请国家自然科学基金项目的单位不一致的情况；如存在上述情况，列明所涉及人员的姓名，申请或参与申请的其他项目的项目类型、项目名称、单位名称、上述人员在该项目中是申请人还是参与者，并说明单位不一致原因。</p>
-<p>无</p>
-<p>\3. 具有高级专业技术职务（职称）的申请人或者主要参与者是否存在与正在承担的国家自然科学基金项目的单位不一致的情况；如存在上述情况，列明所涉及人员的姓名，正在承担项目的批准号、项目类型、项目名称、单位名称、起止年月，并说明单位不一致原因。</p>
-<p>无</p>
-<p>\4. 其他。</p>
-<p>无</p>
+    <title>华为ICT计算机网络课程</title>
+    <url>/2023/10/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</url>
+    <content><![CDATA[<h1 id="学习进度"><a href="#学习进度" class="headerlink" title="学习进度"></a>学习进度</h1><blockquote>
+<p>2023&#x2F;10&#x2F;9： 1.1</p>
+<p>2023&#x2F;10&#x2F;10： </p>
+<p>2023&#x2F;10&#x2F;11： </p>
+<p>2023&#x2F;10&#x2F;12： </p>
+<p>2023&#x2F;10&#x2F;13： </p>
+<p>2023&#x2F;10&#x2F;14： </p>
+<p>2023&#x2F;10&#x2F;15： </p>
+<p>2023&#x2F;10&#x2F;16： </p>
+</blockquote>
+<h1 id="计算机网络基础"><a href="#计算机网络基础" class="headerlink" title="计算机网络基础"></a>计算机网络基础</h1><h2 id="课程目标"><a href="#课程目标" class="headerlink" title="课程目标"></a>课程目标</h2><p><img src="D:\blog\source_posts\计算机网络.assets\image-20231009222953946.png" alt="image-20231009222953946"></p>
+<h2 id="概念和体系结构"><a href="#概念和体系结构" class="headerlink" title="概念和体系结构"></a>概念和体系结构</h2><p>社会网络：由许多节点构成的一种社会结构</p>
+<p>计算机网络：将地理位置不同的，具有独立功能的多台计算机及其外部设备通过通信链路连接起来，实现资源共享和信息传递的计算机系统</p>
+<ul>
+<li>最简单的计算机网络：只有两台计算机和一条通信链路</li>
+<li>最庞大的计算机网络：因特网（也成为网络的网络）</li>
+</ul>
+<p>通信的规程（协议）</p>
+<h3 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h3><h4 id="按网络共享服务划分"><a href="#按网络共享服务划分" class="headerlink" title="按网络共享服务划分"></a>按网络共享服务划分</h4><ul>
+<li>客户端&#x2F;服务器网络 C&#x2F;S模式</li>
+<li>对等网络 P2P</li>
+<li>浏览器&#x2F;服务器网络 B&#x2F;S</li>
+<li>混合网络</li>
+</ul>
+<h4 id="按网络节点分布范围划分"><a href="#按网络节点分布范围划分" class="headerlink" title="按网络节点分布范围划分"></a>按网络节点分布范围划分</h4><ul>
+<li>局域网：通讯距离和范围不超过10公里的计算机网络</li>
+<li>城域网：覆盖范围大约在10~100公里的计算机网络</li>
+<li>广域网：覆盖范围在1000公里以外的计算机网络，也成为互联网，通常由多个城域网或局域网组成</li>
+</ul>
+<h3 id="分层"><a href="#分层" class="headerlink" title="分层"></a>分层</h3><h4 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h4><blockquote>
+<p>为什么要分层：</p>
+<p>计算机网络很复杂，分层是为了更好地表述和处理</p>
+<p><img src="D:\blog\source_posts\计算机网络.assets\image-20231009224821939.png" alt="image-20231009224821939"></p>
+</blockquote>
+<h4 id="分层结构"><a href="#分层结构" class="headerlink" title="分层结构"></a>分层结构</h4><p>国际标准化组织（ISO）：提出开放系统互连参考模型，简称OSI模型</p>
+<p><img src="D:\blog\source_posts\计算机网络.assets\image-20231009225020715.png" alt="image-20231009225020715"></p>
+<p><img src="D:\blog\source_posts\计算机网络.assets\image-20231009225100654.png" alt="image-20231009225100654"></p>
+<h3 id="数据发送"><a href="#数据发送" class="headerlink" title="数据发送"></a>数据发送</h3><p>数据发送：典型的应用数据封装过程</p>
+<h4 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h4><ul>
+<li><p>应用层		用户数据  +  应用层协议  -&gt;  应用数据，向下传输</p>
+</li>
+<li><p>传输层		应用数据  +  TCP头部  -&gt;  数据段（报文），向下传输</p>
+</li>
+<li><p>网络层		数据段（报文）  +  IP头部  -&gt;  数据包</p>
+</li>
+<li><p>数据链路层		数据包  +  MAC头部  -&gt;  数据帧，向下传输</p>
+</li>
+<li><p>物理层		数据帧传输到以太网卡上</p>
+<p>ps：以太网卡包括了数据链路层和物理层的功能，通过硬件的方式，将数据加入到以太网首部，再在物理线路上传输</p>
+<p><img src="D:\blog\source_posts\计算机网络.assets\image-20231009225949983.png" alt="image-20231009225949983"></p>
+</li>
+</ul>
+<h3 id="接受数据"><a href="#接受数据" class="headerlink" title="接受数据"></a>接受数据</h3><p>过程：</p>
+<ul>
+<li>在物理层，网络节点通过以太网卡上的硬件单元，读取数据帧，并发往数据链路层</li>
+<li>在数据链路层，去除物理地址，帧头，帧尾和校验码以后形成数据包发往网络层</li>
+<li>在网络层，通过比对数据包中的IP地址和本机IP地址，如果一致，则将数据包中的IP头部去掉，形成数据报文，发往传输层；如果不一致，而且不是一个广播包，就要抛弃数据包</li>
+<li>在传输层，提取数据报文中的控制信息，如报文序列号等，去除TCP头部信息，并进行缓存。然后根据报文序列号，将数据段组成完整的应用数据，发往应用层</li>
+<li>在应用层，应用数据根据需要进行格式转换，比如解压，解密等，去除控制信息，比如数据大小和校验码等，转换为用户的数据。</li>
+</ul>
+<h2 id="核心协议"><a href="#核心协议" class="headerlink" title="核心协议"></a>核心协议</h2><h2 id="网络设备和配置管理"><a href="#网络设备和配置管理" class="headerlink" title="网络设备和配置管理"></a>网络设备和配置管理</h2>]]></content>
+      <categories>
+        <category>计算机网络,华为ICT</category>
+      </categories>
+      <tags>
+        <tag>计算机网络,华为ICT</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>虚拟机硬盘存储空间不够</title>
+    <url>/2023/10/15/%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%A1%AC%E7%9B%98%E5%AD%98%E5%82%A8%E7%A9%BA%E9%97%B4%E4%B8%8D%E5%A4%9F/</url>
+    <content><![CDATA[<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>一打开虚拟机出现内存空间不够提醒，没注意，后来想要上传一个较大一点的文件，无法复制。</p>
+<h1 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h1><p>链接：</p>
+<ol>
+<li><a href="https://blog.csdn.net/w2298119289j/article/details/127827471?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_baidulandingword~default-0-127827471-blog-123678286.235%5Ev38%5Epc_relevant_default_base&spm=1001.2101.3001.4242.1&utm_relevant_index=3">虚拟机新增磁盘空间</a></li>
+<li></li>
+</ol>
+<h2 id="修改硬盘大小"><a href="#修改硬盘大小" class="headerlink" title="修改硬盘大小"></a>修改硬盘大小</h2><h2 id="刷新磁盘信息"><a href="#刷新磁盘信息" class="headerlink" title="刷新磁盘信息"></a>刷新磁盘信息</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo partprobe</span><br></pre></td></tr></table></figure>
+
+<h2 id="重新分区"><a href="#重新分区" class="headerlink" title="重新分区"></a>重新分区</h2><h3 id="打印当前磁盘分区表"><a href="#打印当前磁盘分区表" class="headerlink" title="打印当前磁盘分区表"></a>打印当前磁盘分区表</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo fdisk -l</span><br></pre></td></tr></table></figure>
+
+<p>&#x2F;dev&#x2F;sda是新添加的磁盘</p>
+<p><img src="D:\blog\source_posts\虚拟机硬盘存储空间不够.assets\image-20231015100951781.png" alt="image-20231015100951781"></p>
+<h4 id="含义解释"><a href="#含义解释" class="headerlink" title="含义解释"></a>含义解释</h4><p><img src="D:\blog\source_posts\虚拟机硬盘存储空间不够.assets\image-20231015101545901.png" alt="image-20231015101545901"></p>
+<h3 id="查看磁盘空间"><a href="#查看磁盘空间" class="headerlink" title="查看磁盘空间"></a>查看磁盘空间</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">df -h</span><br></pre></td></tr></table></figure>
+
+<p><img src="D:\blog\source_posts\虚拟机硬盘存储空间不够.assets\image-20231015101249814.png" alt="image-20231015101249814"></p>
+<h4 id="含义解释-1"><a href="#含义解释-1" class="headerlink" title="含义解释"></a>含义解释</h4><p><img src="D:\blog\source_posts\虚拟机硬盘存储空间不够.assets\image-20231015101522488.png" alt="image-20231015101522488"></p>
+<h3 id="不确定新增磁盘空间，可查看新增分区"><a href="#不确定新增磁盘空间，可查看新增分区" class="headerlink" title="不确定新增磁盘空间，可查看新增分区"></a>不确定新增磁盘空间，可查看新增分区</h3><p><img src="D:\blog\source_posts\虚拟机硬盘存储空间不够.assets\image-20231015103716429.png" alt="image-20231015103716429"></p>
+<h4 id="含义解释-2"><a href="#含义解释-2" class="headerlink" title="含义解释"></a>含义解释</h4><ul>
+<li><code>sr0</code>: 这是光学驱动器，通常是 CD&#x2F;DVD 驱动器或 ISO 映像的虚拟设备。通常不是您新增的磁盘空间。</li>
+<li><code>sda</code>: 这是您的主硬盘，可能是您虚拟机的系统盘。您在 <code>/dev/sda</code> 上有两个分区：<ul>
+<li><code>sda1</code>: 这是根分区，用于挂载您的根文件系统 (<code>/</code>)。</li>
+<li><code>sda2</code> 和 <code>sda5</code>：这些分区不显示有实际数据，可能是一些小分区或未使用的分区。<code>sda5</code> 通常是交换分区。</li>
+</ul>
+</li>
+</ul>
+<h4 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h4><p>sda有 45G，但是其分区加起来只有25G，说明新增加的磁盘空间是&#x2F;dev&#x2F;sda，并且还未进行分区</p>
+<h3 id="新增分区"><a href="#新增分区" class="headerlink" title="新增分区"></a>新增分区</h3><p>使用 <code>fdisk</code> 命令分区：运行以下命令以分区未分区的空间。根据您的需求创建一个新分区</p>
+<p><img src="D:\blog\source_posts\虚拟机硬盘存储空间不够.assets\image-20231015104221145.png" alt="image-20231015104221145"></p>
+<blockquote>
+<p>命令(输入 m 获取帮助)：m # 查看操作的意思，类似于–help<br>命令操作<br>   a   toggle a bootable flag # 切换可引导标志<br>   b   edit bsd disklabel # 编辑 BSD 磁盘标签<br>   c   toggle the dos compatibility flag # 切换 DOS 兼容性标志<br>   d   delete a partition # 删除分区<br>   g   create a new empty GPT partition table #创建一个新的空 GPT 分区表<br>   G   create an IRIX (SGI) partition table # 创建 IRIX （SGI） 分区表列出已知的分区类型<br>   l   list known partition types # 列出已知的分区类型<br>   m   print this menu # 打印此菜单<br>   n   add a new partition # 添加新分区<br>   o   create a new empty DOS partition table # 创建一个新的空 DOS 分区表<br>   p   print the partition table # 打印分区表<br>   q   quit without saving changes # 退出而不保存更改<br>   s   create a new empty Sun disklabel # 创建一个新的空 Sun 磁盘标签<br>   t   change a partition’s system id # 更改分区的系统 ID<br>   u   change display&#x2F;entry units # 更改显示&#x2F;输入单元<br>   v   verify the partition table # 验证分区表<br>   w   write table to disk and exit # 将表写入磁盘并退出<br>   x   extra functionality (experts only) #  额外功能（仅限专家）</p>
+</blockquote>
+<p><img src="D:\blog\source_posts\虚拟机硬盘存储空间不够.assets\image-20231015104924425.png" alt="image-20231015104924425"></p>
+<h3 id="修改id"><a href="#修改id" class="headerlink" title="修改id"></a>修改id</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo fdisk /dev/sda</span><br><span class="line"></span><br><span class="line">命令(输入 m 获取帮助)：t</span><br><span class="line">已选择分区 1</span><br><span class="line">Hex 代码(输入 L 列出所有代码)：8e</span><br><span class="line">已将分区“Linux”的类型更改为“Linux LVM”</span><br><span class="line"></span><br><span class="line">命令(输入 m 获取帮助)：w</span><br><span class="line">The partition table has been altered!</span><br></pre></td></tr></table></figure>
+
+<p><img src="D:\blog\source_posts\虚拟机硬盘存储空间不够.assets\image-20231015105828244.png" alt="image-20231015105828244"></p>
 ]]></content>
+      <categories>
+        <category>虚拟机</category>
+      </categories>
+      <tags>
+        <tag>虚拟机</tag>
+      </tags>
   </entry>
   <entry>
     <title>超过一半的已知人类致病性疾病会因气候变化而加剧</title>
@@ -2184,5 +3714,21 @@
       <tags>
         <tag>项目需求</tag>
       </tags>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/2023/08/08/%E9%A1%B9%E7%9B%AE%E6%A0%87%E4%B9%A6/</url>
+    <content><![CDATA[<hr>
+<h2 id="title-项目标书date-’2023-8-16’updated-’2023-8-16’tags-项目标书categories-项目标书keywords-项目标书description-准备大三的暑假回到实验室中和老师同学一起写项目标书，以下就是项目标书的大纲，特此记录。"><a href="#title-项目标书date-’2023-8-16’updated-’2023-8-16’tags-项目标书categories-项目标书keywords-项目标书description-准备大三的暑假回到实验室中和老师同学一起写项目标书，以下就是项目标书的大纲，特此记录。" class="headerlink" title="title:项目标书date:’2023-8-16’updated:’2023-8-16’tags:项目标书categories:项目标书keywords:项目标书description:准备大三的暑假回到实验室中和老师同学一起写项目标书，以下就是项目标书的大纲，特此记录。"></a>title:项目标书<br>date:’2023-8-16’<br>updated:’2023-8-16’<br>tags:项目标书<br>categories:项目标书<br>keywords:项目标书<br>description:准备大三的暑假回到实验室中和老师同学一起写项目标书，以下就是项目标书的大纲，特此记录。</h2><h1 id="报告正文"><a href="#报告正文" class="headerlink" title="报告正文"></a>报告正文</h1><h2 id="（一）立项依据与研究内容"><a href="#（一）立项依据与研究内容" class="headerlink" title="（一）立项依据与研究内容"></a>（一）立项依据与研究内容</h2><h3 id="项目的立项依据"><a href="#项目的立项依据" class="headerlink" title="项目的立项依据"></a>项目的立项依据</h3><h4 id="研究意义"><a href="#研究意义" class="headerlink" title="研究意义"></a>研究意义</h4><h5 id="必要和意义"><a href="#必要和意义" class="headerlink" title="必要和意义"></a>必要和意义</h5><h5 id="创新和价值"><a href="#创新和价值" class="headerlink" title="创新和价值"></a>创新和价值</h5><h4 id="国内外研究现状及发展动态分析"><a href="#国内外研究现状及发展动态分析" class="headerlink" title="国内外研究现状及发展动态分析"></a>国内外研究现状及发展动态分析</h4><h5 id="研究方案"><a href="#研究方案" class="headerlink" title="研究方案"></a>研究方案</h5><h5 id="技术分析"><a href="#技术分析" class="headerlink" title="技术分析"></a>技术分析</h5><h4 id="需结合科学研究发展趋势来论述科学意义"><a href="#需结合科学研究发展趋势来论述科学意义" class="headerlink" title="需结合科学研究发展趋势来论述科学意义"></a>需结合科学研究发展趋势来论述科学意义</h4><h4 id="结合国民经济和社会发展中迫切需要解决的关键科技问题来论述其应用前景"><a href="#结合国民经济和社会发展中迫切需要解决的关键科技问题来论述其应用前景" class="headerlink" title="结合国民经济和社会发展中迫切需要解决的关键科技问题来论述其应用前景"></a>结合国民经济和社会发展中迫切需要解决的关键科技问题来论述其应用前景</h4><h4 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h4><h3 id="研究内容"><a href="#研究内容" class="headerlink" title="研究内容"></a>研究内容</h3><h4 id="研究的仪器"><a href="#研究的仪器" class="headerlink" title="研究的仪器"></a>研究的仪器</h4><h4 id="研究目标"><a href="#研究目标" class="headerlink" title="研究目标"></a>研究目标</h4><h4 id="拟解决的关键科学问题及解决方案"><a href="#拟解决的关键科学问题及解决方案" class="headerlink" title="拟解决的关键科学问题及解决方案"></a>拟解决的关键科学问题及解决方案</h4><h5 id="检测问题"><a href="#检测问题" class="headerlink" title="检测问题"></a>检测问题</h5><h5 id="预测和分析问题"><a href="#预测和分析问题" class="headerlink" title="预测和分析问题"></a>预测和分析问题</h5><h1 id="拟采取的研究方案及可行性分析"><a href="#拟采取的研究方案及可行性分析" class="headerlink" title="拟采取的研究方案及可行性分析"></a>拟采取的研究方案及可行性分析</h1><h3 id="研究方法"><a href="#研究方法" class="headerlink" title="研究方法"></a>研究方法</h3><h3 id="技术路线"><a href="#技术路线" class="headerlink" title="技术路线"></a>技术路线</h3><h3 id="实验手段"><a href="#实验手段" class="headerlink" title="实验手段"></a>实验手段</h3><h3 id="关键技术"><a href="#关键技术" class="headerlink" title="关键技术"></a>关键技术</h3><h3 id="研究内容-1"><a href="#研究内容-1" class="headerlink" title="研究内容"></a>研究内容</h3><h4 id="产物介绍"><a href="#产物介绍" class="headerlink" title="产物介绍"></a>产物介绍</h4><h4 id="模型介绍"><a href="#模型介绍" class="headerlink" title="模型介绍"></a>模型介绍</h4><h1 id="本项目的特色与创新之处"><a href="#本项目的特色与创新之处" class="headerlink" title="本项目的特色与创新之处"></a>本项目的特色与创新之处</h1><h3 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h3><h1 id="年度研究计划及预期研究结果"><a href="#年度研究计划及预期研究结果" class="headerlink" title="年度研究计划及预期研究结果"></a>年度研究计划及预期研究结果</h1><h3 id="拟组织的重要学术交流活动"><a href="#拟组织的重要学术交流活动" class="headerlink" title="拟组织的重要学术交流活动"></a>拟组织的重要学术交流活动</h3><h3 id="国际合作与交流计划"><a href="#国际合作与交流计划" class="headerlink" title="国际合作与交流计划"></a>国际合作与交流计划</h3><h3 id="预期研究成果"><a href="#预期研究成果" class="headerlink" title="预期研究成果"></a>预期研究成果</h3><h2 id="（二）研究基础与工作条件"><a href="#（二）研究基础与工作条件" class="headerlink" title="（二）研究基础与工作条件"></a>（二）研究基础与工作条件</h2><h2 id="研究基础"><a href="#研究基础" class="headerlink" title="研究基础"></a>研究基础</h2><h3 id="与本项目相关的研究工作积累"><a href="#与本项目相关的研究工作积累" class="headerlink" title="与本项目相关的研究工作积累"></a>与本项目相关的研究工作积累</h3><h3 id="已取得的研究工作成绩"><a href="#已取得的研究工作成绩" class="headerlink" title="已取得的研究工作成绩"></a>已取得的研究工作成绩</h3><h2 id="工作条件"><a href="#工作条件" class="headerlink" title="工作条件"></a>工作条件</h2><h3 id="已具备的实验条件"><a href="#已具备的实验条件" class="headerlink" title="已具备的实验条件"></a>已具备的实验条件</h3><h3 id="尚缺少的实验条件和拟解决的途径"><a href="#尚缺少的实验条件和拟解决的途径" class="headerlink" title="尚缺少的实验条件和拟解决的途径"></a>尚缺少的实验条件和拟解决的途径</h3><h3 id="利用国家实验室、国家重点实验室和部门重点实验室等研究基地的计划与落实情况"><a href="#利用国家实验室、国家重点实验室和部门重点实验室等研究基地的计划与落实情况" class="headerlink" title="利用国家实验室、国家重点实验室和部门重点实验室等研究基地的计划与落实情况"></a>利用国家实验室、国家重点实验室和部门重点实验室等研究基地的计划与落实情况</h3><h2 id="正在承担的与本项目相关的科研项目情况"><a href="#正在承担的与本项目相关的科研项目情况" class="headerlink" title="正在承担的与本项目相关的科研项目情况"></a>正在承担的与本项目相关的科研项目情况</h2><h3 id="申请人和主要参与者正在承担的与本项目相关的科研项目情况"><a href="#申请人和主要参与者正在承担的与本项目相关的科研项目情况" class="headerlink" title="申请人和主要参与者正在承担的与本项目相关的科研项目情况"></a>申请人和主要参与者正在承担的与本项目相关的科研项目情况</h3><p>包括国家自然科学基金的项目和国家其他科技计划项目，要注明项目的资助机构、项目类别、批准号、项目名称、获资助金额、起止年月、与本项目的关系及负责的内容等</p>
+<h2 id="完成国家自然科学基金项目情况"><a href="#完成国家自然科学基金项目情况" class="headerlink" title="完成国家自然科学基金项目情况"></a>完成国家自然科学基金项目情况</h2><p>对申请人负责的前一个已资助期满的科学基金项目（项目名称及批准号）完成情况、后续研究进展及与本申请项目的关系加以详细说明。另附该项目的研究工作总结摘要（限500字）和相关成果详细目录</p>
+<h2 id="（三）其他需要说明的情况"><a href="#（三）其他需要说明的情况" class="headerlink" title="（三）其他需要说明的情况"></a>（三）其他需要说明的情况</h2><p>\1. 申请人同年申请不同类型的国家自然科学基金项目情况（列明同年申请的其他项目的项目类型、项目名称信息，并说明与本项目之间的区别与联系）。</p>
+<p>无</p>
+<p>\2. 具有高级专业技术职务（职称）的申请人或者主要参与者是否存在同年申请或者参与申请国家自然科学基金项目的单位不一致的情况；如存在上述情况，列明所涉及人员的姓名，申请或参与申请的其他项目的项目类型、项目名称、单位名称、上述人员在该项目中是申请人还是参与者，并说明单位不一致原因。</p>
+<p>无</p>
+<p>\3. 具有高级专业技术职务（职称）的申请人或者主要参与者是否存在与正在承担的国家自然科学基金项目的单位不一致的情况；如存在上述情况，列明所涉及人员的姓名，正在承担项目的批准号、项目类型、项目名称、单位名称、起止年月，并说明单位不一致原因。</p>
+<p>无</p>
+<p>\4. 其他。</p>
+<p>无</p>
+]]></content>
   </entry>
 </search>
